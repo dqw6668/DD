@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>django创建应用 源码1 | DD</title>
+  <meta name="keywords" content=" django ">
+  <meta name="description" content="django创建应用 源码1 | DD">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="权当年轻留个纪念">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://dqw6668.github.io/about/index.html">
+<meta property="og:site_name" content="DD">
+<meta property="og:description" content="权当年轻留个纪念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T09:18:38.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="权当年轻留个纪念">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>dqw6668</span>
+</div>
+
+<div class="icon">
+    
+    
+    <a class="github" title="github" href="https://github.com/dqw6668" target="_blank"></a>
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="email" title="email" href="mailto:xss_me@qq.com"></a>
+    
+</div>
+
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="leetcode"> leetcode </li>
+    
+    <li data-rel="杂"> 杂 </li>
+    
+    <li data-rel="安全"> 安全 </li>
+    
+    <li data-rel="基础"> 基础 </li>
+    
+    <li data-rel="java"> java </li>
+    
+    <li data-rel="python"> python </li>
+    
+    <li data-rel="设计模式"> 设计模式 </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="26">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友链
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">0-1bag</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">学习总结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">DDOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安全</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">LDAP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">认证</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">TCP三次握手</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">SQL注入</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">shell</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">操作系统</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">瞎想</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">安全扫描工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">django</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="leetcode "
+           href="/code/LeetCode题解.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode (Java)【目录】">LeetCode (Java)【目录】</span>
+            <span class="post-date" title="2018-09-27 00:00:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.3. 无重复字符的最长子串.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.3. 无重复字符的最长子串">LeetCode.3. 无重复字符的最长子串</span>
+            <span class="post-date" title="2018-09-28 01:42:10">2018/09/28</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.2. 两数相加.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.2. 两数相加">LeetCode.2. 两数相加</span>
+            <span class="post-date" title="2018-09-27 15:20:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之策略模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-策略模式">JAVA与模式-策略模式</span>
+            <span class="post-date" title="2018-09-27 14:44:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.1. 两数之和.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.1. 两数之和">LeetCode.1. 两数之和</span>
+            <span class="post-date" title="2018-09-27 14:35:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之单例模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-单例模式">JAVA与模式-单例模式</span>
+            <span class="post-date" title="2018-09-25 00:00:00">2018/09/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/shell脚本复习.html"
+           data-tag="shell"
+           data-author="" >
+            <span class="post-title" title="shell命令复习">shell命令复习</span>
+            <span class="post-date" title="2018-08-06 00:00:00">2018/08/06</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/redis.html"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="认识redis">认识redis</span>
+            <span class="post-date" title="2018-08-04 00:00:00">2018/08/04</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/LDAP.html"
+           data-tag="LDAP,认证"
+           data-author="" >
+            <span class="post-title" title="openLDAP搭建认证与目录系统">openLDAP搭建认证与目录系统</span>
+            <span class="post-date" title="2018-07-15 00:00:00">2018/07/15</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/SQLI.html"
+           data-tag="SQL注入"
+           data-author="" >
+            <span class="post-title" title="自建环境玩耍SQLI">自建环境玩耍SQLI</span>
+            <span class="post-date" title="2018-07-13 00:00:00">2018/07/13</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/python3催钱.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="py微信定时消息之 欠债还钱">py微信定时消息之 欠债还钱</span>
+            <span class="post-date" title="2018-06-21 00:00:00">2018/06/21</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/DDOS.html"
+           data-tag="DDOS,安全"
+           data-author="" >
+            <span class="post-title" title="反射型DDoS放大攻击的原理分析和防范措施">反射型DDoS放大攻击的原理分析和防范措施</span>
+            <span class="post-date" title="2018-06-19 00:00:00">2018/06/19</span>
+        </a>
+        
+        <a  class="java "
+           href="/java/maven.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="初识maven">初识maven</span>
+            <span class="post-date" title="2018-06-04 00:00:00">2018/06/04</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Junit.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="JUnit使用">JUnit使用</span>
+            <span class="post-date" title="2018-06-01 00:00:00">2018/06/01</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Git-bash.html"
+           data-tag="学习总结"
+           data-author="" >
+            <span class="post-title" title="Git使用">Git使用</span>
+            <span class="post-date" title="2018-05-25 00:00:00">2018/05/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/AppScan.html"
+           data-tag="学习总结,安全扫描工具"
+           data-author="" >
+            <span class="post-title" title="AppScan使用">AppScan使用</span>
+            <span class="post-date" title="2018-05-19 00:00:00">2018/05/19</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/py实现基本数据结构.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="数据结构基础 python实现">数据结构基础 python实现</span>
+            <span class="post-date" title="2018-05-03 00:00:00">2018/05/03</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/QA.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="QA职责流程">QA职责流程</span>
+            <span class="post-date" title="2018-05-02 00:00:00">2018/05/02</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/TCP.html"
+           data-tag="TCP三次握手"
+           data-author="" >
+            <span class="post-title" title="TCP三次和四次">TCP三次和四次</span>
+            <span class="post-date" title="2018-04-29 00:00:00">2018/04/29</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/0-1bag.html"
+           data-tag="0-1bag"
+           data-author="" >
+            <span class="post-title" title="0-1背包问题">0-1背包问题</span>
+            <span class="post-date" title="2018-04-23 00:00:00">2018/04/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/pychekio之home.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="pychekio上的练习之home">pychekio上的练习之home</span>
+            <span class="post-date" title="2018-04-03 00:00:00">2018/04/03</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/django创建应用源码--1.html"
+           data-tag="django"
+           data-author="" >
+            <span class="post-title" title="django创建应用 源码1">django创建应用 源码1</span>
+            <span class="post-date" title="2018-03-27 00:00:00">2018/03/27</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/重建二叉树.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="面试题6 重建二叉树">面试题6 重建二叉树</span>
+            <span class="post-date" title="2018-03-23 00:00:00">2018/03/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/七大排序.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="七大经典排序算法python">七大经典排序算法python</span>
+            <span class="post-date" title="2018-03-20 00:00:00">2018/03/20</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/近期的目标.html"
+           data-tag="瞎想"
+           data-author="" >
+            <span class="post-title" title="月底小目标">月底小目标</span>
+            <span class="post-date" title="2018-03-19 00:00:00">2018/03/19</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/操作系统调度算法.html"
+           data-tag="学习总结,操作系统"
+           data-author="" >
+            <span class="post-title" title="调度算法">调度算法</span>
+            <span class="post-date" title="2018-01-13 00:00:00">2018/01/13</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-django创建应用源码--1" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">django创建应用 源码1</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="python">python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">django</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-09-26 23:58:32'>2018-03-27 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先看django-admin的具体<a id="more"></a>代码</p>
+<pre><code>#调用management包的init.py文件中的execute_from_command_line函数:
+from django.core import management
+
+if __name__ == &quot;__main__&quot;:
+    management.execute_from_command_line()
+</code></pre><pre><code>#在实例化对象后调用了utility.execute()方法
+def execute_from_command_line(argv=None):
+    &quot;&quot;&quot;
+    A simple method that runs a ManagementUtility.
+    &quot;&quot;&quot;
+    utility = ManagementUtility(argv)
+    utility.execute()
+</code></pre><pre><code>#先用命令行工具创建django项目和应用，这里的的命令为startproject,startapp,两个命令差不多，
+#将django/conf目录下的project_template和app_template两个模板进行一定数据的渲染后生成一个完整的项目到我们的目录下
+#假如当前执行的参数为django-admin startapp testapp，此时就会执行到上述代码的最后一步self.fetch_command(subcommand).run_from_argv，
+#来看看fetch_command代码
+    def execute(self):
+        &quot;&quot;&quot;
+        Given the command-line arguments, this figures out which subcommand is
+        being run, creates a parser appropriate to that command, and runs it.
+        &quot;&quot;&quot;
+        try:
+            subcommand = self.argv[1]                             # 获取命令行输入第一个参数,如果没有则为help
+        except IndexError:
+            subcommand = &#39;help&#39;  # Display help if no arguments were given.
+
+        # Preprocess options to extract --settings and --pythonpath.
+        # These options could affect the commands that are available, so they
+        # must be processed early.
+        parser = CommandParser(None, usage=&quot;%(prog)s subcommand [options] [args]&quot;, add_help=False)   # 添加命令说明
+        parser.add_argument(&#39;--settings&#39;)
+        parser.add_argument(&#39;--pythonpath&#39;)
+        parser.add_argument(&#39;args&#39;, nargs=&#39;*&#39;)  # catch-all
+        try:
+            options, args = parser.parse_known_args(self.argv[2:])      # 解析后面的参数，options:Namespace(args=[],pythonpath=None,settings=None)
+            handle_default_options(options)                             # 如果options中的pythonpath或者settings有，则使用传入的路径与文件
+        except CommandError:
+            pass  # Ignore any option errors at this point.
+
+        no_settings_commands = [
+            &#39;help&#39;, &#39;version&#39;, &#39;--help&#39;, &#39;--version&#39;, &#39;-h&#39;,
+            &#39;compilemessages&#39;, &#39;makemessages&#39;,
+            &#39;startapp&#39;, &#39;startproject&#39;,
+        ]
+
+        try:
+            settings.INSTALLED_APPS                                         # 当是django-admin输入时没有配置文件此时会报错，如果是已经生产的项目则可以导入配置文件中已经配置的应用
+        except ImproperlyConfigured as exc:
+            self.settings_exception = exc    
+            # A handful of built-in management commands work without settings.
+            # Load the default settings -- where INSTALLED_APPS is empty.
+            if subcommand in no_settings_commands:
+                settings.configure()                                        # 使用django默认提供的全局默认的配置文件
+
+        if settings.configured:
+            # Start the auto-reloading dev server even if the code is broken.
+            # The hardcoded condition is a code smell but we can&#39;t rely on a
+            # flag on the command class because we haven&#39;t located it yet.
+            if subcommand == &#39;runserver&#39; and &#39;--noreload&#39; not in self.argv:    # 如果不是runserver并且没有关闭自动重载功能，则执行以下函数
+                try:
+                    autoreload.check_errors(django.setup)()                    # 调用自动检测文件是否修改如果修改则自动重新启动Django服务
+                except Exception:
+                    # The exception will be raised later in the child process
+                    # started by the autoreloader. Pretend it didn&#39;t happen by
+                    # loading an empty list of applications.
+                    apps.all_models = defaultdict(OrderedDict)
+                    apps.app_configs = OrderedDict()
+                    apps.apps_ready = apps.models_ready = apps.ready = True
+
+            # In all other cases, django.setup() is required to succeed.
+            else:
+                django.setup()                                                  # 初始化django环境
+
+        self.autocomplete()                                                     # 检测是否是自动完成
+
+        if subcommand == &#39;help&#39;:                                                # 如果解析命令为help
+            if &#39;--commands&#39; in args:
+                sys.stdout.write(self.main_help_text(commands_only=True) + &#39;\n&#39;) # 打印出help命令
+            elif len(options.args) &lt; 1:                                         # 如果输入参数为空
+                sys.stdout.write(self.main_help_text() + &#39;\n&#39;)
+            else:
+                self.fetch_command(options.args[0]).print_help(self.prog_name, options.args[0])  # 针对某个命令打印相应命令的帮助信息
+        # Special-cases: We want &#39;django-admin --version&#39; and
+        # &#39;django-admin --help&#39; to work, for backwards compatibility.
+        elif subcommand == &#39;version&#39; or self.argv[1:] == [&#39;--version&#39;]:         # 如果输入的命令是打印版本信息
+            sys.stdout.write(django.get_version() + &#39;\n&#39;)                       # 则输出当前Django的版本
+        elif self.argv[1:] in ([&#39;--help&#39;], [&#39;-h&#39;]):                             # 如果输入参数中包括了--help -h 则打印帮助信息
+            sys.stdout.write(self.main_help_text() + &#39;\n&#39;)
+        else:
+            self.fetch_command(subcommand).run_from_argv(self.argv)             # 如果命令行输入单个命令，则寻找该命令，然后执行输入的参数
+</code></pre><pre><code>#这里最先执行了get_commands()寻找可执行的命令，看下面的getcommands
+def fetch_command(self, subcommand):                                            # 执行命令行输入的具体命令
+    &quot;&quot;&quot;
+    Tries to fetch the given subcommand, printing a message with the
+    appropriate command called from the command line (usually
+    &quot;django-admin&quot; or &quot;manage.py&quot;) if it can&#39;t be found.
+    &quot;&quot;&quot;
+    # Get commands outside of try block to prevent swallowing exceptions
+    commands = get_commands()                                                   # 获取所有支持的命令
+    try:
+        app_name = commands[subcommand]                                         # 获取命令名称所在路径
+    except KeyError:
+        if os.environ.get(&#39;DJANGO_SETTINGS_MODULE&#39;):
+            # If `subcommand` is missing due to misconfigured settings, the
+            # following line will retrigger an ImproperlyConfigured exception
+            # (get_commands() swallows the original one) so the user is
+            # informed about it.
+            settings.INSTALLED_APPS
+        else:
+            sys.stderr.write(&quot;No Django settings specified.\n&quot;)
+        sys.stderr.write(
+            &quot;Unknown command: %r\nType &#39;%s help&#39; for usage.\n&quot;
+            % (subcommand, self.prog_name)
+        )
+        sys.exit(1)
+    if isinstance(app_name, BaseCommand):                              # 判断app_name是基本命令的实例，命令的路径
+        # If the command is already loaded, use it directly.
+        klass = app_name
+    else:
+        klass = load_command_class(app_name, subcommand)                        # 如果是路径则导入该命令
+    return klass                                                                # 将命令的实例化对象返回
+</code></pre><pre><code>#寻找完成以后，会klass = load_command_class(app_name, subcommand)  ，看下面的
+@lru_cache.lru_cache(maxsize=None)
+def get_commands():
+    &quot;&quot;&quot;
+    Returns a dictionary mapping command names to their callback applications.
+
+    This works by looking for a management.commands package in django.core, and
+    in each installed application -- if a commands package exists, all commands
+    in that package are registered.
+
+    Core commands are always included. If a settings module has been
+    specified, user-defined commands will also be included.
+
+    The dictionary is in the format {command_name: app_name}. Key-value
+    pairs from this dictionary can then be used in calls to
+    load_command_class(app_name, command_name)
+
+    If a specific version of a command must be loaded (e.g., with the
+    startapp command), the instantiated module can be placed in the
+    dictionary in place of the application name.
+
+    The dictionary is cached on the first call and reused on subsequent
+    calls.
+    &quot;&quot;&quot;
+    commands = {name: &#39;django.core&#39; for name in find_commands(upath(__path__[0]))}      # 获取当前核心目录下的默认命令
+
+    if not settings.configured:
+        return commands
+
+    for app_config in reversed(list(apps.get_app_configs())):                           # 获取生成项目中的命令
+        path = os.path.join(app_config.path, &#39;management&#39;)
+        commands.update({name: app_config.name for name in find_commands(path)})        # 如果项目中配置的命令与核心中的命令重复则替换为项目中的命令
+
+    return commands
+</code></pre><pre><code>#这里会导入APP-name所在的包
+def load_command_class(app_name, name):
+    &quot;&quot;&quot;
+    Given a command name and an application name, returns the Command
+    class instance. All errors raised by the import process
+    (ImportError, AttributeError) are allowed to propagate.
+    &quot;&quot;&quot;
+    module = import_module(&#39;%s.management.commands.%s&#39; % (app_name, name))             # 导入命令所在的包
+    return module.Command()   
+</code></pre><pre><code>#而startapp的command类可以看到TemplateCommand是所有模板的父类,而template上面还有basecommand类
+class Command(TemplateCommand):
+    help = (
+        &quot;Creates a Django app directory structure for the given app name in &quot;
+        &quot;the current directory or optionally in the given directory.&quot;
+    )
+    missing_args_message = &quot;You must provide an application name.&quot;
+
+    def handle(self, **options):
+        app_name, target = options.pop(&#39;name&#39;), options.pop(&#39;directory&#39;)                    # 获取创建app的名称，和创建app的文件夹
+        self.validate_name(app_name, &quot;app&quot;)                                                 # 检查该app名称是否合法
+
+        # Check that the app_name cannot be imported.
+        try:
+            import_module(app_name)                                                         # 检查该名称不能与已经存在的模块冲突
+        except ImportError:
+            pass
+        else:
+            raise CommandError(
+                &quot;%r conflicts with the name of an existing Python module and &quot;
+                &quot;cannot be used as an app name. Please try another name.&quot; % app_name
+            )
+
+        super(Command, self).handle(&#39;app&#39;, app_name, target, **options)                     # 调用TemplateCommand的handle方法
+</code></pre><pre><code>#run_from_argv调用execute方法，调用handler方法，这里完成了应用创建
+class BaseCommand(object):
+    # Configuration shortcuts that alter various logic.
+    _called_from_command_line = False
+    can_import_settings = True
+    output_transaction = False  # Whether to wrap the output in a &quot;BEGIN; COMMIT;&quot;
+    leave_locale_alone = False
+    requires_migrations_checks = False
+    requires_system_checks = True
+
+    def __init__(self, stdout=None, stderr=None, no_color=False):
+        self.stdout = OutputWrapper(stdout or sys.stdout)
+        self.stderr = OutputWrapper(stderr or sys.stderr)
+        if no_color:
+            self.style = no_style()
+        else:
+            self.style = color_style()
+            self.stderr.style_func = self.style.ERROR
+
+    def get_version(self):
+        &quot;&quot;&quot;
+        Return the Django version, which should be correct for all built-in
+        Django commands. User-supplied commands can override this method to
+        return their own version.
+        &quot;&quot;&quot;
+        return django.get_version()
+
+    def create_parser(self, prog_name, subcommand):
+        &quot;&quot;&quot;
+        Create and return the ``ArgumentParser`` which will be used to
+        parse the arguments to this command.
+        &quot;&quot;&quot;
+        parser = CommandParser(
+            self, prog=&quot;%s %s&quot; % (os.path.basename(prog_name), subcommand),
+            description=self.help or None,
+        )
+        parser.add_argument(&#39;--version&#39;, action=&#39;version&#39;, version=self.get_version())
+        parser.add_argument(
+            &#39;-v&#39;, &#39;--verbosity&#39;, action=&#39;store&#39;, dest=&#39;verbosity&#39;, default=1,
+            type=int, choices=[0, 1, 2, 3],
+            help=&#39;Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output&#39;,
+        )
+        parser.add_argument(
+            &#39;--settings&#39;,
+            help=(
+                &#39;The Python path to a settings module, e.g. &#39;
+                &#39;&quot;myproject.settings.main&quot;. If this isn\&#39;t provided, the &#39;
+                &#39;DJANGO_SETTINGS_MODULE environment variable will be used.&#39;
+            ),
+        )
+        parser.add_argument(
+            &#39;--pythonpath&#39;,
+            help=&#39;A directory to add to the Python path, e.g. &quot;/home/djangoprojects/myproject&quot;.&#39;,
+        )
+        parser.add_argument(&#39;--traceback&#39;, action=&#39;store_true&#39;, help=&#39;Raise on CommandError exceptions&#39;)
+        parser.add_argument(
+            &#39;--no-color&#39;, action=&#39;store_true&#39;, dest=&#39;no_color&#39;, default=False,
+            help=&quot;Don&#39;t colorize the command output.&quot;,
+        )
+        self.add_arguments(parser)
+        return parser
+
+    def add_arguments(self, parser):
+        &quot;&quot;&quot;
+        Entry point for subclassed commands to add custom arguments.
+        &quot;&quot;&quot;
+        pass
+
+    def print_help(self, prog_name, subcommand):
+        &quot;&quot;&quot;
+        Print the help message for this command, derived from
+        ``self.usage()``.
+        &quot;&quot;&quot;
+        parser = self.create_parser(prog_name, subcommand)
+        parser.print_help()
+
+    def run_from_argv(self, argv):
+        &quot;&quot;&quot;
+        Set up any environment changes requested (e.g., Python path
+        and Django settings), then run this command. If the
+        command raises a ``CommandError``, intercept it and print it sensibly
+        to stderr. If the ``--traceback`` option is present or the raised
+        ``Exception`` is not ``CommandError``, raise it.
+        &quot;&quot;&quot;
+        self._called_from_command_line = True                                       # 从命令行调入标识
+        parser = self.create_parser(argv[0], argv[1])                               # 创建帮助的说明
+
+        options = parser.parse_args(argv[2:])                                       # 解析输入的参数
+        cmd_options = vars(options)
+        # Move positional args out of options to mimic legacy optparse
+        args = cmd_options.pop(&#39;args&#39;, ())
+        handle_default_options(options)                                             # 调用命令行输入的配置文件
+        try:
+            self.execute(*args, **cmd_options)                                      # 调用execute方法
+        except Exception as e:
+            if options.traceback or not isinstance(e, CommandError):
+                raise
+
+            # SystemCheckError takes care of its own formatting.
+            if isinstance(e, SystemCheckError):
+                self.stderr.write(str(e), lambda x: x)
+            else:
+                self.stderr.write(&#39;%s: %s&#39; % (e.__class__.__name__, e))
+            sys.exit(1)
+        finally:
+            connections.close_all()                                                 # 关闭所有的数据库连接
+
+    def execute(self, *args, **options):                                            # 执行该命令的调用方法
+        &quot;&quot;&quot;
+        Try to execute this command, performing system checks if needed (as
+        controlled by the ``requires_system_checks`` attribute, except if
+        force-skipped).
+        &quot;&quot;&quot;
+        if options[&#39;no_color&#39;]:                                                     # 检查是否需要更改文字颜色
+            self.style = no_style()
+            self.stderr.style_func = None
+        if options.get(&#39;stdout&#39;):                                                   # 获取输出，包装一下输出
+            self.stdout = OutputWrapper(options[&#39;stdout&#39;])
+        if options.get(&#39;stderr&#39;):
+            self.stderr = OutputWrapper(options[&#39;stderr&#39;], self.stderr.style_func)  # 包装错误输出
+
+        saved_locale = None
+        if not self.leave_locale_alone:
+            # Only mess with locales if we can assume we have a working
+            # settings file, because django.utils.translation requires settings
+            # (The final saying about whether the i18n machinery is active will be
+            # found in the value of the USE_I18N setting)
+            if not self.can_import_settings:
+                raise CommandError(&quot;Incompatible values of &#39;leave_locale_alone&#39; &quot;
+                                   &quot;(%s) and &#39;can_import_settings&#39; (%s) command &quot;
+                                   &quot;options.&quot; % (self.leave_locale_alone,
+                                                 self.can_import_settings))
+            # Deactivate translations, because django-admin creates database
+            # content like permissions, and those shouldn&#39;t contain any
+            # translations.
+            from django.utils import translation
+            saved_locale = translation.get_language()
+            translation.deactivate_all()
+
+        try:
+            if self.requires_system_checks and not options.get(&#39;skip_checks&#39;):              # 检查输入是否跳过检查，是否执行检查
+                self.check()
+            if self.requires_migrations_checks:                                             # 是否进行数据库检查
+                self.check_migrations()
+            output = self.handle(*args, **options)                                          # 调用子类实现的处理方法，该类必须子类实现
+            if output:                                                                      # 根据返回数据进行处理
+                if self.output_transaction:
+                    connection = connections[options.get(&#39;database&#39;, DEFAULT_DB_ALIAS)]
+                    output = &#39;%s\n%s\n%s&#39; % (
+                        self.style.SQL_KEYWORD(connection.ops.start_transaction_sql()),
+                        output,
+                        self.style.SQL_KEYWORD(connection.ops.end_transaction_sql()),
+                    )
+                self.stdout.write(output)
+        finally:
+            if saved_locale is not None:
+                translation.activate(saved_locale)
+        return output
+
+    def _run_checks(self, **kwargs):
+        return checks.run_checks(**kwargs)
+
+    def check(self, app_configs=None, tags=None, display_num_errors=False,
+              include_deployment_checks=False, fail_level=checks.ERROR):                    # 检查信息是否正确
+        &quot;&quot;&quot;
+        Uses the system check framework to validate entire Django project.
+        Raises CommandError for any serious message (error or critical errors).
+        If there are only light messages (like warnings), they are printed to
+        stderr and no exception is raised.
+        &quot;&quot;&quot;
+        all_issues = self._run_checks(
+            app_configs=app_configs,
+            tags=tags,
+            include_deployment_checks=include_deployment_checks,
+        )
+
+        header, body, footer = &quot;&quot;, &quot;&quot;, &quot;&quot;
+        visible_issue_count = 0  # excludes silenced warnings
+
+        if all_issues:
+            debugs = [e for e in all_issues if e.level &lt; checks.INFO and not e.is_silenced()]
+            infos = [e for e in all_issues if checks.INFO &lt;= e.level &lt; checks.WARNING and not e.is_silenced()]
+            warnings = [e for e in all_issues if checks.WARNING &lt;= e.level &lt; checks.ERROR and not e.is_silenced()]
+            errors = [e for e in all_issues if checks.ERROR &lt;= e.level &lt; checks.CRITICAL and not e.is_silenced()]
+            criticals = [e for e in all_issues if checks.CRITICAL &lt;= e.level and not e.is_silenced()]
+            sorted_issues = [
+                (criticals, &#39;CRITICALS&#39;),
+                (errors, &#39;ERRORS&#39;),
+                (warnings, &#39;WARNINGS&#39;),
+                (infos, &#39;INFOS&#39;),
+                (debugs, &#39;DEBUGS&#39;),
+            ]
+
+            for issues, group_name in sorted_issues:
+                if issues:
+                    visible_issue_count += len(issues)
+                    formatted = (
+                        self.style.ERROR(force_str(e))
+                        if e.is_serious()
+                        else self.style.WARNING(force_str(e))
+                        for e in issues)
+                    formatted = &quot;\n&quot;.join(sorted(formatted))
+                    body += &#39;\n%s:\n%s\n&#39; % (group_name, formatted)
+
+        if visible_issue_count:
+            header = &quot;System check identified some issues:\n&quot;
+
+        if display_num_errors:
+            if visible_issue_count:
+                footer += &#39;\n&#39;
+            footer += &quot;System check identified %s (%s silenced).&quot; % (
+                &quot;no issues&quot; if visible_issue_count == 0 else
+                &quot;1 issue&quot; if visible_issue_count == 1 else
+                &quot;%s issues&quot; % visible_issue_count,
+                len(all_issues) - visible_issue_count,
+            )
+
+        if any(e.is_serious(fail_level) and not e.is_silenced() for e in all_issues):
+            msg = self.style.ERROR(&quot;SystemCheckError: %s&quot; % header) + body + footer
+            raise SystemCheckError(msg)
+        else:
+            msg = header + body + footer
+
+        if msg:
+            if visible_issue_count:
+                self.stderr.write(msg, lambda x: x)
+            else:
+                self.stdout.write(msg)
+
+    def check_migrations(self):                                                            # 检查是否migrations是否已经执行
+        &quot;&quot;&quot;
+        Print a warning if the set of migrations on disk don&#39;t match the
+        migrations in the database.
+        &quot;&quot;&quot;
+        from django.db.migrations.executor import MigrationExecutor
+        try:
+            executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+        except ImproperlyConfigured:
+            # No databases are configured (or the dummy one)
+            return
+        except MigrationSchemaMissing:
+            self.stdout.write(self.style.NOTICE(
+                &quot;\nNot checking migrations as it is not possible to access/create the django_migrations table.&quot;
+            ))
+            return
+
+        plan = executor.migration_plan(executor.loader.graph.leaf_nodes())
+        if plan:
+            apps_waiting_migration = sorted(set(migration.app_label for migration, backwards in plan))
+            self.stdout.write(
+                self.style.NOTICE(
+                    &quot;\nYou have %(unpplied_migration_count)s unapplied migration(s). &quot;
+                    &quot;Your project may not work properly until you apply the &quot;
+                    &quot;migrations for app(s): %(apps_waiting_migration)s.&quot; % {
+                        &quot;unpplied_migration_count&quot;: len(plan),
+                        &quot;apps_waiting_migration&quot;: &quot;, &quot;.join(apps_waiting_migration),
+                    }
+                )
+            )
+            self.stdout.write(self.style.NOTICE(&quot;Run &#39;python manage.py migrate&#39; to apply them.\n&quot;))
+
+    def handle(self, *args, **options):                                                     # 子类必须实现该方法
+        &quot;&quot;&quot;
+        The actual logic of the command. Subclasses must implement
+        this method.
+        &quot;&quot;&quot;
+        raise NotImplementedError(&#39;subclasses of BaseCommand must provide a handle() method&#39;)
+</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> PHP是世界上最好的语言 </span>
+    </div>
+</article>
+
+
+
+
+
+
+    
+
+    </div>
+
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'photoSwipe';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#0-1bag','#测试','#学习总结','#DDOS','#安全','#leetcode','#LDAP','#认证','#TCP三次握手','#java','#SQL注入','#python','#shell','#redis','#操作系统','#瞎想','#设计模式','#安全扫描工具','#django',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("/img/12.webp");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+</html>

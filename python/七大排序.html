@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>七大经典排序算法python | DD</title>
+  <meta name="keywords" content=" python ">
+  <meta name="description" content="七大经典排序算法python | DD">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="权当年轻留个纪念">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://dqw6668.github.io/about/index.html">
+<meta property="og:site_name" content="DD">
+<meta property="og:description" content="权当年轻留个纪念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T09:18:38.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="权当年轻留个纪念">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>dqw6668</span>
+</div>
+
+<div class="icon">
+    
+    
+    <a class="github" title="github" href="https://github.com/dqw6668" target="_blank"></a>
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="email" title="email" href="mailto:xss_me@qq.com"></a>
+    
+</div>
+
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="leetcode"> leetcode </li>
+    
+    <li data-rel="杂"> 杂 </li>
+    
+    <li data-rel="安全"> 安全 </li>
+    
+    <li data-rel="基础"> 基础 </li>
+    
+    <li data-rel="java"> java </li>
+    
+    <li data-rel="python"> python </li>
+    
+    <li data-rel="设计模式"> 设计模式 </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="26">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友链
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">0-1bag</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">学习总结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">DDOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安全</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">LDAP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">认证</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">TCP三次握手</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">SQL注入</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">shell</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">操作系统</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">瞎想</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">安全扫描工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">django</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="leetcode "
+           href="/code/LeetCode题解.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode (Java)【目录】">LeetCode (Java)【目录】</span>
+            <span class="post-date" title="2018-09-27 00:00:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.3. 无重复字符的最长子串.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.3. 无重复字符的最长子串">LeetCode.3. 无重复字符的最长子串</span>
+            <span class="post-date" title="2018-09-28 01:42:10">2018/09/28</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.2. 两数相加.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.2. 两数相加">LeetCode.2. 两数相加</span>
+            <span class="post-date" title="2018-09-27 15:20:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之策略模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-策略模式">JAVA与模式-策略模式</span>
+            <span class="post-date" title="2018-09-27 14:44:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.1. 两数之和.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.1. 两数之和">LeetCode.1. 两数之和</span>
+            <span class="post-date" title="2018-09-27 14:35:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之单例模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-单例模式">JAVA与模式-单例模式</span>
+            <span class="post-date" title="2018-09-25 00:00:00">2018/09/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/shell脚本复习.html"
+           data-tag="shell"
+           data-author="" >
+            <span class="post-title" title="shell命令复习">shell命令复习</span>
+            <span class="post-date" title="2018-08-06 00:00:00">2018/08/06</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/redis.html"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="认识redis">认识redis</span>
+            <span class="post-date" title="2018-08-04 00:00:00">2018/08/04</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/LDAP.html"
+           data-tag="LDAP,认证"
+           data-author="" >
+            <span class="post-title" title="openLDAP搭建认证与目录系统">openLDAP搭建认证与目录系统</span>
+            <span class="post-date" title="2018-07-15 00:00:00">2018/07/15</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/SQLI.html"
+           data-tag="SQL注入"
+           data-author="" >
+            <span class="post-title" title="自建环境玩耍SQLI">自建环境玩耍SQLI</span>
+            <span class="post-date" title="2018-07-13 00:00:00">2018/07/13</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/python3催钱.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="py微信定时消息之 欠债还钱">py微信定时消息之 欠债还钱</span>
+            <span class="post-date" title="2018-06-21 00:00:00">2018/06/21</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/DDOS.html"
+           data-tag="DDOS,安全"
+           data-author="" >
+            <span class="post-title" title="反射型DDoS放大攻击的原理分析和防范措施">反射型DDoS放大攻击的原理分析和防范措施</span>
+            <span class="post-date" title="2018-06-19 00:00:00">2018/06/19</span>
+        </a>
+        
+        <a  class="java "
+           href="/java/maven.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="初识maven">初识maven</span>
+            <span class="post-date" title="2018-06-04 00:00:00">2018/06/04</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Junit.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="JUnit使用">JUnit使用</span>
+            <span class="post-date" title="2018-06-01 00:00:00">2018/06/01</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Git-bash.html"
+           data-tag="学习总结"
+           data-author="" >
+            <span class="post-title" title="Git使用">Git使用</span>
+            <span class="post-date" title="2018-05-25 00:00:00">2018/05/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/AppScan.html"
+           data-tag="学习总结,安全扫描工具"
+           data-author="" >
+            <span class="post-title" title="AppScan使用">AppScan使用</span>
+            <span class="post-date" title="2018-05-19 00:00:00">2018/05/19</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/py实现基本数据结构.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="数据结构基础 python实现">数据结构基础 python实现</span>
+            <span class="post-date" title="2018-05-03 00:00:00">2018/05/03</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/QA.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="QA职责流程">QA职责流程</span>
+            <span class="post-date" title="2018-05-02 00:00:00">2018/05/02</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/TCP.html"
+           data-tag="TCP三次握手"
+           data-author="" >
+            <span class="post-title" title="TCP三次和四次">TCP三次和四次</span>
+            <span class="post-date" title="2018-04-29 00:00:00">2018/04/29</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/0-1bag.html"
+           data-tag="0-1bag"
+           data-author="" >
+            <span class="post-title" title="0-1背包问题">0-1背包问题</span>
+            <span class="post-date" title="2018-04-23 00:00:00">2018/04/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/pychekio之home.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="pychekio上的练习之home">pychekio上的练习之home</span>
+            <span class="post-date" title="2018-04-03 00:00:00">2018/04/03</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/django创建应用源码--1.html"
+           data-tag="django"
+           data-author="" >
+            <span class="post-title" title="django创建应用 源码1">django创建应用 源码1</span>
+            <span class="post-date" title="2018-03-27 00:00:00">2018/03/27</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/重建二叉树.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="面试题6 重建二叉树">面试题6 重建二叉树</span>
+            <span class="post-date" title="2018-03-23 00:00:00">2018/03/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/七大排序.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="七大经典排序算法python">七大经典排序算法python</span>
+            <span class="post-date" title="2018-03-20 00:00:00">2018/03/20</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/近期的目标.html"
+           data-tag="瞎想"
+           data-author="" >
+            <span class="post-title" title="月底小目标">月底小目标</span>
+            <span class="post-date" title="2018-03-19 00:00:00">2018/03/19</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/操作系统调度算法.html"
+           data-tag="学习总结,操作系统"
+           data-author="" >
+            <span class="post-title" title="调度算法">调度算法</span>
+            <span class="post-date" title="2018-01-13 00:00:00">2018/01/13</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-七大排序" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">七大经典排序算法python</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="python">python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">python</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-09-26 23:57:47'>2018-03-20 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好好理解了一下，并敲了一遍代码，好好牢记不能忘了<a id="more"></a><br><br>排序方法——-平均情况——最好情况—-最坏情况—辅助空间—-稳定性<br>冒泡排序——–O(n^2)———O(n)——-O(n^2)—–O(1)——–稳定<br>简单选择排序—-O(n^2)——–O(n^2)——O(n^2)—–O(1)——–稳定<br>直接插入排序—-O(n^2)———O(n)——-O(n^2)—–O(1)——–稳定<br>希尔排序—–O(nlogn)~O(n^2)–O(n^1.3)—-O(n^2)—–O(1)——–不稳定<br>堆排序———O(nlogn)——-O(nlogn)—-O(nlogn)—O(1)——–不稳定<br>归并排序——-O(nlogn)——-O(nlogn)—-O(nlogn)—O(n)——–稳定<br>快速排序——-O(nlogn)——-O(nlogn)—-O(n^2)—-O(logn)~O(n)-不稳定</p>
+<pre><code>#!user/bin/env python3
+# -*- coding: gbk -*-
+import random
+&quot;&quot;&quot;
+一：
+冒泡排序 BubbleSort
+步骤：
+比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+对第0个到第n-1个数据做同样的工作。这时，最大的数就“浮”到了数组最后的位置上。
+针对所有的元素重复以上的步骤，除了最后一个。
+持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+&quot;&quot;&quot;
+def bubble_sort(array):
+    length = len(array)
+    for i in range(length):
+        for j in range(1, length - i):
+            if array[j - 1] &gt; array[j]:
+                array[j - 1], array[j] = array[j], array[j - 1]
+    return array
+&quot;&quot;&quot;
+list = input().split() # 输入的为字符串
+list = [int(x) for x in list] # 将list中全部元素转为 int
+print(bubble_sort(list))
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+二：
+选择排序 SelectionSort
+步骤：
+在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。
+再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
+以此类推，直到所有元素均排序完毕。
+&quot;&quot;&quot;
+def select_sort(list):
+    for i in range(len(list)):
+        min = i
+        for j in range(i + 1, len(list)):
+            if list[j] &lt; list[min]:
+                list[j], list[min] = list[min], list[j]
+    return list
+list = [random.randint(0, 99) for _ in range(10)]
+print(&#39;select_sort原始数组&#39;)
+print(list)
+print(&#39;select_sort后&#39;)
+print(select_sort(list))
+
+
+&quot;&quot;&quot;
+三：
+插入排序 InsertionSort
+步骤：
+从第一个元素开始，该元素可以认为已经被排序
+取出下一个元素，在已经排序的元素序列中从后向前扫描
+如果被扫描的元素（已排序）大于新元素，将该元素后移一位
+重复步骤3，直到找到已排序的元素小于或者等于新元素的位置
+将新元素插入到该位置后
+重复步骤
+&quot;&quot;&quot;
+def insert_sort(list):
+    for i in range(len(list)):
+        if list[i] &lt; list[i - 1]:
+            tmp = list[i] # 取出待插入元素
+            index = i  #  取出待插入下标
+            for j in range(i - 1, -1, -1): #从 i-1 遍历到 0 包括0
+                if list[j] &gt; tmp:
+                    list[j + 1] = list[j]
+                    index = j
+                else:
+                    break
+            list[index] = tmp
+    return list
+list = [random.randint(0, 99) for _ in range(10)]
+print(&#39;insert_sort原始数组&#39;)
+print(list)
+print(&#39;insert_sort后&#39;)
+print(insert_sort(list))
+
+&quot;&quot;&quot;
+四：
+希尔排序 ShellSort
+希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。
+这样可以让一个元素可以一次性地朝最终位置前进一大步。
+然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序
+听说gap = gap/3 + 1更优
+&quot;&quot;&quot;
+def shell_sort(list):
+    length = len(list)
+    gap = round(length / 2)
+    while gap &gt; 0:
+        for i in range(gap, length):
+            j = i
+            while (j &gt;= gap and list[j - gap] &gt; list[j]):
+                list[j], list[j - gap] = list[j - gap], list[j]
+                j = j - gap
+        gap = round(gap / 2)
+    return list
+list = [random.randint(0, 99) for _ in range(10)]
+print(&#39;shell_sort原始数组&#39;)
+print(list)
+print(&#39;shell_sort后&#39;)
+print(shell_sort(list))
+
+
+&quot;&quot;&quot;
+五：
+归并排序 MergeSort
+归并排序是采用分治法的一个非常典型的应用。归并排序的思想就是先递归分解数组，再合并数组。
+先考虑合并两个有序数组，基本思路是比较两个数组的最前面的数，谁小就先取谁，
+取了后相应的指针就往后移一位。然后再比较，
+直至一个数组为空，最后把另一个数组的剩余部分复制过来即可。
+
+再考虑递归分解，基本思路是将数组分解成left和right，
+如果这两个数组内部数据是有序的，
+那么就可以用上面合并数组的方法将这两个数组合并排序。
+如何让这两个数组内部是有序的？
+可以再二分，直至分解出的小组只含有一个元素时为止，此时认为该小组内部已有序。
+然后合并排序相邻二个小组即可。
+&quot;&quot;&quot;
+def merge_sort(list):
+    if len(list) &lt;= 1:
+        return list
+    num = int(len(list) / 2)
+    left = merge_sort(list[:num])
+    right = merge_sort(list[num:])
+    return merge(left, right)
+def merge(left, right):
+    # 合并操作
+    l, r = 0, 0
+    result = []
+    while l &lt; len(left) and r &lt; len(right):
+        if left[l] &lt; right[r]:
+            result.append(left[l])
+            l += 1
+        else:
+            result.append(right[r])
+            r += 1
+    result += left[l:]
+    result += right[r:]
+    return result
+list = [random.randint(0, 99) for _ in range(10)]
+print(&#39;merge_sort原始数组&#39;)
+print(list)
+print(&#39;merge_sort后&#39;)
+print(merge_sort(list))
+
+&quot;&quot;&quot;
+六：
+快速排序 QuickSort
+快速排序通常明显比同为Ο(n log n)的其他算法更快，因此常被采用，而且快排采用了分治法的思想，所以在很多笔试面试中能经常看到快排的影子。可见掌握快排的重要性。
+
+从数列中挑出一个元素作为基准数。
+分区过程，将比基准数大的放到右边，小于或等于它的数都放到左边。
+再对左右区间递归执行第二步，直至各区间只有一个数。
+&quot;&quot;&quot;
+def quick_sort(list, star, end):
+    if star &lt; end:
+        i, j = star, end
+        hh = list[i]
+        while i &lt; j:
+            while (i &lt; j) and (list[j] &gt;= hh):
+                j -= 1
+            list[i] = list[j]
+            while (i &lt; j) and (list[i] &lt;= hh):
+                i += 1
+            list[j] = list[i]
+        list[i] = hh # 放基准数 到i = j 的位置
+        quick_sort(list, star, i-1)
+        quick_sort(list, i+1, end)
+    return list
+list = [random.randint(0, 99) for _ in range(10)]
+print(&#39;quick_sort原始数组&#39;)
+print(list)
+print(&#39;quick_sort后&#39;)
+print(quick_sort(list, 0, len(list)-1))
+
+&quot;&quot;&quot;
+七：
+堆排序，HeapSort
+堆的特点就是FIFO(first in first out)先进先出,分大根堆，小根堆
+大根堆的要求是每个节点的值都不大于其父节点的值
+(1)最大堆调整(MAX_Heapify):将堆的末端子节点作调整，使得子节点永远小于父节点。这是核心步骤，在建堆和堆排序都会用到。比较i的根节点和与其所对应i的孩子节点的值。当i根节点的值比左孩子节点的值要小的时候，就把i根节点和左孩子节点所对应的值交换，当i根节点的值比右孩子的节点所对应的值要小的时候，就把i根节点和右孩子节点所对应的值交换。然后再调用堆调整这个过程，可见这是一个递归的过程。 
+(2)建立最大堆(Build_Max_Heap):将堆所有数据重新排序。建堆的过程其实就是不断做最大堆调整的过程，从len/2出开始调整，一直比到第一个节点。 
+(3)堆排序(HeapSort):移除位在第一个数据的根节点，并做最大堆调整的递归运算。堆排序是利用建堆和堆调整来进行的。首先先建堆，然后将堆的根节点选出与最后一个节点进行交换，然后将前面len-1个节点继续做堆调整的过程。直到将所有的节点取出，对于n个数我们只需要做n-1次操作
+&quot;&quot;&quot;
+def adjust_heap(heap, i, size):
+    lchild = i * 2 + 1
+    rchild = 2 * i + 2
+    max = i
+    if i &lt; size / 2:
+        if lchild &lt; size and heap[lchild] &gt; heap[max]:
+            max = lchild
+        if rchild &lt; size and heap[rchild] &gt; heap[max]:
+            max = rchild
+        if max != i:
+            heap[max], heap[i] = heap[i], heap[max]
+            adjust_heap(heap, max, size)
+def build_heap(heap, size):
+    for i in range(0, (size//2))[::-1]:
+        adjust_heap(heap, i, size)
+def heap_sort(heap):
+    size = len(heap)
+    build_heap(heap, size)
+    for i in range(0, size)[::-1]:
+        heap[0], heap[i] = heap[i], heap[0]
+        adjust_heap(heap, 0, i)
+a = [30,50,57,77,62,78,94,80,84]
+print(&#39;堆排序&#39;)
+print(a)
+heap_sort(a)
+print(a)
+</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> PHP是世界上最好的语言 </span>
+    </div>
+</article>
+
+
+
+
+
+
+    
+
+    </div>
+
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'photoSwipe';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#0-1bag','#测试','#学习总结','#DDOS','#安全','#leetcode','#LDAP','#认证','#TCP三次握手','#java','#SQL注入','#python','#shell','#redis','#操作系统','#瞎想','#设计模式','#安全扫描工具','#django',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("/img/12.webp");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+</html>

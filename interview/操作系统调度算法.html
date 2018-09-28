@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>调度算法 | DD</title>
+  <meta name="keywords" content=" 学习总结 , 操作系统 ">
+  <meta name="description" content="调度算法 | DD">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="权当年轻留个纪念">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://dqw6668.github.io/about/index.html">
+<meta property="og:site_name" content="DD">
+<meta property="og:description" content="权当年轻留个纪念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T09:18:38.140Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="权当年轻留个纪念">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>dqw6668</span>
+</div>
+
+<div class="icon">
+    
+    
+    <a class="github" title="github" href="https://github.com/dqw6668" target="_blank"></a>
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="email" title="email" href="mailto:xss_me@qq.com"></a>
+    
+</div>
+
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="leetcode"> leetcode </li>
+    
+    <li data-rel="杂"> 杂 </li>
+    
+    <li data-rel="安全"> 安全 </li>
+    
+    <li data-rel="基础"> 基础 </li>
+    
+    <li data-rel="java"> java </li>
+    
+    <li data-rel="python"> python </li>
+    
+    <li data-rel="设计模式"> 设计模式 </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="26">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友链
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">0-1bag</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">学习总结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">DDOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安全</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">LDAP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">认证</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">TCP三次握手</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">SQL注入</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">shell</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">操作系统</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">瞎想</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">安全扫描工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">django</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="leetcode "
+           href="/code/LeetCode题解.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode (Java)【目录】">LeetCode (Java)【目录】</span>
+            <span class="post-date" title="2018-09-27 00:00:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.3. 无重复字符的最长子串.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.3. 无重复字符的最长子串">LeetCode.3. 无重复字符的最长子串</span>
+            <span class="post-date" title="2018-09-28 01:42:10">2018/09/28</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.2. 两数相加.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.2. 两数相加">LeetCode.2. 两数相加</span>
+            <span class="post-date" title="2018-09-27 15:20:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之策略模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-策略模式">JAVA与模式-策略模式</span>
+            <span class="post-date" title="2018-09-27 14:44:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.1. 两数之和.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.1. 两数之和">LeetCode.1. 两数之和</span>
+            <span class="post-date" title="2018-09-27 14:35:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之单例模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-单例模式">JAVA与模式-单例模式</span>
+            <span class="post-date" title="2018-09-25 00:00:00">2018/09/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/shell脚本复习.html"
+           data-tag="shell"
+           data-author="" >
+            <span class="post-title" title="shell命令复习">shell命令复习</span>
+            <span class="post-date" title="2018-08-06 00:00:00">2018/08/06</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/redis.html"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="认识redis">认识redis</span>
+            <span class="post-date" title="2018-08-04 00:00:00">2018/08/04</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/LDAP.html"
+           data-tag="LDAP,认证"
+           data-author="" >
+            <span class="post-title" title="openLDAP搭建认证与目录系统">openLDAP搭建认证与目录系统</span>
+            <span class="post-date" title="2018-07-15 00:00:00">2018/07/15</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/SQLI.html"
+           data-tag="SQL注入"
+           data-author="" >
+            <span class="post-title" title="自建环境玩耍SQLI">自建环境玩耍SQLI</span>
+            <span class="post-date" title="2018-07-13 00:00:00">2018/07/13</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/python3催钱.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="py微信定时消息之 欠债还钱">py微信定时消息之 欠债还钱</span>
+            <span class="post-date" title="2018-06-21 00:00:00">2018/06/21</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/DDOS.html"
+           data-tag="DDOS,安全"
+           data-author="" >
+            <span class="post-title" title="反射型DDoS放大攻击的原理分析和防范措施">反射型DDoS放大攻击的原理分析和防范措施</span>
+            <span class="post-date" title="2018-06-19 00:00:00">2018/06/19</span>
+        </a>
+        
+        <a  class="java "
+           href="/java/maven.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="初识maven">初识maven</span>
+            <span class="post-date" title="2018-06-04 00:00:00">2018/06/04</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Junit.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="JUnit使用">JUnit使用</span>
+            <span class="post-date" title="2018-06-01 00:00:00">2018/06/01</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Git-bash.html"
+           data-tag="学习总结"
+           data-author="" >
+            <span class="post-title" title="Git使用">Git使用</span>
+            <span class="post-date" title="2018-05-25 00:00:00">2018/05/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/AppScan.html"
+           data-tag="学习总结,安全扫描工具"
+           data-author="" >
+            <span class="post-title" title="AppScan使用">AppScan使用</span>
+            <span class="post-date" title="2018-05-19 00:00:00">2018/05/19</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/py实现基本数据结构.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="数据结构基础 python实现">数据结构基础 python实现</span>
+            <span class="post-date" title="2018-05-03 00:00:00">2018/05/03</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/QA.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="QA职责流程">QA职责流程</span>
+            <span class="post-date" title="2018-05-02 00:00:00">2018/05/02</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/TCP.html"
+           data-tag="TCP三次握手"
+           data-author="" >
+            <span class="post-title" title="TCP三次和四次">TCP三次和四次</span>
+            <span class="post-date" title="2018-04-29 00:00:00">2018/04/29</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/0-1bag.html"
+           data-tag="0-1bag"
+           data-author="" >
+            <span class="post-title" title="0-1背包问题">0-1背包问题</span>
+            <span class="post-date" title="2018-04-23 00:00:00">2018/04/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/pychekio之home.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="pychekio上的练习之home">pychekio上的练习之home</span>
+            <span class="post-date" title="2018-04-03 00:00:00">2018/04/03</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/django创建应用源码--1.html"
+           data-tag="django"
+           data-author="" >
+            <span class="post-title" title="django创建应用 源码1">django创建应用 源码1</span>
+            <span class="post-date" title="2018-03-27 00:00:00">2018/03/27</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/重建二叉树.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="面试题6 重建二叉树">面试题6 重建二叉树</span>
+            <span class="post-date" title="2018-03-23 00:00:00">2018/03/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/七大排序.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="七大经典排序算法python">七大经典排序算法python</span>
+            <span class="post-date" title="2018-03-20 00:00:00">2018/03/20</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/近期的目标.html"
+           data-tag="瞎想"
+           data-author="" >
+            <span class="post-title" title="月底小目标">月底小目标</span>
+            <span class="post-date" title="2018-03-19 00:00:00">2018/03/19</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/操作系统调度算法.html"
+           data-tag="学习总结,操作系统"
+           data-author="" >
+            <span class="post-title" title="调度算法">调度算法</span>
+            <span class="post-date" title="2018-01-13 00:00:00">2018/01/13</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-操作系统调度算法" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">调度算法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="基础">基础</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">学习总结</a>
+            
+            <a href="javascript:" class="color5">操作系统</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-09-26 23:57:57'>2018-01-13 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#一、作业管理-常见的批处理作业调度算法"><span class="toc-text">一、作业管理 常见的批处理作业调度算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二、进程管理-进程调度算法"><span class="toc-text">二、进程管理 进程调度算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三、空闲分区分配算法"><span class="toc-text">三、空闲分区分配算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#四、虚拟页式存储管理中的页面置换算法"><span class="toc-text">四、虚拟页式存储管理中的页面置换算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#五、磁盘调度"><span class="toc-text">五、磁盘调度</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>按照课本的顺序</strong><br>转发自<a href="http://blog.chinaunix.net/uid-25132162-id-361291.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-25132162-id-361291.html</a></p>
+<h5 id="一、作业管理-常见的批处理作业调度算法"><a href="#一、作业管理-常见的批处理作业调度算法" class="headerlink" title="一、作业管理 常见的批处理作业调度算法"></a>一、作业管理 常见的批处理作业调度算法</h5><ol>
+<li><p>先来先服务调度算法（FCFS）:就是按照各个作业进入系统的自然次序来调度作业。<a id="more"></a>这种调度算法的优点是实现简单，公平。其缺点是没有考虑到系统中各种资源的综合使用情况，往往使短作业的用户不满意，因为短作业等待处理的时间可能比实际运行时间长得多。</p>
+</li>
+<li><p>短作业优先调度算法(SPF):就是优先调度并处理短作业，所谓短是指作业的运行时间短。而在作业未投入运行时，并不能知道它实际的运行时间的长短，因此需要用户在提交作业时同时提交作业运行时间的估计值。</p>
+</li>
+<li><p>最高响应比优先算法(HRN)：FCFS可能造成短作业用户不满，SPF可能使得长作业用户不满，于是提出HRN，选择响应比最高的作业运行。响应比=1+作业等待时间/作业处理时间。</p>
+</li>
+<li><p>基于优先数调度算法(HPF)：每一个作业规定一个表示该作业优先级别的整数，当需要将新的作业由输入井调入内存处理时，优先选择优先数最高的作业。</p>
+</li>
+<li><p>均衡调度算法，即多级队列调度算法</p>
+</li>
+</ol>
+<p>基本概念：</p>
+<p>   作业周转时间（Ti）＝完成时间(Tei)－提交时间(Tsi)</p>
+<p>   作业平均周转时间(T)＝周转时间/作业个数</p>
+<p>   作业带权周转时间（Wi）＝周转时间/运行时间</p>
+<p>   响应比＝（等待时间＋运行时间）/运行时间</p>
+<h5 id="二、进程管理-进程调度算法"><a href="#二、进程管理-进程调度算法" class="headerlink" title="二、进程管理 进程调度算法"></a>二、进程管理 进程调度算法</h5><ol>
+<li><p>1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。</p>
+</li>
+<li><p>时间片轮转算法(RR)：分时系统的一种调度算法。轮转的基本思想是，将CPU的处理时间划分成一个个的时间片，就绪队列中的进程轮流运行一个时间片。当时间片结束时，就强迫进程让出CPU，该进程进入就绪队列，等待下一次调度，同时，进程调度又去选择就绪队列中的一个进程，分配给它一个时间片，以投入运行。</p>
+</li>
+<li><p>最高优先级算法(HPF)：进程调度每次将处理机分配给具有最高优先级的就绪进程。最高优先级算法可与不同的CPU方式结合形成可抢占式最高优先级算法和不可抢占式最高优先级算法。</p>
+</li>
+<li><p>多级队列反馈法：几种调度算法的结合形式多级队列方式。</p>
+</li>
+</ol>
+<h5 id="三、空闲分区分配算法"><a href="#三、空闲分区分配算法" class="headerlink" title="三、空闲分区分配算法"></a>三、空闲分区分配算法</h5><ol>
+<li><p>首先适应算法：当接到内存申请时，查找分区说明表，找到第一个满足申请长度的空闲区，将其分割并分配。此算法简单，可以快速做出分配决定。</p>
+</li>
+<li><p>最佳适应算法：当接到内存申请时，查找分区说明表，找到第一个能满足申请长度的最小空闲区，将其进行分割并分配。此算法最节约空间，因为它尽量不分割到大的空闲区，其缺点是可能会形成很多很小的空闲分区，称为“碎片”。</p>
+</li>
+<li><p>最坏适应算法：当接到内存申请时，查找分区说明表，找到能满足申请要求的最大的空闲区。该算法的优点是避免形成碎片，而缺点是分割了大的空闲区后，在遇到较大的程序申请内存时，无法满足的可能性较大。</p>
+</li>
+</ol>
+<h5 id="四、虚拟页式存储管理中的页面置换算法"><a href="#四、虚拟页式存储管理中的页面置换算法" class="headerlink" title="四、虚拟页式存储管理中的页面置换算法"></a>四、虚拟页式存储管理中的页面置换算法</h5><ol>
+<li><p>最佳算法（OPT)：这是一种理想的算法，在实际中不可能实现。该算法的思想是：发生缺页时，选择以后永不使用或在最长时间内不再被访问的内存页面予以淘汰。</p>
+</li>
+<li><p>先进先出页面淘汰算法(FIFO)：选择最先进入内存的页面予以淘汰。</p>
+</li>
+<li><p>最近最久未使用算法（LRU）：选择在最近一段时间内最久没有使用过的页，把它淘汰。</p>
+</li>
+<li><p>最少使用算法（LFU）：选择到当前时间为止被访问次数最少的页转换。</p>
+</li>
+</ol>
+<h5 id="五、磁盘调度"><a href="#五、磁盘调度" class="headerlink" title="五、磁盘调度"></a>五、磁盘调度</h5><ol>
+<li><p>先来先服务（FCFS）：是按请求访问者的先后次序启动磁盘驱动器，而不考虑它们要访问的物理位置</p>
+</li>
+<li><p>最短寻道时间优先（SSTF）：让离当前磁道最近的请求访问者启动磁盘驱动器，即是让查找时间最短的那个作业先执行，而不考虑请求访问者到来的先后次序，这样就克服了先来先服务调度算法中磁臂移动过大的问题</p>
+</li>
+<li><p>扫描算法（SCAN）或电梯调度算法：总是从磁臂当前位置开始，沿磁臂的移动方向去选择离当前磁臂最近的那个柱面的访问者。如果沿磁臂的方向无请求访问时，就改变磁臂的移动方向。在这种调度方法下磁臂的移动类似于电梯的调度，所以它也称为电梯调度算法。</p>
+</li>
+<li><p>循环扫描算法（CSCAN）：循环扫描调度算法是在扫描算法的基础上改进的。磁臂改为单项移动，由外向里。当前位置开始沿磁臂的移动方向去选择离当前磁臂最近的哪个柱面的访问者。如果沿磁臂的方向无请求访问时，再回到最外，访问柱面号最小的作业请求。</p>
+</li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> PHP是世界上最好的语言 </span>
+    </div>
+</article>
+
+
+
+
+
+
+    
+
+    </div>
+
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'photoSwipe';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#0-1bag','#测试','#学习总结','#DDOS','#安全','#leetcode','#LDAP','#认证','#TCP三次握手','#java','#SQL注入','#python','#shell','#redis','#操作系统','#瞎想','#设计模式','#安全扫描工具','#django',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("/img/12.webp");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+</html>

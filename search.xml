@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title>LeetCode.3. 无重复字符的最长子串</title>
+      <link href="/code/LeetCode.3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2.html"/>
+      <url>/code/LeetCode.3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2.html</url>
+      
+        <content type="html"><![CDATA[<p>题目source：<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">leetcode3.</a></p><p>给定一个字符串，找出不含有重复字符的<strong>最长子串</strong>的长度。</p><p><strong>示例 1:</strong></p><pre><code>输入: &quot;abcabcbb&quot;输出: 3 解释: 无重复字符的最长子串是 &quot;abc&quot;，其长度为 3。</code></pre><p><strong>示例 2:</strong></p><pre><code>输入: &quot;bbbbb&quot;输出: 1解释: 无重复字符的最长子串是 &quot;b&quot;，其长度为 1。</code></pre><p><strong>示例 3:</strong></p><pre><code>输入: &quot;pwwkew&quot;输出: 3解释: 无重复字符的最长子串是 &quot;wke&quot;，其长度为 3。     请注意，答案必须是一个子串，&quot;pwke&quot; 是一个子序列 而不是子串。</code></pre><p><strong>分析</strong>： </p><p>用HashMap存储，key为字符，value为字符所在的下标+1，用j，i表示无重复字符串的起始和终止下标，当遍历到重复字符时，更新rest为最长的长度，把j设置为重复的字符的后面一位，跳过了含有该重复字符的部分，继续遍历</p><pre><code>class Solution {    public int lengthOfLongestSubstring(String s) {        int len = s.length(), rest = 0;        Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();        for ( int i = 0, j = 0; i &lt; len ; i++) {            if (map.containsKey(s.charAt(i))) {                j = Math.max(j, map.get(s.charAt(i)));            }            rest = Math.max(rest, i-j+1);            map.put(s.charAt(i), i+1);        }        return rest;    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>LeetCode.2. 两数相加</title>
+      <link href="/code/LeetCode.2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.html"/>
+      <url>/code/LeetCode.2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.html</url>
+      
+        <content type="html"><![CDATA[<p>题目source：<a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">leetcode2.</a></p><p>给定两个<strong>非空</strong>链表来表示两个非负整数。位数按照<strong>逆序</strong>方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。</p><p>你可以假设除了数字 0 之外，这两个数字都不会以零开头。</p><p><strong>示例：</strong></p><pre><code>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)输出：7 -&gt; 0 -&gt; 8原因：342 + 465 = 807</code></pre><p><strong>分析</strong>： </p><p>从所给两个链表头开始遍历，相加的和放到新的链表，链表指针后移。要注意当两个链表长度不一导致某一个链表已经为空的情况，则判断链表是否已空，为null则认为值为0。并且需要一个int变量记录进位的数值。</p><p>这里用了dummyhead记录结果的链表头，用来在最后返回该链表</p><p>还要考虑最后额外的进位。</p><pre><code>/** * Definition for singly-linked list. * public class ListNode { *     int val; *     ListNode next; *     ListNode(int x) { val = x; } * } */class Solution {    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {        ListNode dummy = new ListNode(0);        ListNode head = dummy;        ListNode p = l1, q = l2;        int renum = 0;        while(p != null || q != null){            int x = (p != null) ? p.val : 0;            int y = (q != null) ? q.val : 0;            int sum = x + y + renum;            renum = sum/10;            head.next = new ListNode(sum % 10);            head = head.next;            p = (p != null) ? p.next : p;            q = (q != null) ? q.next : q;        }        if (renum&gt;0) {            head.next = new ListNode(renum);        }        return dummy.next;    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JAVA与模式-策略模式</title>
+      <link href="/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html"/>
+      <url>/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.html</url>
+      
+        <content type="html"><![CDATA[<p><strong>策略模式属于对象的行为模式。其用意是针对一组算法，将每一个算法封装到具有共同接口的独立的类中，从而使得它们可以相互替换。策略模式使得算法可以在不影响到客户端的情况下发生变化。</strong><a id="more"></a></p><h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><h2 id="策略模式的结构："><a href="#策略模式的结构：" class="headerlink" title="策略模式的结构："></a>策略模式的结构：</h2><p>策略模式是对算法（行为）的包装，是把使用算法的责任和算法本身分割开来，委派给不同的对象管理。策略模式通常把一个系列的算法包装到一系列的策略类里面，作为一个抽象策略类的子类。用一句话来说，就是：“准备一组算法，并将每一个算法封装起来，使得它们可以互换”。</p><p><img src="/images/设计模式/策略1.png" alt="img"></p><p>这个模式涉及到三个角色：</p><p>　　●　　<strong>环境(Context)角色：</strong>持有一个Strategy的引用。</p><p>　　●　　<strong>抽象策略(Strategy)角色：</strong>这是一个抽象角色，通常由一个接口或抽象类实现。此角色给出所有的具体策略类所需的接口。</p><p>　　●　　<strong>具体策略(ConcreteStrategy)角色：</strong>包装了相关的算法或行为。</p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>　　假设现在要设计一个贩卖各类书籍的电子商务网站的购物车系统。一个最简单的情况就是把所有货品的单价乘上数量，但是实际情况肯定比这要复杂。比如，本网站可能对所有的高级会员提供每本20%的促销折扣；对中级会员提供每本10%的促销折扣；对初级会员没有折扣。</p><p>　　根据描述，折扣是根据以下的几个算法中的一个进行的：</p><p>　　算法一：对初级会员没有折扣。</p><p>　　算法二：对中级会员提供10%的促销折扣。</p><p>　　算法三：对高级会员提供20%的促销折扣。</p><p>　　使用策略模式来实现的结构图如下：<img src="/images/设计模式/策略2.png" alt="img"></p><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>　　抽象折扣类</p><pre><code>public interface MemberStrategy {    /**     * 计算图书的价格     * @param booksPrice    图书的原价     * @return    计算出打折后的价格     */    public double calcPrice(double booksPrice);}</code></pre><p>　　初级会员折扣类</p><pre><code>public class PrimaryMemberStrategy implements MemberStrategy {    @Override    public double calcPrice(double booksPrice) {        System.out.println(&quot;对于初级会员的没有折扣&quot;);        return booksPrice;    }}</code></pre><p>　　中级会员折扣类</p><pre><code>public class IntermediateMemberStrategy implements MemberStrategy {    @Override    public double calcPrice(double booksPrice) {        System.out.println(&quot;对于中级会员的折扣为10%&quot;);        return booksPrice * 0.9;    }}</code></pre><p>　　高级会员折扣类</p><pre><code>public class AdvancedMemberStrategy implements MemberStrategy {    @Override    public double calcPrice(double booksPrice) {        System.out.println(&quot;对于高级会员的折扣为20%&quot;);        return booksPrice * 0.8;    }}</code></pre><p> 　　价格类</p><pre><code>public class Price {    //持有一个具体的策略对象    private MemberStrategy strategy;    /**     * 构造函数，传入一个具体的策略对象     * @param strategy    具体的策略对象     */    public Price(MemberStrategy strategy){        this.strategy = strategy;    }    /**     * 计算图书的价格     * @param booksPrice    图书的原价     * @return    计算出打折后的价格     */    public double quote(double booksPrice){        return this.strategy.calcPrice(booksPrice);    }}</code></pre><p>　　客户端</p><pre><code>public class Client {    public static void main(String[] args) {        //选择并创建需要使用的策略对象        MemberStrategy strategy = new AdvancedMemberStrategy();        //创建环境        Price price = new Price(strategy);        //计算价格        double quote = price.quote(300);        System.out.println(&quot;图书的最终价格为：&quot; + quote);    }}</code></pre><h2 id="策略模式的重心"><a href="#策略模式的重心" class="headerlink" title="策略模式的重心"></a><strong>策略模式的重心</strong></h2><p>　　策略模式的重心不是如何实现算法，而是如何组织、调用这些算法，从而让程序结构更灵活，具有更好的维护性和扩展性。</p><p><strong>算法的平等性</strong></p><p><strong>算法的平等性</strong></p><p><strong>算法的平等性</strong></p><p>　　<strong>算法的平等性</strong></p><p>　　策略模式一个很大的特点就是各个策略算法的平等性。对于一系列具体的策略算法，大家的地位是完全一样的，正因为这个平等性，才能实现算法之间可以相互替换。所有的策略算法在实现上也是相互独立的，相互之间是没有依赖的。</p><p>　　所以可以这样描述这一系列策略算法：策略算法是相同行为的不同实现。</p><p><strong>运行时策略的唯一性</strong></p><p>　　<strong>运行时策略的唯一性</strong></p><p>　　运行期间，策略模式在每一个时刻只能使用一个具体的策略实现对象，虽然可以动态地在不同的策略实现中切换，但是同时只能使用一个。</p><p><strong>公有的行为</strong></p><p>　　<strong>公有的行为</strong></p><p>　　经常见到的是，所有的具体策略类都有一些公有的行为。这时候，就应当把这些公有的行为放到共同的抽象策略角色Strategy类里面。当然这时候抽象策略角色必须要用Java抽象类实现，而不能使用接口。</p><p>　　这其实也是典型的将代码向继承等级结构的上方集中的标准做法。</p><p><img src="/images/设计模式/策略3.png" alt="img"></p><h1 id="策略模式的优点"><a href="#策略模式的优点" class="headerlink" title="策略模式的优点"></a>策略模式的优点</h1><p>　　（1）策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族。恰当使用继承可以把公共的代码移到父类里面，从而避免代码重复。</p><p>　　（2）使用策略模式可以避免使用多重条件(if-else)语句。多重条件语句不易维护，它把采取哪一种算法或采取哪一种行为的逻辑与算法或行为的逻辑混合在一起，统统列在一个多重条件语句里面，比使用继承的办法还要原始和落后。</p><h1 id="策略模式的缺点"><a href="#策略模式的缺点" class="headerlink" title="策略模式的缺点"></a>策略模式的缺点</h1><p>　　（1）客户端必须知道所有的策略类，并自行决定使用哪一个策略类。这就意味着客户端必须理解这些算法的区别，以便适时选择恰当的算法类。换言之，策略模式只适用于客户端知道算法或行为的情况。</p><p>（2）由于策略模式把每个具体的策略实现都单独封装成为类，如果备选的策略很多的话，那么对象的数目就会很duo.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>LeetCode.1. 两数之和</title>
+      <link href="/code/LeetCode.1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.html"/>
+      <url>/code/LeetCode.1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.html</url>
+      
+        <content type="html"><![CDATA[<p>题目source：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">leetcode1.</a></p><p>给定一个整数数组和一个目标值，找出数组中和为目标值的<strong>两个</strong>数。</p><p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p><p><strong>示例:</strong></p><pre><code>给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9所以返回 [0, 1]</code></pre><p><strong>分析</strong>： </p><p> 从一个数组里找出两个相加和为 target 的值，并返回数组的下标数组</p><p><strong>题解一</strong>：<br> 直接遍历，有相加为 target 且两个数下标不相等返回</p><pre><code class="java">class Solution {    public int[] twoSum(int[] nums, int target) {        int len = nums.length;        for(int i=0;i&lt;len;i++)            for(int j=0;j&lt;len;j++)                if(nums[i] + nums[j] == target &amp;&amp; i!=j)                    return new int[]{i,j};        return null;    }}</code></pre><p><strong>题解二：</strong><br> 利用 Map(key,value) 的性质，将所有遍历过的数组值存为 key，所有数组下标存为 value，利用 containsKey 方法判断 Map 中是否含有该 key 值，如果有说明之前遍历过的数组值中存在和该数组值匹配（相加为 target）的值，则返回数组；否则继续设置当前 key 和 value ，进行下一轮遍历</p><pre><code class="java">class Solution {    public int[] twoSum(int[] nums, int target) {        Map&lt;Integer,Integer&gt; ans = new HashMap&lt;&gt;();        int len = nums.length;        for(int i=0;i&lt;len;i++){            if(ans.containsKey(target - nums[i]))                return new int[]{ans.get(target - nums[i]),i};            ans.put(nums[i],i);        }        return null;    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>LeetCode (Java)【目录】</title>
+      <link href="/code/LeetCode%E9%A2%98%E8%A7%A3.html"/>
+      <url>/code/LeetCode%E9%A2%98%E8%A7%A3.html</url>
+      
+        <content type="html"><![CDATA[<p>source：<a href="https://leetcode-cn.com/" target="_blank" rel="noopener">LeetCode</a></p><p>由于开通了中国区，就从中国区再刷刷吧，虽然之前刷了一些，不过现在用java再来一遍</p><table><thead><tr><th style="text-align:center">编号</th><th style="text-align:center">题目</th><th style="text-align:center">CODE</th><th>分类</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">两数之和</td><td style="text-align:center"><a href="/code/LeetCode.1.%20两数之和.html">java</a></td><td>数组</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">两数相加</td><td style="text-align:center"><a href="/code/LeetCode.2.%20两数相加.html">java</a></td><td>链表</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">无重复字符的最长子串</td><td style="text-align:center"><a href="/code/LeetCode.3.%20无重复字符的最长子串.html">java</a></td><td>字符串</td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JAVA与模式-单例模式</title>
+      <link href="/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html"/>
+      <url>/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.html</url>
+      
+        <content type="html"><![CDATA[<p><strong>作为对象的创建模式，单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。这个类称为单例类。</strong><a id="more"></a></p><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="单例模式的特点："><a href="#单例模式的特点：" class="headerlink" title="单例模式的特点："></a>单例模式的特点：</h3><ul><li><p>单例类只能有一个实例。</p></li><li><p>单例类必须自己创建自己的唯一实例。</p></li><li>单例类必须给所有其他对象提供这一实例。</li></ul><h3 id="饿汉式单例类："><a href="#饿汉式单例类：" class="headerlink" title="饿汉式单例类："></a>饿汉式单例类：</h3><pre><code class="java">public class EagerSingleton {    private static EagerSingleton instance = new EagerSingleton();    /**     * 私有默认构造器     */    private EagerSingleton(){}    /**     * 静态工厂方法     */    public static EagerSingleton getInstance(){        return instance;    }}</code></pre><p>​        在这个类被加载时，静态变量instance会被初始化，此时类的私有构造器会被调用。这时候，单例类的唯一实例就被创建出来了。</p><p>​        饿汉式其实是一种比较形象的称谓。既然饿，那么在创建对象实例的时候就比较着急，饿了嘛，于是在装载类的时候就创建对象实例。</p><p>​        <strong>饿汉式是典型的空间换时间</strong>，当类装载的时候就会创建类的实例，不管你用不用，先创建出来，然后每次调用的时候，就不需要再判断，节省了运行时间</p><h3 id="懒汉式单例类："><a href="#懒汉式单例类：" class="headerlink" title="懒汉式单例类："></a>懒汉式单例类：</h3><pre><code>public class LazySingleton {    private static LazySingleton instance = null;    /**     * 私有默认构造器     */    private LazySingleton(){}    /**     * 静态工厂方法     */    public static synchronized LazySingleton getInstance(){        if(instance == null){            instance = new LazySingleton();        }        return instance;    }}</code></pre><p>上面的懒汉式单例类实现里对静态工厂方法使用了同步化，以处理多线程环境。<br>　　懒汉式其实是一种比较形象的称谓。既然懒，那么在创建对象实例的时候就不着急。会一直等到马上要使用对象实例的时候才会创建，懒人嘛，总是推脱不开的时候才会真正去执行工作，因此在装载对象的时候不创建对象实例。</p><p>　　<strong>懒汉式是典型的时间换空间</strong>,就是每次获取实例都会进行判断，看是否需要创建实例，浪费判断的时间。当然，如果一直没有人使用的话，那就不会创建实例，则节约内存空间</p><p>　　由于懒汉式的实现是线程安全的，这样会降低整个访问的速度，而且每次都要判断。那么有没有更好的方式实现呢？</p><h3 id="双重检查锁定–DoubleCheckedLocking"><a href="#双重检查锁定–DoubleCheckedLocking" class="headerlink" title="双重检查锁定–DoubleCheckedLocking"></a>双重检查锁定–DoubleCheckedLocking</h3><p>可以使用“双重检查加锁”的方式来实现，就可以既实现线程安全，又能够使性能不受很大的影响。那么什么是“双重检查加锁”机制呢？</p><p>　　所谓“双重检查加锁”机制，指的是：并不是每次进入getInstance方法都需要同步，而是先不同步，进入方法后，先检查实例是否存在，如果不存在才进行下面的同步块，这是第一重检查，进入同步块过后，再次检查实例是否存在，如果不存在，就在同步的情况下创建一个实例，这是第二重检查。这样一来，就只需要同步一次了，从而减少了多次在同步情况下进行判断所浪费的时间。</p><p>　　“双重检查加锁”机制的实现会使用关键字volatile，它的意思是：被volatile修饰的变量的值，将不会被本地线程缓存，所有对该变量的读写都是直接操作共享内存，从而确保多个线程能正确的处理该变量。</p><p>　　<strong>注意：在java1.4及以前版本中，很多JVM对于volatile关键字的实现的问题，会导致“双重检查加锁”的失败，因此“双重检查加锁”机制只只能用在java5及以上的版本。</strong></p><pre><code>public class Singleton {    private volatile static Singleton instance = null;    private Singleton(){}    public static Singleton getInstance(){        //先检查实例是否存在，如果不存在才进入下面的同步块        if(instance == null){            //同步块，线程安全的创建实例            synchronized (Singleton.class) {                //再次检查实例是否存在，如果不存在才真正的创建实例                if(instance == null){                    instance = new Singleton();                }            }        }        return instance;    }}</code></pre><p>这种实现方式既可以实现线程安全地创建实例，而又不会对性能造成太大的影响。它只是第一次创建实例的时候同步，以后就不需要同步了，从而加快了运行速度。</p><p>　　提示：由于volatile关键字可能会屏蔽掉虚拟机中一些必要的代码优化，所以运行效率并不是很高。因此一般建议，没有特别的需要，不要使用。也就是说，虽然可以使用“双重检查加锁”机制来实现线程安全的单例，但并不建议大量采用，可以根据情况来选用。</p><p>　　根据上面的分析，常见的两种单例实现方式都存在小小的缺陷，那么有没有一种方案，既能实现延迟加载，又能实现线程安全呢？</p><h3 id="静态内部类–Lazy-initialization-holder-class"><a href="#静态内部类–Lazy-initialization-holder-class" class="headerlink" title="静态内部类–Lazy initialization holder class"></a>静态内部类–Lazy initialization holder class</h3><p>这个模式综合使用了Java的类级内部类和多线程缺省同步锁的知识，很巧妙地同时实现了延迟加载和线程安全。</p><h4 id="1-相应的基础知识"><a href="#1-相应的基础知识" class="headerlink" title="　　1.相应的基础知识"></a>　　1.相应的基础知识</h4><ul><li>　什么是类级内部类？</li></ul><p>　　<strong>简单点说，类级内部类指的是，有static修饰的成员式内部类。如果没有static修饰的成员式内部类被称为对象级内部类。</strong></p><p>　　<strong>类级内部类相当于其外部类的static成分，它的对象与外部类对象间不存在依赖关系，因此可直接创建。而对象级内部类的实例，是绑定在外部对象实例中的。</strong></p><p>　　<strong>类级内部类中，可以定义静态的方法。在静态方法中只能够引用外部类中的静态成员方法或者成员变量。</strong></p><p>　　<strong>类级内部类相当于其外部类的成员，只有在第一次被使用的时候才被会装载。</strong></p><ul><li>　多线程缺省同步锁的知识</li></ul><p>　　<strong>大家都知道，在多线程开发中，为了解决并发问题，主要是通过使用synchronized来加互斥锁进行同步控制。但是在某些情况中，JVM已经隐含地为您执行了同步，这些情况下就不用自己再来进行同步控制了。这些情况包括：</strong></p><p>　　1.由静态初始化器（在静态字段上或static{}块中的初始化器）初始化数据时</p><p>　　2.访问final字段时</p><p>　　3.在创建线程之前创建对象时</p><p>　　4.线程可以看见它将要处理的对象时</p><h4 id="2-解决方案的思路"><a href="#2-解决方案的思路" class="headerlink" title="　　2.解决方案的思路"></a>　　2.解决方案的思路</h4><p>　　要想很简单地实现线程安全，可以采用静态初始化器的方式，它可以由JVM来保证线程的安全性。比如前面的饿汉式实现方式。但是这样一来，不是会浪费一定的空间吗？因为这种实现方式，会在类装载的时候就初始化对象，不管你需不需要。</p><p>　　如果现在有一种方法能够让类装载的时候不去初始化对象，那不就解决问题了？一种可行的方式就是采用静态内部类，在这个类级内部类里面去创建对象实例。这样一来，只要不使用到这个类级内部类，那就不会创建对象实例，从而同时实现延迟加载和线程安全。</p><pre><code>public class Singleton {    private Singleton(){}    /**     *    类级的内部类，也就是静态的成员式内部类，该内部类的实例与外部类的实例     *    没有绑定关系，而且只有被调用到时才会装载，从而实现了延迟加载。     */    private static class SingletonHolder{        /**         * 静态初始化器，由JVM来保证线程安全         */        private static Singleton instance = new Singleton();    }    public static Singleton getInstance(){        return SingletonHolder.instance;    }}</code></pre><p>当getInstance方法第一次被调用的时候，它第一次读取SingletonHolder.instance，导致SingletonHolder类得到初始化；而这个类在装载并被初始化的时候，会初始化它的静态域，从而创建Singleton的实例，由于是静态的域，因此只会在虚拟机装载类的时候初始化一次，并由虚拟机来保证它的线程安全性。</p><p>　　这个模式的优势在于，getInstance方法并没有被同步，并且只是执行一个域的访问，因此延迟初始化并没有增加任何访问成本。</p><h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>单元素的枚举类型已经成为实现Singleton的最佳方法。用枚举来实现单例非常简单，只需要编写一个包含单个元素的枚举类型即可。</p><pre><code>public enum Singleton {    /**     * 定义一个枚举的元素，它就代表了Singleton的一个实例。     */    uniqueInstance;    /**     * 单例可以有自己的操作     */    public void singletonOperation(){        //功能处理    }}</code></pre><p>使用枚举来实现单实例控制会更加简洁，而且无偿地提供了序列化机制，并由JVM从根本上提供保障，绝对防止多次实例化，是更简洁、高效、安全的实现单例的方式。</p><h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>shell命令复习</title>
+      <link href="/all/shell%E8%84%9A%E6%9C%AC%E5%A4%8D%E4%B9%A0.html"/>
+      <url>/all/shell%E8%84%9A%E6%9C%AC%E5%A4%8D%E4%B9%A0.html</url>
+      
+        <content type="html"><![CDATA[<p>shell太久太久没用了，真的太久了，复习一下shell吧<a id="more"></a><br>每个脚本开始的#!/bin/这一行，表示了要使用的shell。</p><p>#!/bin/bash表示使用bash，对于pythin就是#!/usr/bin/python<br>1）像脚本传递参数</p><pre><code>#show这个脚本会显示文件名称./show.sh file1.txtcat show.sh#!/bin/bashecho $1</code></pre><p>2）</p><pre><code>#脚本会复制文件1（arg1）到目标地址（arg2）./copy.sh file1.txt /tmp/cat copy.sh#!/bin/bashcp $1 $2</code></pre><p>3）</p><pre><code>#脚本会复制文件1（arg1）到目标地址（arg2）./copy.sh file1.txt /tmp/cat copy.sh#!/bin/bashcp $1 $2</code></pre><p>4)<br>传递的参数的个数 $#<br>5）</p><pre><code>#获取文件的最后一行tail -1#获取文件的第一行head -1</code></pre><p>6）</p><pre><code>#获取文件中 每一行 的第三个元素awk &#39;{print $3}&#39;</code></pre><p>7）</p><pre><code>#获取文件中 每一行 的第三个元素awk &#39;{print $3}&#39;</code></pre><p>8)</p><pre><code>#写一个函数function example{echo &#39;Hello&#39;}</code></pre><p>9)</p><pre><code>#连接两个字符串v1 = &#39;hello&#39;v2 = &#39;wordl&#39;v3 = ${v1}${v2}echo $v3</code></pre><p>10)</p><pre><code>#检查系统中存在某个文件if [-f /var/log/m]then echo &#39;FILE exists&#39;if</code></pre><p>11)</p><pre><code>#shell中的循环for i in $(ls);doecho item:$1done</code></pre><p>12)</p><pre><code>#获取文本文件第十行head -10 file|tail -1</code></pre><p>13)<br>“&gt;”重定向输出流到文件或另一个流<br>14）<br>‘’ 和 “” 的区别是，’’不会把变量转换成值，””会计算所有变量的值并用值代替<br>15）</p><pre><code>#使用awk列出UID小于100的用户awk -F: &#39;$3&lt;100&#39; /etc/passwd</code></pre><p>16)</p><pre><code>#列出第二个字母是a或b的文件ls -d ?[ab]*</code></pre><p>17)</p><pre><code>#输出当前shell的PIDecho $$</code></pre><p>18)</p><pre><code>#输出0到100中3的倍数for i in {0..100..3}; do echo $i; done</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>认识redis</title>
+      <link href="/all/redis.html"/>
+      <url>/all/redis.html</url>
+      
+        <content type="html"><![CDATA[<p>今天周末，跟飞聊了好多东西，在这记一下吧<a id="more"></a><br>聊的想一句算一句，说不定明天再来看，就觉得自己真煞笔。哈哈哈<br><br>最近把所有都聚集在 复习 秋招上，感觉失去了什么，为什么有点违背初心的感觉<br>我们最主要的，是学习，不是秋招吧？<br>为什么感觉复习得感觉不是自己了<br>有多少人是，运气好点，看了点面经，背了几句理论，恰也有学历，进了好公司<br>学习的状态不能停啊，<br>心，很重要，不要太看重某些东西<br>我就一个大三的，我哪里能有像工作了三年一样呢，<br>潜力，面对面，我的沟通能力，我的反应，我所表现的态度，才能看出点潜力吧<br>有多少面试把公司题库一拉，挨着问<br>一个问题，我可以很多地方和你扯，我怎么做到的，我看了三本书，每本书起码两遍，还想各个之间的联系<br>我一本书，起码看了6遍，哪个知识点在书哪里我都知道，那些回答出来的，就是潜力大？<br>就像刷leetcode，以前一题想几天也不知道为什么这么做，当你知道了堆，tree这些数据结构，你才会说，哦原来要用他们，<br>别想着混啊，保持学习的态度吧<br><br><br>趁着今天看了下redis教程…….<br><br><br>Remote Dictionary Server  Key-value存储系统<br>开源的 C语言写的，支持网络，可基于内存可持久化的 日志型key-value数据库，可提供多语言API<br>称数据结构服务器<br>可将内存中数据保存在磁盘<br>不仅简单的k-value，还提供list，set，zset，hash<br>数据备份<br>原子-原子性，要么执行成功要么失败完全不执行<br><img src="/images/redis/1.png" alt="img"><br>服务端，客户端<br><img src="/images/redis/2.png" alt="img"><br>配置文件参数<br><img src="/images/redis/3.png" alt="img"><br>数据类型<br>—-tring二进制安全，可存储任何数据，一个键可最大存512mb<br>—-Hash是键值对集合<br>—-List字符串列表，增删快<br>—-Set 无序集合，通过hash实现的，添加删除查找的复杂度都是0（1）<br>—-zset有序集合<br>Redis命令<br>—-客户端redis-cli，redis-cli -h 127.0.0.1 -p 6379 -a “mypass”<br>—-key命令 【command】 【key】<br>—-string命令 SET key value<br>—-hash  HDEL key field1<br>—-list  LPUSH | RPUSH  LRANGE BLPOP阻塞版<br>—-SET SADD SPOP SUNION<br>—-ZADD<br>HyperLogLog（基数统计算法）<br>—-基数，不重复元素<br>发布订阅<br>—-SUBSCRIBE订阅 PUBLISH发布<img src="/images/redis/4.png" alt="img"><br>事物<br>—-打包批量执行脚本，非原子性<br>—-MULTI事务开始，EXEC执行，DISCARD取消<br>连接<br>—-AUTH<img src="/images/redis/5.png" alt="img"><br>服务器<img src="/images/redis/6.png" alt="img"><br><img src="/images/redis/7.png" alt="img"><br>数据备份<br><img src="/images/redis/8.png" alt="img"><br>安全<br>—-config get requirepass<img src="/images/redis/9.png" alt="img"><br><img src="/images/redis/10.png" alt="img"><br>性能测试<br>客户端连接<br>—-监听TCP端口，socket<br>管道技术 | 一次性读取所有服务端响应<br>redis分区<br>—-分割数据到多个redis实例<br>—-利用多台计算机内存和值<br>—-范围分区：一定范围的对象到redis实例<br>—-hash分区：f（）的整数取模映射到redis实例<br>java：<br>jedis.jar包</p><pre><code>import redis.clients.jedis.Jedis;public class RedisJava {    public static void main(String[] args) {        //连接本地的 Redis 服务        Jedis jedis = new Jedis(&quot;localhost&quot;);        System.out.println(&quot;连接成功&quot;);        //查看服务是否运行        System.out.println(&quot;服务正在运行: &quot;+jedis.ping());    }}</code></pre><pre><code>#stringimport redis.clients.jedis.Jedis;public class RedisStringJava {    public static void main(String[] args) {        //连接本地的 Redis 服务        Jedis jedis = new Jedis(&quot;localhost&quot;);        System.out.println(&quot;连接成功&quot;);        //设置 redis 字符串数据        jedis.set(&quot;runoobkey&quot;, &quot;www.runoob.com&quot;);        // 获取存储的数据并输出        System.out.println(&quot;redis 存储的字符串为: &quot;+ jedis.get(&quot;runoobkey&quot;));    }}</code></pre><pre><code>#listimport java.util.List;import redis.clients.jedis.Jedis;public class RedisListJava {    public static void main(String[] args) {        //连接本地的 Redis 服务        Jedis jedis = new Jedis(&quot;localhost&quot;);        System.out.println(&quot;连接成功&quot;);        //存储数据到列表中        jedis.lpush(&quot;site-list&quot;, &quot;Runoob&quot;);        jedis.lpush(&quot;site-list&quot;, &quot;Google&quot;);        jedis.lpush(&quot;site-list&quot;, &quot;Taobao&quot;);        // 获取存储的数据并输出        List&lt;String&gt; list = jedis.lrange(&quot;site-list&quot;, 0 ,2);        for(int i=0; i&lt;list.size(); i++) {            System.out.println(&quot;列表项为: &quot;+list.get(i));        }    }</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>openLDAP搭建认证与目录系统</title>
+      <link href="/safe/LDAP.html"/>
+      <url>/safe/LDAP.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="概述：-搭建LDAP服务器，apache服务器，实现认证模块"><a href="#概述：-搭建LDAP服务器，apache服务器，实现认证模块" class="headerlink" title="概述： 搭建LDAP服务器，apache服务器，实现认证模块"></a>概述： 搭建LDAP服务器，apache服务器，实现认证模块<a id="more"></a></h4><h5 id="1-用-openldap-搭建-LDAP-服务器，尝试对学生信息进行增删改查，信息包括但不限于学生-id、密码、邮箱、手机号、部门等。"><a href="#1-用-openldap-搭建-LDAP-服务器，尝试对学生信息进行增删改查，信息包括但不限于学生-id、密码、邮箱、手机号、部门等。" class="headerlink" title="1. 用 openldap 搭建 LDAP 服务器，尝试对学生信息进行增删改查，信息包括但不限于学生 id、密码、邮箱、手机号、部门等。"></a>1. 用 openldap 搭建 LDAP 服务器，尝试对学生信息进行增删改查，信息包括但不限于学生 id、密码、邮箱、手机号、部门等。</h5><ol start="0"><li>环境一览 centos7<br><img src="/images/LDAP/1.png" alt="img"><br>安装openldap参考了博客 <a href="https://hisoka0917.github.io/linux/2017/12/22/openldap-on-centos7/" target="_blank" rel="noopener">https://hisoka0917.github.io/linux/2017/12/22/openldap-on-centos7/</a><br><img src="/images/LDAP/2.png" alt="img"><br><img src="/images/LDAP/3.png" alt="img"><br><img src="/images/LDAP/4.png" alt="img"><br>Openldap的配置，注意我的cn=root，dc=text，dc=com，后面登录用<br><img src="/images/LDAP/5.png" alt="img"><br>创建LDAP证书<br><img src="/images/LDAP/6.png" alt="img"><br>设置LDAP数据库<br><img src="/images/LDAP/7.png" alt="img"><br>将此base添加<br><img src="/images/LDAP/8.png" alt="img"><br>至此配置完毕，可使用任意客户端连接端口为389，使用cn=root，dc=text，dc=com登录。</li></ol><p>然后配置phpldapadmin</p><p>首先安装了apache和php<br>yum -y install httpd php php-ldap php-gd php-mbstring php-pear php-bcmath php-xml<br>安装phpldapadmin -y 一路yes<br>[root@localhost]# yum -y install epel-release<br>[root@localhost]# yum –enablerepo=epel -y install phpldapadmin<br>配置 <img src="/images/LDAP/9.png" alt="img"><br>systemctl start httpd启动apache 涉及到端口占用报错无法启动的问题，百度解决<br><img src="/images/LDAP/10.png" alt="img"> </p><p>浏览器访问phpldapadmin<br><img src="/images/LDAP/11.png" alt="img"> </p><p>使用前面的cn，dc，dc登录，遇到错误<br><img src="/images/LDAP/12.png" alt="img"> </p><p>解决办法为将off，设置为on如图<br><img src="/images/LDAP/13.png" alt="img"> </p><p>再次登录<br>，登陆后，创建组student，添加两个学生student1和student2<br><img src="/images/LDAP/14.png" alt="img"><br>， 对学生的信息进行增删查改<br> <img src="/images/LDAP/15.png" alt="img"> </p><p>添加邮箱<br><img src="/images/LDAP/16.png" alt="img"> </p><p> 添加密码、电话<br> <img src="/images/LDAP/17.png" alt="img"><br>  <img src="/images/LDAP/18.png" alt="img"> </p><p>点击search进行查<br><img src="/images/LDAP/19.png" alt="img"> </p><p>都是非常简单的操作</p><h5 id="2-配置-apache-服务器，配置-Basic-认证模块和需要认证的页面，使用用户名密码认证。"><a href="#2-配置-apache-服务器，配置-Basic-认证模块和需要认证的页面，使用用户名密码认证。" class="headerlink" title="2. 配置 apache 服务器，配置 Basic 认证模块和需要认证的页面，使用用户名密码认证。"></a>2. 配置 apache 服务器，配置 Basic 认证模块和需要认证的页面，使用用户名密码认证。</h5><p>[root@localhost ~]# vim /etc/httpd/conf.d/phpldapadmin.conf<br><img src="/images/LDAP/20.png" alt="img"> </p><p>[root@localhost ~]# vim /usr/share/phpldapadmin/htdocs/.htaccess<br> <img src="/images/LDAP/21.png" alt="img"> </p><p>User.txt中为验证的账号密码 这里为user，user<br>[root@localhost]# tpasswd -bc /root/user.txt text text<br>[root@localhost]# vim /root/user.txt<br>重启apache<br><img src="/images/LDAP/22.png" alt="img"> </p><p> 重新打开浏览器访问需要输入用户名密码<br> <img src="/images/LDAP/23.png" alt="img"> </p><p>输入user，user同样可访问<br> <img src="/images/LDAP/24.png" alt="img"> </p><h5 id="3-配置-apache-服务器，配置-LDAP-认证模块和需要认证的页面，使用-LDAP-存放的学生的用户名密码"><a href="#3-配置-apache-服务器，配置-LDAP-认证模块和需要认证的页面，使用-LDAP-存放的学生的用户名密码" class="headerlink" title="3. 配置 apache 服务器，配置 LDAP 认证模块和需要认证的页面，使用 LDAP 存放的学生的用户名密码"></a>3. 配置 apache 服务器，配置 LDAP 认证模块和需要认证的页面，使用 LDAP 存放的学生的用户名密码</h5><p>认证。<br>将student1的密码设为了1，尝试以student1的身份登录<br> <img src="/images/LDAP/25.png" alt="img"> </p><p>  登陆后是没有修改信息的权限的，仅能查看信息。</p><h5 id="4-用-freeradius-搭建-RADIUS-服务器，尝试配置基于-unix-账号的认证，并用-radtest-验证服务有效。"><a href="#4-用-freeradius-搭建-RADIUS-服务器，尝试配置基于-unix-账号的认证，并用-radtest-验证服务有效。" class="headerlink" title="4. 用 freeradius 搭建 RADIUS 服务器，尝试配置基于 unix 账号的认证，并用 radtest 验证服务有效。"></a>4. 用 freeradius 搭建 RADIUS 服务器，尝试配置基于 unix 账号的认证，并用 radtest 验证服务有效。</h5><p>yum 方式安装 freeradius 和 freeradius-ladp 连接工具<br>[root@localhost]# yum install freeradius freeradius-ldap freeradius-utils -y<br>  <img src="/images/LDAP/26.png" alt="img"> </p><p>修改 users 文件<br>[root@localhost]# vim /etc/raddb/users<br> <img src="/images/LDAP/27.png" alt="img"> </p><p>重新启动 freeradius<br>[root@localhost]]# systemctl restart radiusd radtest<br>测试是否生效<br> Usage: radtest [OPTIONS] user passwd radius-server[:port] nas-port-number secret secret<br>默认是 testing123<br> [root@localhost]# radtest root 000000 localhost 0 testing123</p><p>Received Access-Accept 说明返回成功状态，radius 验证成功<br> <img src="/images/LDAP/28.png" alt="img"> </p><h5 id="5-在-freeradius-中配置-ldap-认证模块，和-LDAP-服务器互通，利用-ldap-账号密码认证用户身份，并用radtest-测试通过。"><a href="#5-在-freeradius-中配置-ldap-认证模块，和-LDAP-服务器互通，利用-ldap-账号密码认证用户身份，并用radtest-测试通过。" class="headerlink" title="5. 在 freeradius 中配置 ldap 认证模块，和 LDAP 服务器互通，利用 ldap 账号密码认证用户身份，并用radtest 测试通过。"></a>5. 在 freeradius 中配置 ldap 认证模块，和 LDAP 服务器互通，利用 ldap 账号密码认证用户身份，并用radtest 测试通过。</h5><p>首先我们要注意到我们 freeradius 的版本是 3，所以在新的版本里有三个要注意的点：<br>·新版本里对 LDAP 模块标记为不建议，所以需要手动引入 LDAP 模块<br>·新版本的语法有些不同，网络上的许多的配置方案已经过时<br>·使用 yum 安装的/ect/raddb 目录下的 freeradius 配置文件目录结构与旧版有不同<br>mods-available 存储了模块的文件<br>mods-enabled 是 mods-available 中模块的软链接<br>sites-available 存储了服务器的配置文件信息<br>sites-enabled 是 sites-available 中文件的软链接</p><p>修改 /etc/raddb/mods-available/ldap 文件<br>[root@localhost]# vim /etc/raddb/mods-available/ldap<br>删除注释，并修改为以下内容，此步的参数承接 LDAP 的配置，必须与 LDAP 的设置保持一致<br> <img src="/images/LDAP/29.png" alt="img"><br> 在 mods-enabled 中添加 ldap 模块的软链接（important）<br> [root@localhost]#ln -s /etc/raddb/mods-available/ldap /etc/raddb/mods-enabled/<br> [root@localhost]# vim /etc/raddb/sites-available/site_ldap<br>  <img src="/images/LDAP/30.png" alt="img"><br>[root@localhost]# ln -s /etc/raddb/sites-available/site_ldap /etc/raddb/sites-enabled/<br>重新启动 freeradius<br>[root@localhost]]# systemctl restart radiusd</p><p>测试LDAP的账号认证<br>[root@localhost]]# radtest student1 1 localhost:1833 0 testing123<br> 收到成功的状态，学生用户名密码认证成功<br>   <img src="/images/LDAP/31.png" alt="img"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LDAP </tag>
+            
+            <tag> 认证 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>自建环境玩耍SQLI</title>
+      <link href="/safe/SQLI.html"/>
+      <url>/safe/SQLI.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="自己搭建环境搞搞sqlI"><a href="#自己搭建环境搞搞sqlI" class="headerlink" title="自己搭建环境搞搞sqlI"></a>自己搭建环境搞搞sqlI<a id="more"></a></h4><h5 id="1-搭建-mysql-数据库，建立数据库-test，数据表-student，包含-id、name、score-三列。"><a href="#1-搭建-mysql-数据库，建立数据库-test，数据表-student，包含-id、name、score-三列。" class="headerlink" title="1.    搭建 mysql 数据库，建立数据库 test，数据表 student，包含 id、name、score 三列。"></a>1.    搭建 mysql 数据库，建立数据库 test，数据表 student，包含 id、name、score 三列。</h5><ol start="0"><li>linux系统环境centos7<br><img src="/images/SQLI/1.png" alt="img"></li><li>mysqlinfo    5.5.56-MariaDb<br><img src="/images/SQLI/2.png" alt="img"><br>create database test 图找不到了<br>table student<br><img src="/images/SQLI/3.png" alt="img"><br><img src="/images/SQLI/4.png" alt="img"><br>（你好，我是邓冠希）<br>（中文会乱码，改utf8麻烦，我把name都改成英文了，所以会看到后面name变为英文了）<br>table teacher<br><img src="/images/SQLI/5.png" alt="img"><br><img src="/images/SQLI/6.png" alt="img"></li></ol><h5 id="2-搭建运用的运行环境，-nginx-php-fpm、"><a href="#2-搭建运用的运行环境，-nginx-php-fpm、" class="headerlink" title="2.    搭建运用的运行环境， nginx+php-fpm、"></a>2.    搭建运用的运行环境， nginx+php-fpm、</h5><ol start="2"><li>运行环境nginx+php-fpm<br>Nginx  <img src="/images/SQLI/7.png" alt="img"><br>phpinfo <img src="/images/SQLI/8.png" alt="img"><h5 id="3-编写带有-sql-注入漏洞的接口程序（这里简单的用了PHP）"><a href="#3-编写带有-sql-注入漏洞的接口程序（这里简单的用了PHP）" class="headerlink" title="3.    编写带有 sql 注入漏洞的接口程序（这里简单的用了PHP）"></a>3.    编写带有 sql 注入漏洞的接口程序（这里简单的用了PHP）</h5></li><li><p>接口程序，通过6个case对应6个接口（光是代码规范制表符对齐就是一项大工程啊…..）<br>分别是<br>•    根据输入的参数值，拼接 SQL 查询语句并执行，将查询结果展示。如根据输入的学号展示姓名和分数。<br>•    根据输入的参数值，拼接 SQL 查询语句并执行，展示查询结果是否为空。如输入学号，展示是否有该学生存在。<br>•    根据输入的参数值，拼接 SQL 查询语句并执行，将查询结果是否为空展示在两段随机内容之间。<br>•    根据输入的参数值，拼接 SQL 查询语句并执行，展示查询结果的条件表达式结果，并将结果展示在两段随机内容之间。如入学号，展示该学生分数是否大于 60。<br>•    根据输入的参数值，拼接 SQL 查询语句并执行，但展示一个固定的结果。如如输入学号，查询是否有学生存在，然后输出固定内容。<br>•    据输入的参数值，拼接 SQL 语句并执行，更新数据库。如输入学号和分数，将对应学生的分数更新。</p><p><img src="/images/SQLI/9.png" alt="img"></p><h5 id="4-针对各个应用接口，手工修改请求参数，尝试各种-SQL-注入的攻击向量，和正常访问的对照组一起，观察结果并记录。"><a href="#4-针对各个应用接口，手工修改请求参数，尝试各种-SQL-注入的攻击向量，和正常访问的对照组一起，观察结果并记录。" class="headerlink" title="4.    针对各个应用接口，手工修改请求参数，尝试各种 SQL 注入的攻击向量，和正常访问的对照组一起，观察结果并记录。"></a>4.    针对各个应用接口，手工修改请求参数，尝试各种 SQL 注入的攻击向量，和正常访问的对照组一起，观察结果并记录。</h5><ol start="4"><li>1）输入学号展示姓名分数 case=1<br>正常访问  <img src="/images/SQLI/10.png" alt="img"><br>构造恒为真表达式，<img src="/images/SQLI/11.png" alt="img"></li></ol><p>2）输入学号展示该学生是否存在 case=2<br>正常访问  <img src="/images/SQLI/12.png" alt="img"><br>联合查询探测出存在名为teacher1的 <img src="/images/SQLI/13.png" alt="img"><br>猜测teacher1的密码为000000，密码错误 <img src="/images/SQLI/14.png" alt="img"><br>猜测teacher1的密码为123456，结果正确 <img src="/images/SQLI/15.png" alt="img"></p></li></ol><p>3）在2的基础上，展示结果两边有随机内容 case=3<br>正常访问  <img src="/images/SQLI/16.png" alt="img"><br>注入同2中，union all select来猜测，根据结果exist验证，并未提高安全性能</p><p>4）输入学号，展示分数是否大于60，结果两边有随机数 case=4<br>正常访问 <img src="/images/SQLI/17.png" alt="img"> <img src="/images/SQLI/18.png" alt="img"></p><p>5）输入查询但输出固定结果 case=5<br>正常访问<img src="/images/SQLI/19.png" alt="img"></p><p>盲注？使用sleep（）对结果验证，可知teacher1密码为123456<img src="/images/SQLI/20.png" alt="img">这里可知111111不是正确密码<br><img src="/images/SQLI/21.png" alt="img"></p><p>6）输入学号分数，对分数和学号进行更新 case=6<br>正常访问，score被更新<br><img src="/images/SQLI/22.png" alt="img"><br>构建【10.241.0.6/sql_In.php?case=6&amp;score=100&amp;id=1’and if(ascii(substr(database(),1,1))=116,sleep(5),1)%23–】<br>t的ascii码对应116 ，同5观察网页响应时间即可<br>同样分别依次定位test四个字符。</p><h5 id="5-针对上述各个应用接口，-用-sqlmap-尝试各种注入方式，并用-wireshark-抓包，记录每次的目标、SQL-命令行、结果（包括出结果的过程、和最终的输出）、和抓包文件。分析抓包文件，了解攻击向量，体会各种注入技术的原理。手动尝试。"><a href="#5-针对上述各个应用接口，-用-sqlmap-尝试各种注入方式，并用-wireshark-抓包，记录每次的目标、SQL-命令行、结果（包括出结果的过程、和最终的输出）、和抓包文件。分析抓包文件，了解攻击向量，体会各种注入技术的原理。手动尝试。" class="headerlink" title="5.    针对上述各个应用接口， 用 sqlmap 尝试各种注入方式，并用 wireshark 抓包，记录每次的目标、SQL 命令行、结果（包括出结果的过程、和最终的输出）、和抓包文件。分析抓包文件，了解攻击向量，体会各种注入技术的原理。手动尝试。"></a>5.    针对上述各个应用接口， 用 sqlmap 尝试各种注入方式，并用 wireshark 抓包，记录每次的目标、SQL 命令行、结果（包括出结果的过程、和最终的输出）、和抓包文件。分析抓包文件，了解攻击向量，体会各种注入技术的原理。手动尝试。</h5><ol start="5"><li>1）学号显示姓名和分数<br>sqlmap 常规基本扫一下 python2 sqlmap -u “url”<br><img src="/images/SQLI/23.png" alt="img"><br>结果显示三类注入，boolean-base，AND/or timebase，UNION，实际均存在<br><img src="/images/SQLI/24.png" alt="img"><br>上wireshark找出请求作分析，注意，这里的“url”有参数case和id，sqlmap会先对case进行扫描，再是id<br><img src="/images/SQLI/25.png" alt="img"><br><img src="/images/SQLI/26.png" alt="img"><br><img src="/images/SQLI/27.png" alt="img"><br><img src="/images/SQLI/28.png" alt="img"></li></ol><p>【/sql_In.php?case=1&amp;id=123&amp;PdjA=6119 AND 1=1 UNION ALL SELECT 1,NULL,’<script>alert(“XSS”)</script>‘,table_name FROM information_schema.tables WHERE 2&gt;1–/**/; EXEC xp_cmdshell(‘cat ../../../etc/passwd’)#】<br>Sqlmap主要使用UNION 语句SELECT table_name FROM information_schema.tables where 恒真，并用–将后方语句注释掉</p><p>2）学号展示是否存在 <img src="/images/SQLI/29.png" alt="img"><br>结果扫描出booleanbase和timebase<br><img src="/images/SQLI/30.png" alt="img"></p><p>对数据库进行爆破 <img src="/images/SQLI/31.png" alt="img"><br>Wireshark抓到的请求载荷<br><img src="/images/SQLI/32.png" alt="img"><br>  <img src="/images/SQLI/33.png" alt="img"><br>针对有回显，用AND形式通过CASE将数据库名转换为字符判断非空后，MID（（select））将select后字符从第一个开始，转换为ASCII码逐个对比通过回显爆破，爆破结果<br><img src="/images/SQLI/34.png" alt="img"></p><p>3）将查询结果展示在随机内容间<br><img src="/images/SQLI/35.png" alt="img"><br><img src="/images/SQLI/36.png" alt="img"><br>  用—flush-session清掉sqlmap的缓存的session，以防止实验误差，这里随机内容产生了一定的作用，直接扫不出来，我们<br> 使用sqlmap的—string参数指定exist字符串为“yes”<br> <img src="/images/SQLI/37.png" alt="img"><br> 可以看到起到了作用，–string参数从回显内容中提取出了exist<img src="/images/SQLI/38.png" alt="img"><br>抓包分析<br><img src="/images/SQLI/39.png" alt="img"><br><img src="/images/SQLI/40.png" alt="img"></p><p>针对存在干扰，sqlmap主要攻击形式是and SLEEP（）<br>–dbs进行测试<br><img src="/images/SQLI/41.png" alt="img"><br><img src="/images/SQLI/42.png" alt="img"><br><img src="/images/SQLI/43.png" alt="img"><br>   可以看到sqlmap先记录了正常的响应时间，进行timebase的爆破，并且字段是一个字符一个字符慢慢跳出来的<br>同样，将数据库名的字符转换为ASCII码逐个爆破，通过sleep（）进行判定，此方式速度慢。</p><p>4）<br>5）展示固定结果<br>   <img src="/images/SQLI/44.png" alt="img"><br>   <img src="/images/SQLI/45.png" alt="img"><br>   <img src="/images/SQLI/46.png" alt="img"><br>同样基于timebase，通过SLEEP进行判定</p><p>6）将对应学生的分数更新<br><img src="/images/SQLI/47.png" alt="img"><br><img src="/images/SQLI/48.png" alt="img"></p><p>  同样为timebase不赘述<br>  <img src="/images/SQLI/49.png" alt="img"><br>用IF判断数据库名的ASCII，为真则SLEEP（）</p><h5 id="6-第一个接口的基础上，尝试用不同的方法来避免-SQL-注入，再使用-sqlmap-尝试看是否有效，能否绕过。"><a href="#6-第一个接口的基础上，尝试用不同的方法来避免-SQL-注入，再使用-sqlmap-尝试看是否有效，能否绕过。" class="headerlink" title="6.  第一个接口的基础上，尝试用不同的方法来避免 SQL 注入，再使用 sqlmap 尝试看是否有效，能否绕过。"></a>6.  第一个接口的基础上，尝试用不同的方法来避免 SQL 注入，再使用 sqlmap 尝试看是否有效，能否绕过。</h5><ol start="6"><li>SQL防注入手段<br>1）    输入过滤<br>2）    PHP　ＰＤＯ划清代码与数据的界限效防御SQL注入<br><img src="/images/SQLI/50.png" alt="img"></li></ol><p>这时无论手工还是ｓｑｌｍａｐ都已不起作用<br>  <img src="/images/SQLI/51.png" alt="img"><br>３）参数化查询，ＰＤＯ也属于参数化查询吧</p><p>采用ＭｙＳＱＬＩ拓展预编译技术，把ｓｑｌ语句编译好才将用户输入作为参数传入，杜绝了用户的输入成为ｓｑｌ语句的一部分，有效的防止了ｓｑｌ注入</p><p>总结：一次练习学会了装系统、搭建数据库、服务器，掌握sql，写php，会用sqlmap，用wireshark还有ChromeF12…….</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SQL注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>py微信定时消息之 欠债还钱</title>
+      <link href="/python/python3%E5%82%AC%E9%92%B1.html"/>
+      <url>/python/python3%E5%82%AC%E9%92%B1.html</url>
+      
+        <content type="html"><![CDATA[<p>永远不要借钱给别人，借了失去一个朋友，还会多一个敌人…..<a id="more"></a></p><p>去年暑假借给某某一些钱</p><p>“国庆还你”，“元旦拿钱就还你”，“过年的时候还你”，“拿钱就还你”，“51还你”，“端午才有钱”</p><p>还你🐴呢，端午过去了，每天我还微信上发两句还钱过去催，</p><p>突然一想，写个python对接微信每过一个小时发消息提醒吧，</p><p>心累…..</p><pre><code>    from __future__ import unicode_literals    from __future__ import unicode_literals    from threading import Timer    from wxpy import *    import requests    bot = Bot()    #linux执行登陆请调用下面的这句    #bot = Bot(console_qr=2,cache_path=&quot;botoo.pkl&quot;)    def send_news():        try:                            # 朋友的微信名称，我给朋友备注了“还钱来”                    my_friend = bot.friends().search(u&#39;还钱来&#39;)[0]            my_friend.send(u&quot;还钱，你欠我的钱，是不是该还了&quot;)            my_friend.send(u&quot;快点还钱，你欠我的钱，是不是该还了&quot;)            # 每多少秒，发送1次            t = Timer(3600, send_news)            t.start()        except:                   # 自己的微信名称，不是微信帐号。                 my_friend = bot.friends().search(&#39;你是个儿吗&#39;)[0]            my_friend.send(u&quot;今天消息发送失败了&quot;)    if __name__ == &quot;__main__&quot;:        send_news()</code></pre><p>看来，会写点代码海星</p><p>还能写个每日天气预报，每日给女朋友晚安啥的…<br>诶？我哪里来的女朋友.<br>有python，要什么女朋友。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>反射型DDoS放大攻击的原理分析和防范措施</title>
+      <link href="/safe/DDOS.html"/>
+      <url>/safe/DDOS.html</url>
+      
+        <content type="html"><![CDATA[<p>反射型DDoS放大攻击的原理分析和防范措施<a id="more"></a></p><p>拒绝服务攻击（DoS, Denial of Service）利用各种服务请求耗尽被攻击网络的系统资源，从而使被攻击网络无法处理合法用户的请求。而随着僵尸网络的兴起，同时由于攻击方法简单、影响较大、难以追查等特点，<br>一般而言，我们会根据针对的协议类型和攻击方式的不同，把DDoS分成 SYN Flood、ACK Flood、UDP Flood、NTP Flood、SSDP Flood、DNS Flood、HTTP Flood、ICMP Flood、CC等各类攻击类型。</p><p>而反射型的DDoS攻击是的一种新的变种。攻击者并不直接攻击目标服务IP，而是利用互联网的某些特殊服务开放的服务器，通过伪造被攻击者的IP地址、向有开放服务的服务器发送构造的请求报文，该服务器会将数倍于请求报文的回复的数据被发送到被攻击IP，从而对后者间接形成DDOS 攻击。<br>如下图所示，这里的攻击者（Attacker，实际情况中更多的会利用傀儡机进行攻击）不直接把攻击包发给受害者，而是冒充受害者给放大器（Amplifiers）发包，然后通过放大器再反射给受害者。<br><img src="/images/DDOS/ddos3.png" alt="img"><br>在反射型攻击中，攻击者利用了网络协议的缺陷或者漏洞进行IP欺骗，主要是因为很多协议（例如ICMP，UDP等）对源IP不进行认证。同时，要达到更好的更好的攻击效果，一般黑客会选择具有放大效果的协议服务进行攻击。总结一下就是利用IP欺骗就行反射+放大，从而达到了四两拨千斤的效果。<br>Smurf攻击<br>Smurf 攻击是经典的 DDoS 攻击，Smurf攻击是以最初发动这种攻击的程序名Smurf来命名。这种攻击方法结合使用了IP欺骗和ICMP回复方法使大量网络传输充斥目标系统，引起目标系统拒绝为正常系统进行服务。<br><img src="/images/DDOS/ddos4.png" alt="img"><br>攻击的过程大致是这样的Attackr向一个具有大量主机和因特网连接的网络的广播地址发送一个欺骗性Ping包，而欺骗性Ping分组的源地址就是Victim（9.9.9.9）希望攻击的目标。路由器接收到这个发送给IP广播地址（1.1.1.255）的分组后，由于ICMP并不会进行握手而验证源IP地址，路由器认为这就是广播分组，会对本地网段中的所有主机(1.1.1.2,1.1.1.3,1.1.1.4,1.1.1.5,1.1.1.6)进行广播。网段中的所有主机都会向欺骗性分组的IP地址发送echo响应信息。如果这是一个很大的以太网段，可以会有上百台主机对收到的echo请求进行回复，因些目标系统都很快就会被大量的echo信息吞没，这样轻而易举地就能够阻止该系统处理其它任何网络传输，从而引起拒绝为正常系统服务。这种攻击不仅影响目标系统，还影响目标公司的因特网连接。<br>那么如何防止这种类型的攻击？<br>a. 阻塞Smurf攻击的源头.。Smurf攻击依靠攻击者的力量使用欺骗性源地址发送echo请求。用户可以使用路由路设置来的访问保证内部网络中发出的所有传输信息都具有合法的源地址，以防止这种攻击。<br>b. 阻塞Smurf的反弹站点。用户可以有两种选择以阻塞Smurf攻击的反弹站点。第一种方法可以通过ACL阻止所有入站echo请求，这们可以防止这些分组到达自己的网络。如果不能阻塞所有入站echo请求，用户就需要把自己的路由器把网络广播地址映射成为LAN广播地址。<br>DNS反射攻击<br>DNS服务是整个互联网的基础服务，在我们链接互联网的时候，需要通过DNS解析将域名转化成对应的IP地址。理论上来说ISP的DNS服务器只响应来自它自己的客户IP的DNS Query响应，但事实上互联网上大量的DNS服务的默认配置缺失，导致了会响应所有IP的DNSQuery 请求。<br><img src="/images/DDOS/ddos5.png" alt="img"><br>同时，DNS大部分使用UDP协议，UDP协议没有握手过程从而验证请求的源IP。如果下图所示，攻击者（实际上是攻击这控制的傀儡机）发送大量的伪造了Victim IP的请求给DNS服务器，DNS服务器成为放大器将DNS响应回复给受害者。<br>下面再来看一下DNS的如果将请求数据包进行放大，输入(x.x.x.x为DNS服务器ip)<br>dig ANY isc.org @x.x.x.x<br>返回结果，这里为了节约篇幅，我们省略了大部分的响应内容。我们可以看到，响应的内容大大大于请求的数据包内容更，这里就产生了放大的效果。<br>; &lt;&lt;&gt;&gt; DiG 9.7.3 &lt;&lt;&gt;&gt; ANY isc.org @x.x.x.x<br>;; global options: +cmd<br>;; Got answer:<br>………………………………….此处省略具体请求内容<br>isc.org.                484        IN        RRSIG        A 5 2 7200 20121125230752 20121026230752 4442 isc.org. ViS+qg95DibkkZ5kbL8vCBpRUqI2/M9UwthPVCXl8ciglLftiMC9WUzq Ul3FBbri5CKD/YNXqyvjxyvmZfkQLDUmffjDB+ZGqBxSpG8j1fDwK6n1 hWbKf7QSe4LuJZyEgXFEkP16CmVyZCTITUh2TNDmRgsoxrvrOqOePWhp 8+E=<br>不幸的是，目前互联网上存在大量的DNS服务器可以被利用，黑客使用网络扫描器工具可以很容易的发现这些DNS服务器并加以利用。<br>a. 如果您是DNS的管理员，需要加固DNS服务器，可以按照下面的配置关闭递归功能和和限制可查询的IP地址。<br>options {    recursion no;};<br>options {    allow-query {192.168.1.0/24;};};<br>b. 如果是受害者，首先可以通过网络层的ACL规则来防御， 或者使用抗DDoS系统进行流量清洗，目前大部分的云服务商都有这类功能。<br>NTP反射攻击<br>NTP 是网络时间协议（Network Time Protocol）的简称，是使计算机之前记性时间同步化的网络协议。NTP 包含一个 monlist 功能，也被成为 MON_GETLIST，主要用于监控 NTP 服务器，NTP 服务器响应 monlist 后就会返回与 NTP 服务器进行过时间同步的最后 600 个客户端的 IP，响应包按照每 6 个 IP 进行分割，最多有 100 个响应包。我们可以通过 ntpdc 命令向一个 NTP 服务器发送 monlist 以及结合抓包来看下实际的效果。<br>ntpdc -n -c monlist x.x.x.x | wc -l<br>602<br>在上面的命令行中我们可以看到一次含有 monlist 的请求收到 602 行数据，除去头两行是无效数据外，正好是 600 个客户端 IP 列表，并且从上面图中的 wireshark 中我们也看到显示有 101 个 NTP 协议的包，除去一个请求包，正好是 100 个响应包。<br>a. 如果作为NTP管理员，需要加固 NTP 服务, NTP 服务器升级到 4.2.7p26或者更好的版本。关闭现在 NTP 服务的 monlist 功能，在ntp.conf配置文件中增加选项<br>disable monitor<br>b. 如果是受害者，如何防御 NTP 反射和放大攻击，首先可以通过网络层的ACL规则来防御， 或者使用抗DDoS系统进行流量清洗，目前大部分的云服务商都有这类功能。<br>SSDP反射攻击<br>互联网上家用路由器、网络摄像头、打印机、智能家电等智能设备普遍采用UPnP（即插即用）协议作为网络通讯协议， 而UPnP设备的发现是通过源端口为1900的SSDP（简单服务发现协议）进行相互感知。<br>利用SSDP协议进行反射攻击的原理与利用DNS服务、NTP服务类似，都是伪造成被攻击者的IP地址向互联网上大量的智能设备发起SSDP请求，接收到请求的智能设备根据源IP地址将响应数据包返回给受害者。随着物联网和智能设备的快速发展和普及，利用智能设备展开DDoS攻击会越来越普遍。</p><p>那么该如何防护SSDP攻击呢？<br>a. 对于不需要即插即用服务的设备，关闭即插即用服务<br>b. 在被SSDP DDoS攻击的时候，通过网络设备的ACL规则过滤SSDP指纹过滤。或者引入DDoS防护系统</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DDOS </tag>
+            
+            <tag> 安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>初识maven</title>
+      <link href="/java/maven.html"/>
+      <url>/java/maven.html</url>
+      
+        <content type="html"><![CDATA[<p>Maven基于 项目对象模型 POM ，软件项目管理工具，<a id="more"></a>合理叙述项目间的依赖关系，通过pom.xml文件配置获取jar包， 如果要用pom.xml获取jar包，首先项目必须为maven项目，就是在java项目和web项目上面包裹了一层maven，</p><p>那么就学会如何在pom.xml中配置我们需要的jar包</p><p>pom.xml获取junit的jar包的编写<img src="/images/maven/1.png" alt="img"></p><p>为什么通过groupid，artifactid，version三个属性能定位一个jar包<br>假如上面的pom.xml文件属于A项目，那么A肯定是一个maven项目，通过上面三个属性找到junit对应的jar，那么junit项目肯定也是一个maven项目，junit的maven项目中的pom.xml文件就会有三个标识符， 别的maven项目就能通过这三个属性找到对应的jar包。所以创建每个maven项目都会要求写上这三个属性值<br><img src="/images/maven/2.png" alt="img"></p><h4 id="maven的安装配置，下载解压"><a href="#maven的安装配置，下载解压" class="headerlink" title="maven的安装配置，下载解压"></a>maven的安装配置，下载解压<img src="/images/maven/3.png" alt="img"></h4><p>环境变量<img src="/images/maven/4.png" alt="img"></p><p>配置pom.xml可以获取到jar包，但是这些jar在哪里呢，在仓库，分别为：本地仓库，第三方仓库，中央仓库<br>1）本地仓库<img src="/images/maven/5.png" alt="img"></p><p>可在配置文件settings.xml中修改<br>2）第三方仓库<br>内部中心仓库，一般由公司自己设立，只为公司内部共享使用，需要单独配置，默认不使用<br>3）中央仓库<br>Maven内置了远程公用仓库：<a href="http://repo1.maven.org/maven2" target="_blank" rel="noopener">http://repo1.maven.org/maven2</a><br>这个公共仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。目前是以java为主，工程依赖的jar包如果本地仓库没有，默认从中央仓库下载</p><p>项目结构<br><img src="/images/maven/6.png" alt="img"></p><p><img src="/images/maven/7.png" alt="img"><br>maven 命令<br><img src="/images/maven/8.png" alt="img"><br><img src="/images/maven/9.png" alt="img"><br><img src="/images/maven/10.png" alt="img"></p><p>依赖关系（重点）<br>1）：网站搜索<br>2）本地获得<br><img src="/images/maven/11.png" alt="img"></p><p>依赖（坐标）的常见配置:<br><img src="/images/maven/12.png" alt="img"><br>groupId、artifactId、version是依赖的基本坐标，缺一不可<br>type：依赖的类型，默认jar包<br>optional：标记依赖是否可选，默认false<br>exclusions：排除传递依赖，解决jar冲突<br>scope：依赖范围，意思是通过pom.xml加载进来的jar包，什么范围内使用，生效范围包括编译时，运行时，测试时<br><img src="/images/maven/13.png" alt="img"><br>compile：默认值，如果选择此值，表示编译、测试和运行都使用当前jar</p><p>test：表示只在测试时当前jar生效，在别的范围内就不能使用该jar包。例如：junit 。此处不写也不报错，因为默认是compile，compile包扩了测试</p><p>runtime，表示测试和运行时使用当前jar，编译时不用该jar包。例如：JDBC驱动。JDBC驱动，在编译时(也就是我们写代码的时候都是采用接口编程，压根就没使用到JDBC驱动包内任何东西，只有在运行时才用的到，所以这个是典型的使用runtime这个值的例子)，此处不写也不报错，理由同上</p><p>provided，表示编译和测试时使用当前jar，运行时不在使用该jar了。例如：servlet-api、jsp-api等。【必须填写】么意思呢？ 在我们以前创建web工程，编写servlet或者jsp时，就没导入过jar包把，因为myeclipse或者别的ide帮我们提供了这两个jar包，内置了，所以我们在编译期测试期使用servlet都不会报缺少jar包的错误，而在运行时期，离开了myeclipse或别的ide，就相当于缺失了这两个jar包，但此时tomcat又会帮我们提供这两个jar，以便我们不会报错，所以，这两个很特殊。看图</p><p>　　　1、开发阶段(MyEclipse提供)，看下图以此证明我们说的<br>　　　　　　　　　　java web 5.0项目：<img src="/images/maven/14.png" alt="img"></p><p>　<br>　　　　　　　　　java web 6.0项目：<img src="/images/maven/15.png" alt="img"></p><p>　　　　2、运行阶段(tomcat提供)<br><img src="/images/maven/16.png" alt="img"><br>所以，根据这个特点，如果使用maven开发项目，就不是web项目了，那么myeclipse就不会在给我们提供这两个jar包，我们就必须自己手动通过坐标从仓库中获取，但是针对上面的分析，当运行的时候，tomcat会帮我们提供这两个jar包，所以我们自己从仓库中获取的jar包就不能和tomcat中的冲突，那么就正好可以通过provided这个属性，来设置这两个jar的作用范围，就是在编译时期和测试时期生效即可。<br>这个例子就可以解释上面创建maven web时产生的错误和解决方案了。<br>system:表示我们自己手动加入的jar包，不属于maven仓库(本地，第三方等)，属于别得类库的这样的jar包，只在编译和测试期生效，运行时无效。一般不用　　　　　　　　　</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JUnit使用</title>
+      <link href="/all/Junit.html"/>
+      <url>/all/Junit.html</url>
+      
+        <content type="html"><![CDATA[<p>JUnit是一个java的单元测试框架<a id="more"></a></p><p>下载好的junit.jar包</p><p><img src="/images/Junit/1.png" alt="img"></p><p>新建一个项目junit test2</p><p><img src="/images/Junit/2.png" alt="img"></p><p>右键点击项目，选择Build Path - Configure Build Path</p><p>然后点击Libraries - Add External JARs</p><p>导入junit的jar包</p><p><img src="/images/Junit/3.png" alt="img"></p><p>左侧项目中应该多出来junit的jar包，至此JUnit项目环境已配置完成。</p><p><img src="/images/Junit/4.png" alt="img"></p><p>在项目下src文件夹下新建一个包(package)，</p><p>在包下新建类(class)，我命名为MyTes，</p><p>代码为简单的加减法，就是这次用来测试的代码</p><p><img src="/images/Junit/5.png" alt="img"></p><p>右键点击MyTes.java，选择new-JUnit Test Case，</p><p>然后eclipse会生成一个MyTesTest.java的类，这就是测试类了。</p><p><img src="/images/Junit/6.png" alt="img"></p><p>测试代码为</p><p><img src="/images/Junit/7.png" alt="img"></p><p>@Test告诉JUnit接下来进行测试，assertEquals(期望值，测试用例);是JUnit自带的函数用来检测是否与预期相符。</p><p>因为5+3=8,97-2=95，这里两个测试都没有出问题，所以运行结果应该是一片绿色。</p><p>run MyTesTest</p><p><img src="/images/Junit/8.png" alt="img"></p><p>更改一下代码中的期望值95改为59运行</p><p><img src="/images/Junit/9.png" alt="img"></p><p>这里就可以看到testSubstract这个函数出错了，和预期不符。</p><p>总结下使用JUnit写测试代码的简单步骤：</p><ol><li>创建一个名为 *Test.java 的测试类。</li><li>向测试类中添加 测试方法。</li><li>向方法中添加 Annotaion @Test或其他注解。</li><li>执行测试条件并且应用 Junit 的 assertEquals API 或JUnit中 Assert 的其他APi 来检查。</li></ol><p>JUnit中的Assert</p><p>public class Assert extends java.lang.Object </p><p>这个类提供了一系列的编写测试的有用的声明方法。只有失败的声明方法才会被记录。</p><ul><li><p>void assertEquals(boolean expected, boolean actual)</p></li><li><ul><li>检查两个变量或者等式是否平衡</li></ul></li><li><p>void assertFalse(boolean condition)</p></li><li><ul><li>检查条件是假的</li></ul></li><li><p>void assertNotNull(Object object)</p></li><li><ul><li>检查对象不是空的</li></ul></li><li><p>void assertNull(Object object)</p></li><li><ul><li>检查对象是空的</li></ul></li><li><p>void assertTrue(boolean condition)</p></li><li><ul><li>检查条件为真</li></ul></li><li><p>void fail()</p></li><li><ul><li>在没有报告的情况下使测试不通过</li></ul></li></ul><p>JUnit中的注解</p><ul><li>@BeforeClass：针对所有测试，只执行一次，且必须为static void</li><li>@Before：初始化方法</li><li>@Test：测试方法，在这里可以测试期望异常和超时时间</li><li>@After：释放资源</li><li>@AfterClass：针对所有测试，只执行一次，且必须为static void</li><li>@Ignore：忽略的测试方法</li></ul><p>一个单元测试类执行顺序为：</p><p>@BeforeClass –&gt; @Before –&gt; @Test –&gt; @After –&gt; @AfterClass</p><p>每一个测试方法的调用顺序为：</p><p>@Before –&gt; @Test –&gt; @After</p><p>时间测试</p><p>如果一个测试用例比起指定的毫秒数花费了更多的时间，那么 Junit 将自动将它标记为失败。timeout 参数和 @Test注释一起使用。</p><p>@Test(timeout = 1000) public void testTimeoutSuccess() {     // do nothing } </p><p>异常测试</p><p>你可以测试代码是否它抛出了想要得到的异常。expected 参数和 @Test 注释一起使用。</p><p>@Test(expected = NullPointerException.class) public void testException() {     throw new NullPointerException(); }</p><p>总结：</p><p>测试方法上必须使用@Test进行修饰。</p><p>测试方法必须使用public void进行修饰，不能带任何的参数。</p><p>测试类的包应该和被测试类保持一致</p><p>测试单元中的每个方法都必须可以独立测试测试方法间不能有任何的依赖。</p><p>测试类使用Test作为类名的后缀。</p><p>测试方法使用test作为方法名的前缀。</p><p>JUnit的使用相对来说是比较简单，也是比较容易理解的，对于刚步入工作的我来说，一个正规的测试习惯是非常重要的，因此我更应该好好学学如何使用JUnit。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+            <tag> 学习总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Git使用</title>
+      <link href="/all/Git-bash.html"/>
+      <url>/all/Git-bash.html</url>
+      
+        <content type="html"><![CDATA[<p>Git是 分布式 版本控制系统<a id="more"></a></p><p>ps：需要熟知的 命令 及 git的相应工作原理 均用红色字体标明，这是需要掌握的关键</p><p>安装就不说啦</p><p>安装好打开Git Bash：我先看一下我当前所在目录</p><p><img src="/images/git学习/1.png" alt="img"></p><p>然后我决定把d:/what/这个目录作为我练习的目录，cd到这个目录下，</p><p><code>git ini</code>（创建新仓库）  </p><p><img src="/images/git学习/2.png" alt="img"></p><p>或者克隆仓库到本地，这里用自己github上的一个仓库为例</p><p><code>git clone &lt;repo&gt; &lt;directory&gt;</code></p><p><img src="/images/git学习/3.png" alt="img"></p><p>打开 d：/what/文件夹</p><p><img src="/images/git学习/4.png" alt="img"></p><p>可以看到通过init新建出的.git这个隐藏文件夹   init把what/这个文件夹作为了仓库</p><p>同样 通过clone下来的checkio_resolve仓库已经在本地</p><p>就用checkio_resolve仓库来学习吧，</p><p>本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录（这里是checkio_resolve），它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。</p><p><img src="/images/git学习/5.png" alt="img"></p><p><img src="/images/git学习/6.png" alt="img"></p><p><code>git add</code> 命令可将该文件添加到缓存</p><p><code>git diff</code> 命令显示已写入缓存与已修改但尚未写入缓存的改动的区别</p><p><img src="/images/git学习/7.png" alt="img"></p><p>使用 <code>git add</code> 命令将想要快照的内容写入缓存区，</p><p> 而<code>git commit</code> 将缓存区内容添加到仓库中  可选-m如： <code>git commit -m &quot;注释&quot;</code></p><p><img src="/images/git学习/8.png" alt="img"></p><p>那么相对应的有：</p><p><code>git checkout</code> 取消之前 <code>git add</code> 的添加 </p><p><code>git reset</code>  取消之前 <code>git commit</code> 的提交</p><p><img src="/images/git学习/9.png" alt="img"></p><p>也可以跳过暂存区域直接从仓库取出文件或者直接提交代码。</p><p><img src="/images/git学习/10.png" alt="img"></p><p>分支：使用分支意味着可以从开发主线上分离开来，然后在不影响主线的同时继续工作。</p><p><code>git branch</code>  查看分支</p><p><code>git branch</code> 【name】新建【name】分支</p><p><code>git checkout</code> 【name】切换到【name】分支</p><p><code>git branch -d</code> 【name】删除【name】分支</p><p><code>git merge</code>分支的合并</p><p><img src="/images/git学习/11.png" alt="img"></p><p>分支之间相互独立工作</p><p><img src="/images/git学习/12.png" alt="img"></p><p>分支的删除</p><p><img src="/images/git学习/13.png" alt="img"></p><p><img src="/images/git学习/14.png" alt="img"></p><p>如果要<code>git clone</code>指定分支怎么办呢  前面知道，用命令 <code>git clone url   clone</code>到本地的是默认的master分支</p><p>这里我们如果要clone   a-test这个分支</p><p><img src="/images/git学习/15.png" alt="img"></p><p>就要用-b参数<code>git clone -b [name] [directory]</code></p><p><code>get clone -b a-test https://github.com/dqw6668/Checkio_resolve.git</code></p><p><img src="/images/git学习/16.png" alt="img"></p><p>  然后再查看clone下来的仓库的分支信息</p><p><img src="/images/git学习/17.png" alt="img"></p><p><code>git push</code> 和 <code>git pull</code> 一个往远端仓库推送，一个把远端仓库拉到本地</p><p>首先更改了readme文件</p><p><img src="/images/git学习/18.png" alt="img"></p><p>然后用git push ，输入我的github账号密码，就可以把改动更新到github仓库了</p><p><img src="/images/git学习/19.png" alt="img"></p><p><img src="/images/git学习/20.png" alt="img"></p><p><img src="/images/git学习/21.png" alt="img"></p><p>可以看到github上仓库里的readme已经更改，并且默认push到a-test这个分支下（clone指定的分支）</p><p>如果我现在要把本地的a-test分支push到远端仓库的master分支该怎么做呢</p><p>查了一下指令 $ <code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code></p><p>这里就是 <code>【git push origin a-test:master】</code></p><p><img src="/images/git学习/22.png" alt="img"></p><p>再来看github仓库里master分支也更改了</p><p><img src="/images/git学习/23.png" alt="img"></p><p><code>git log</code> 查看所有的历史改动</p><p><img src="/images/git学习/24.png" alt="img"></p><p>最后还有一个<code>git tag</code>命令，用来为某次改动记录一个重要的标签，</p><p>学习体会：</p><p>因为个人用github还算熟练，此次学习更是加深了对版本控制系统的深入理解，受益匪浅</p><p>个人觉得光看教程文档是不如用实际操作的方式收获大的，把所有涉及的操作、命令自己敲一遍，那么就不会忘了。</p><p>然后不仅要知道什么命令是什么操作，还要明白背后的工作原理，例如 工作区 暂存区 HEAD之间的关系和转换，而不是对命令死记硬背，只有真正明白，才能用起来得心应手。</p><p>git出现 Authentication failed for  的问题，  name，mail认证失败，</p><p>使用<code>git config --global --unset credential.helper</code></p><p>再pull，将会输入名字密码即可通过</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>AppScan使用</title>
+      <link href="/all/AppScan.html"/>
+      <url>/all/AppScan.html</url>
+      
+        <content type="html"><![CDATA[<p>AppScan是IBM公司出的一款Web应用安全测试工具，采用黑盒测试的方式，可以扫描常见的web应用安全漏洞<a id="more"></a>。AppScan功能十分齐全，支持登录功能并且拥有十分强大的报表。在扫描结果中，不仅能够看到扫描的漏洞，还提供了详尽的漏洞原理、修改建议、手动验证等功能。</p><p>AppScan的唯一缺点在于，作为一款商业软件，价格十分昂贵。</p><p>首先要知道：AppScan 全面扫描包含两个主要阶段：探索和测试。</p><p>探索也就是 扫描出目标url下整个系统的 基本结构和页面。</p><p>测试 就是根据你所配置的信息 如测试策略、深度等等 对页面中的元素进行测试 从而得出安全性问题</p><p>Appscan在找目标url问题时，先搜集出这个url所包含的所有页面（这就是探索阶段），然后才开始对页面中所有的元素例如：按钮、文本框等进行详细的扫描（对按钮尽可能进行各种操作，以发出请求的形式），根据页面的反馈判断是否存在安全问题</p><p>这也是Appscan的强大之处，我们只提供了一个目标url，Appscan尽可能找出全面的资源，分别进行扫描，也可以仅进行探索，作为搜集目标信息的工具</p><p><a href="#8159-1526028358976">下载安装：</a></p><p><a href="#5244-1526023880604">使用：</a></p><p><a href="#2049-1526026007511">扫描过程：</a></p><p><a href="#9546-1526026001951">等待扫描完成：</a></p><p><a href="#5523-1526027977807">手动确认：</a></p><ul><li><p><a href="#6615-1526027265745">1、sql注入</a>    </p></li><li><p><a href="#2488-1526026795042">2、留言板可被绕过任意嵌入</a></p></li></ul><p>这里提供一个破解版，其中包括</p><p>AppScan9.0.3.7官方安装包+9.0.3.7Fix003官方补丁包+破解补丁（覆盖文件）</p><p>因为这里是破解版，所以先下载安装，覆盖破解补丁，再对appscan进行更新（补丁包为官方给出的更新包，更新到最新版总没有坏处）</p><div id="8159-1526028358976">下载安装：</div><p><a href="https://pan.baidu.com/s/1Ea2G6MGiRBXmhT0ApA8aNg" target="_blank" rel="noopener">下载链接</a>，密码: hp2j</p><p>下载好，请先确认电脑已安装<a href="https://www.microsoft.com/en-us/download/details.aspx?id=53344" target="_blank" rel="noopener">.net4.62</a>，否则安装报错，运行安装包进行安装</p><p><img src="/images/AppScan/1.png" alt="img"></p><p>将覆盖文件中的两个dll（破解补丁）放到安装好的目录AppScan Standard下进行替换（替换原license认证）</p><p><img src="/images/AppScan/2.png" alt="img"></p><p>替换后运行更新文件</p><p><img src="/images/AppScan/3.png" alt="img"></p><p>进行升级，至此安装完成</p><hr><div id="5244-1526023880604">使用：</div><p>1、打开AppScan软件，选创建新的扫描</p><p><img src="/images/AppScan/4.png" alt="img"></p><p>2、常规扫描，</p><p><img src="/images/AppScan/5.png" alt="img"></p><p>3、出现扫描配置向导页面，这里是选择【 AppScan(自动或手动)】（为大多数 Web 应用程序扫描选择该选项。通过从 AppScan 发送到应用程序的请求来手动和/或自动探索应用程序。）</p><p><img src="/images/AppScan/6.png" alt="img"></p><p>4、输入扫描目标URL（这里用<a href="http://testphp.vulnweb.com/index.php" target="_blank" rel="noopener">http://testphp.vulnweb.com/index.php</a>做示范）</p><p><img src="/images/AppScan/7.png" alt="img"></p><p>5、点击”下一步“，出现登录管理的页面，这是因为对于大部分网站，需要用户名和密码登录进去才可以查看许多内容，未登录的情况下就只可以访问部分页面。（例如游戏预约时，可能需要先登录网易账号）</p><p>如果要登录的话这里要进行设置，如果不需要登录直接选择 选中” 无“ 即可。</p><p>这里以记录进行示范</p><p><img src="/images/AppScan/8.png" alt="img"></p><p>点击 ”使用AppScan 浏览器“ 就会根据你的URL 打开页面，</p><p><img src="/images/AppScan/9.png" alt="img"></p><p><img src="/images/AppScan/10.png" alt="img"></p><p>我测试的这个页面中正好有一个signup ，Appscan会自动记录，所以只需要登录就行了</p><p><img src="/images/AppScan/11.png" alt="img"></p><p>当登录成功后点击 ”我已登录到站点“ 按钮，这样就会记录你的登录序列 </p><p><img src="/images/AppScan/12.png" alt="img"></p><p>完成后可以在扫描配置，详细信息下看到登录的信息</p><p><img src="/images/AppScan/13.png" alt="img"></p><p>6、测试策略，几种测试策略说明：</p><p>​      ①缺省值：包含多有测试，但不包含侵入式和端口侦听器</p><p>​      ②仅应用程序：包含所有应用程序级别的测试，但不包含侵入式和端口侦听器</p><p>​      ③仅基础结构：包含所有基础结构级别的测试，但不包含侵入式和端口侦听器</p><p>​      ④侵入式：包含所有侵入式测试（可能影响服务器稳定性的测试）</p><p>​      ⑤完成：包含所有的AppScan测试</p><p>​      ⑥关键的少数：包含一些成功可能性较高的测试精选，在时间有限时对站点评估可能有用</p><p>​      ⑦开发者精要：包含一些成功可能性极高的应用程序测试的精选，在时间有限时对站点评估可能有用</p><p>可以点击完全扫描配置看详细信息</p><p><img src="/images/AppScan/14.png" alt="img"></p><p><img src="/images/AppScan/15.png" alt="img"></p><p>7、AppScan 的扫描 分三类：完全扫描 、仅探索、仅测试 </p><p>如果系统需要扫描的页面或是元素较少 可以直接选中 完全扫描（其实就是探索和测试一条龙服务）</p><p>如果页面需要扫描的页面和元素比较多时，可以分开来，先探索，探索完成后再进行测试。</p><p><img src="/images/AppScan/16.png" alt="img"></p><p>点击 完成 后 如果勾选了 扫描专家 ，会先启动 扫描专家 进行扫描优化，</p><p>这个自动对话框选择是，可以将扫描文件进行保存，以后可以直接打开扫描结果进行查看</p><p><img src="/images/AppScan/17.png" alt="img"></p><hr><div id="2049-1526026007511">扫描过程：</div><p>这里就到了扫描阶段，首先是 探索阶段（收集目标详细信息）</p><p><img src="/images/AppScan/18.png" alt="img"></p><p>探索完成获得探索到的结果，其中包括了Appscan可以根据目标url找到的所有页面资源，</p><p>我们只关心安全问题，不需要知道具体资源情况（资源是开发的事吧，囧）</p><p><img src="/images/AppScan/19.png" alt="img"></p><p>如果只是对系统中某个模板进行 扫描的话，可以 通过 ”手动探索“ 获取需要扫描的指定页面 </p><p><img src="/images/AppScan/20.png" alt="img"></p><p><img src="/images/AppScan/21.png" alt="img"></p><p>在页面中 点击需要测试的模块页面，单击 ”停止“ 按钮 后点击 确定。</p><p><img src="/images/AppScan/22.png" alt="img"></p><p>之后就会打开下面的对话框，里面的url 就是是手动点击页面的 所包含的url连接</p><p><img src="/images/AppScan/23.png" alt="img"></p><p>对探索到的资源进行 继续完全扫描</p><p><img src="/images/AppScan/24.png" alt="img"></p><div id="9546-1526026001951">等待扫描完成：</div><p><img src="/images/AppScan/25.png" alt="img"></p><p>这是我本次的扫描结果</p><p><img src="/images/AppScan/26.png" alt="img"></p><p>1.问题信息：出现问题的页面和参数，漏洞评分</p><p><img src="/images/AppScan/27.png" alt="img"></p><p>2.咨询：描述了该漏洞的基本原理，成因</p><p><img src="/images/AppScan/28.png" alt="img"></p><p>3.修订建议：从技术层面详细给出该问题的解决修复方法以及示例，一定程度上帮助了测试人员和开发人员之间在修复问题上的沟通</p><p><img src="/images/AppScan/29.png" alt="img"></p><p>4.请求响应：Appscan找问题所发出的请求    和     判断存在问题的响应依据</p><p><img src="/images/AppScan/30.png" alt="img"></p><hr><p>手动确认<div id="5523-1526027977807">手动确认：</div></p><div id="6615-1526027265745">1、sql注入：</div><p><img src="/images/AppScan/31.png" alt="img"></p><p>展开找到的问题 sql注入，右边给到了问题url，和可能被注入的字段参数为id，还有appscan尝试发送的请求和收到的response</p><p>打开chorme浏览器，键入问题url 【<a href="http://testphp.vulnweb.com/AJAX/infocateg.php】并提交【id=1】，所以构建为" target="_blank" rel="noopener">http://testphp.vulnweb.com/AJAX/infocateg.php】并提交【id=1】，所以构建为</a><a href="http://testphp.vulnweb.com/AJAX/infocateg.php?id=1" target="_blank" rel="noopener">http://testphp.vulnweb.com/AJAX/infocateg.php?id=1</a></p><p><img src="/images/AppScan/32.png" alt="img"></p><p>可以看到直接返回了数据信息，包括name敏感字段，尝试id=2，id=3</p><p><img src="/images/AppScan/33.png" alt="img"></p><p><img src="/images/AppScan/34.png" alt="img"></p><p>id=a’ or 1=1–，探测出了mysql，服务器文件目录等关键信息</p><p><img src="/images/AppScan/35.png" alt="img"></p><p>确认url【<a href="http://testphp.vulnweb.com/AJAX/infocateg.php】存在sqlinject无误，进行相应的修复" target="_blank" rel="noopener">http://testphp.vulnweb.com/AJAX/infocateg.php】存在sqlinject无误，进行相应的修复</a></p><div id="2488-1526026795042">2、留言板可被绕过任意嵌入：</div><p><img src="/images/AppScan/36.png" alt="img"></p><p>打开问题url <a href="http://testphp.vulnweb.com/guestbook.php" target="_blank" rel="noopener">http://testphp.vulnweb.com/guestbook.php</a></p><p><img src="/images/AppScan/37.png" alt="img"></p><p>自己准备了一张图片（来源百度图片）</p><p><img src="/images/AppScan/38.png" alt="img"></p><p>图片的src为【<a href="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1526037751340&amp;di=45d87172c0cd8d84ced8301f41f60a90&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.coolapk.com%2Ffeed_tag%2F2017%2F1124%2F20300542038769143711557315031_s-10184-o_1bvlokgvmqgr1n90meg1iu21bnui-uid-440723%40222x222.jpg】" target="_blank" rel="noopener">https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1526037751340&amp;di=45d87172c0cd8d84ced8301f41f60a90&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.coolapk.com%2Ffeed_tag%2F2017%2F1124%2F20300542038769143711557315031_s-10184-o_1bvlokgvmqgr1n90meg1iu21bnui-uid-440723%40222x222.jpg】</a></p><p>构建恶意代码【”‘&gt;<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526037751340&di=45d87172c0cd8d84ced8301f41f60a90&imgtype=0&src=http%3A%2F%2Fimage.coolapk.com%2Ffeed_tag%2F2017%2F1124%2F20300542038769143711557315031_s-10184-o_1bvlokgvmqgr1n90meg1iu21bnui-uid-440723%40222x222.jpg">】</p><p><img src="/images/AppScan/39.png" alt="img"></p><p>add message，图片被嵌入</p><p><img src="/images/AppScan/40.png" alt="img"></p><p>图片被嵌入，还可以嵌入恶意链接等，需配合开发修复</p><p>结尾：</p><p>如果有任何使用问题或者想更详细熟练掌握appscan，可以查阅Appscan的官方帮助文档，在Appscan中F1即可打开</p><p><img src="/images/AppScan/41.png" alt="img"></p><p>扫描结果给出的等级划分可能和实际情况有所出入，需要根据实际权衡</p><p>并非所有扫描结果都可靠准确，尽可能进行手动确认，</p><p>并非所有安全问题都需要修复，要根据实际情况进行权衡是否忽略</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习总结 </tag>
+            
+            <tag> 安全扫描工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>数据结构基础 python实现</title>
+      <link href="/python/py%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"/>
+      <url>/python/py%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</url>
+      
+        <content type="html"><![CDATA[<p>想起自己前几天面试让用python定义树结构怎么做，我说用链表，面试官马上问，python有链表吗，没有….冷场….<a id="more"></a><br><strong>数据结构基础实现</strong><br>python的强大在于其自带的数据结构：列表list【】，元组（），字典dict｛｝，用起来非常舒服啊<br>这里在这些基础上实现常用数据结构：队列、栈、链表、树<br>貌似剑指offer上也有很多这类型的题吧</p><h4 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h4><p>  栈，在一端进行插入删除，先进后出<br>  队列，在前端进行删除，在后端插入，先进先出</p><pre><code>#栈的实现class Stack:    def __init__(self):        self.items = []    def is_empty(self):        return self.items == []    def push(self, node):        self.items.append(node) #入栈    def pop(self):        return self.items.pop() #出栈，pop()默认index = -1 既最后的元素</code></pre><hr><pre><code>#队列的实现class Queue:    def __init__(self):        self.items = []    def is_empty(self):        return self.items == []    def push(self, node):        self.items.append(node)  #入队    def pop(self)        return self.items.pop(0) # 出队，先进先出 ，所以pop(0)</code></pre><h4 id="链表和树"><a href="#链表和树" class="headerlink" title="链表和树"></a>链表和树</h4><p>  链表，逻辑上连续，物理上不一定连续，包括存储数据元素的数据域和存储下一个节点地址的指针域<br>  树，非线性结构，表示层次关系<br>python中，没有显式的指针，除了基本数据类型，都是一个[引用]，可详探究【在python中，什么是传值，什么是传地址】</p><pre><code>#链表class Node(object):    def __init__(self, data, next):        self.data = data        self.next = nextclass LinkList:        def __init__(self):        self.root == None    def addNode(self, data):  #链表首部添加节点        if self.root == None:            self.root = Node(data, None)            return self.root        else:            cursor = self.root            while cursor.next != None:                cursor = cursor.next            cursor.next = Node(data, None)            return self.root    def prepend(self, value):   #链表尾部添加节点        if self.root ==None:            self.root = Node(value, Node)        else:            newroot = Node(value, Node)            newroot.next = self.root            self.root = newroot    </code></pre><hr><pre><code>#树的构造class Node(object):    def __init__(self, data = -1, lchild = None, rchild = None):        self.data = data        self.lchild = lchild        self.rchild = rchildclass Tree(object):    def __init__(self):        self.root = Node()        self.Queue = []    def add(self, data):        node = Node(data)        if (self.root.data == -1):  #如果树是空的，则对根节点赋值            self.root = node            self.Queue.append(self.root)        else:            treeNode = self.Queue[0]            if treeNode.lchild == None:                treeNode.lchild = node                self.Queue.append(treeNode.lchild)            else:                treeNode.rchild = node                self.Queue.append(treeNode.rchild)                self.Queue.pop(0)   #有右子树丢弃该节点    def PreOrder(self, root): #递归先序遍历  根左右        if root == None:            return        print(root.data)        self.PreOrder(root.lchild)        self.PreOrder(root.rchild)    def InOrder(self, root):  #递归中序遍历   左根右        if root == None:            return        self.InOrder(root.lchild)        print(root.data)        self.InOrder(root.rchild)    def PostOrder(self, root):   #左右根        if root == None:            return        self.PostOrder(root.lchild)        self.PostOrder(root.rchild)        print(root.data)    def PreOrder_stack(self, root):        #用一个栈实现先序遍历        if root == None:            return        Stack = []        node = root        while node or Stack:            while node: #从根节点一直找左子树                print(node.data)                Stack.append(node)                node = node.lchild            node = Stack.pop()   #while结束表示没有左子树了            node = node.rchild   #开始查右子树    def InOrder_stack(self, root):        #利用栈实现中序遍历        if root == None:            return        Stack = []        node = root        while node or Stack:            while node:                Stack.append(node)                node = node.lchild            node = Stack.pop()            print(node.data)            node = node.rchild    def PostOrder_stack(self, root):        if root == None:            return        Stack = []        result = []        node = root        while node or Stack:            while node:                Stack.append(node)                result.append(node)                node = node.rchild            node = Stack.pop()            node = node.lchild        result = result[::-1]        for node in result:            print(node.data)&#39;&#39;&#39; def TreeNodeNums(self, root): #求二叉树节点个数        if root is None:            return 0        nums = self.TreeNodeNums(node.lchild)        nums += self.TreeNodeNums(node.rchild)        return nums + 1    def TreeMaxDepth(self, node):  #二叉树的最大深度        if node is Node:            return 0        ldepth = self.TreeMaxDepth(node.lchild)        rdepth = self.TreeMaxDepth(node.rchild)        return (max(ldepth,rdepth) + 1)&#39;&#39;&#39;if __name__ == &#39;__main__&#39;: #先序0137849256   中序7381940526  后序7839415620    datas = range(10)    tree = Tree()    for data in datas:        tree.add(data)    print(tree)    print(&#39;递归先序遍历&#39;)    tree.PreOrder(tree.root)    print(&#39;\n非递归先序&#39;)    tree.PreOrder_stack(tree.root)    print(&#39;\n递归中序遍历&#39;)    tree.InOrder(tree.root)    print(&#39;\n非递归&#39;)    tree.InOrder_stack(tree.root)    print(&#39;\n递归后序&#39;)    tree.PostOrder(tree.root)    print(&#39;\n非递归后序&#39;)    tree.PostOrder_stack(tree.root)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>QA职责流程</title>
+      <link href="/all/QA.html"/>
+      <url>/all/QA.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="QA工作流程"><a href="#QA工作流程" class="headerlink" title="QA工作流程"></a>QA工作流程</h4><h5 id="一、活动专题类项目流程总结："><a href="#一、活动专题类项目流程总结：" class="headerlink" title="一、活动专题类项目流程总结："></a>一、活动专题类项目流程总结：<a id="more"></a></h5><p>​    1.交互初稿，三方会议（QA在三方会议中的职责包括：明确项目需求、交互稿各项细节、预估测试工作量）。</p><p>​    2.交互终稿，输出测试用例。</p><p>​    3.开发自测输出结果。</p><p>​    4.QA测试，上线否？（由项目负责人验收）测试小结（项目是否通过达标，测试内容范围，问题风险）。</p><p>​    5.上线，QA线上环境验证</p><p>​    6.redmine QA更新测试小结，更新状态，线上BUG分析总结</p><h5 id="二、测试流程"><a href="#二、测试流程" class="headerlink" title="二、测试流程"></a>二、测试流程</h5><p>​    明确开发提测内容，环境</p><p>​    需求分析（交互稿是否完备，redmine是否提交检查，兼容性，页面内容功能，页面性能测试，此外还应有功能类专题项目）</p><p>​    测试用例编写（原则：1.可读性可操作性。2.交互稿到测试用例不是照抄。3.必备:前提，步骤，结果。4.严谨用词。5.本地编写并检查再上传）</p><p>​    接口、性能、压力测试</p><p>​    冒烟测试</p><p>​    详细系统测试（BUG提交说明）</p><p>   完成（是否达标，测试报告，上线邮件）</p><h5 id="三、上线流程"><a href="#三、上线流程" class="headerlink" title="三、上线流程"></a>三、上线流程</h5><p>​    QA确认，负责人确认，需求方确认。QA通知开发执行上线，QA上线后的回归验证，回归测试告知全体，线上推广，QA跟进线上反馈</p><p>学习结果：已熟悉相应各部分流程，并熟记专业名词，牢记测试用例原则，熟悉bug管理，细致的要求，还有待学习实践，</p><p>学习感受：一定要严格遵守各个流程，保持严谨性，要对自己的工作内容深入理解</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+            <tag> 学习总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>TCP三次和四次</title>
+      <link href="/interview/TCP.html"/>
+      <url>/interview/TCP.html</url>
+      
+        <content type="html"><![CDATA[<p>经典的、百看不厌的TCP的三次握手和四次挥手：<a id="more"></a><br><img src="/images/TCP3.jpg" alt="img"></p><h3 id="通俗描述3次握手就是："><a href="#通俗描述3次握手就是：" class="headerlink" title="通俗描述3次握手就是："></a>通俗描述3次握手就是：</h3><p>1） A是客户端，B是服务器，A对B说：我的序号是x，我要向你请求连接；（第一次握手，发送SYN包，然后进入SYN-SEND状态）；</p><p>2） B听到之后对A说：我的序号是y，期待你下一句序号是x+1的话（意思就是收到了序号为x的话，即ack=x+1），同意建立连接。（第二次握手，发送ACK-SYN包，然后进入SYN-RCVD状态）；</p><p>3） A听到B说同意建立连接之后，对B说：已确认你同意与我连接（ack=y+1,ACK=1,seq=x+1）。（第三次握手，A已进入ESTABLISHED状态）；</p><p>4） B听到A的确认之后，也进入ESTABLISHED状态。</p><h3 id="描述四次挥手就是："><a href="#描述四次挥手就是：" class="headerlink" title="描述四次挥手就是："></a>描述四次挥手就是：</h3><p>1） A与B交谈结束之后，A要结束此次会话，对B说：我要关闭连接了（seq=u,FIN=1）。（第一次挥手，A进入FIN-WAIT-1）；</p><p>2） B收到A的消息后说：确认，你要关闭连接了。（seq=v,ack=u+1,ACK=1）（第二次挥手，B进入CLOSE-WAIT）；</p><p>3） A收到B的确认后,等了一段时间，因为B可能还有话要对他说。（此时A进入FIN-WAIT-2）；</p><p>4） B说完了他要说的话（只是可能还有话说）之后，对A说，我要关闭连接了。（seq=w, ack=u+1,FIN=1，ACK=1）(第三次挥手)</p><p>5） A收到B要结束连接的消息后说：已收到你要关闭连接的消息。（seq=u+1,ack=w+1,ACK=1）(第四次挥手，然后A进入CLOSED)</p><p>6） B收到A的确认后，也进入CLOSED。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TCP三次握手 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>0-1背包问题</title>
+      <link href="/code/0-1bag.html"/>
+      <url>/code/0-1bag.html</url>
+      
+        <content type="html"><![CDATA[<p>面试某易被问到这个，当场思考半天没搞出来…</p><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>现有n件物品和一个容量为c的背包<a id="more"></a>。第i件物品的重量是重量为w[i]，价值是v[i]。已知对于一件物品必须选择取（用1表示）或者不取（用0表示），且每件物品只能被取一次（这就是“0-1”的含义）。求放置哪些物品进背包，可使这些物品的重量总和不超过背包容量，且价值总和最大。</p><h3 id="求解思路："><a href="#求解思路：" class="headerlink" title="求解思路："></a>求解思路：</h3><p>假设有5件物品，其重量分别是w={2，2，6，5，4}，<br>价值分别是v={6，3，5，4，6}，背包容量为10。<br>在数学问题中这是典型的线性规划问题，我们可以在线性约束范围内求解目标表达式。但是怎么用计算机语言实现呢？<br>我们可以先这样考虑，当背包容量为1时，如何放置物品才能使背包中价值最大；同样当背包容量为2时，如何放置能使背包中价值最大，<br>以此类推，直到背包容量为10。此时我们需要维护一张二维表m[i][j]，其中横坐标i表示物品，纵坐标表示背包容量（1&lt;=j&lt;=10）。<br>                                                                   0-1背包问题的递推二维表<br>                                                                   <img src="/images/0-1bag1.png" alt="img"><br>m[i][j]表示当可以放入前i件物品且背包容量为j时的最大价值。<br>当只能放入第一件物品即i=0时：若背包容量j&lt;w[0]，物品不能够被放入背包；<br>若j&gt;=w[0]时，物品可以放入背包，此时m[0][j]=v[0]。当可以放入前2件物品即i=1时，我们需要进行这样的处理：若j&lt;w[1]时，说明第2件物品不能被放入背包内，此时背包的最大价值为背包中只放入第一件物品的最大价值，即m[1][j]=m[0][j]；若j&gt;=w[1]时，假设此时背包容量j=8，第二件物品可以被放入背包内，那么便会出现两种情况：</p><p> （1）将第二件物品放入背包，那么背包中物品的最大价值是多少呢？因为第二件物品重量为w[1]=2，在将第二件物品放入背包之前，背包的容量应为j-w[1]=8-2=6，此时背包的最大价值是m[0][6]，因此若将第二件物品放入背包，其背包的最大价值m[1][j]=m[0][j-w[1]]+v[1]；</p><p> （2）不将第二件物品放入背包，那么此时背包中物品的最大价值依然为只放入第一件物品时背包的最大价值，即m[1][j]=m[0][j]；</p><p>  我们选取（1）（2）中价值的较大者作为i=1，j=8时背包中的最大价值。    i=2，3，4时的分析同上，直到背包的容量为10，此时m[4][10]即为背包中物品的最大价值。<br>  有了上面的分析，我们很容易写出下面的递归关系：</p><p> （1）i=0  当j&lt;w[0]时，m[0][j]=0；当j&gt;=w[0]时，m[0][j]=v[0]。</p><p> （2）i&gt;0  当j&lt;w[i]，m[i][j]=m[i-1][j]；当j&gt;=w[i]，m[i][j]=max{m[i-1][j-w[i]]+v[i]，m[i-1][j]}。</p><p> 得到了满足约束条件的背包中物品的最大价值后，需要知道是哪些物品被放入了背包。<br> 观察二维表m[i][j]，我们注意到m[i][c]表示当背包重量为题目中要求的c时背包的最大价值，那么在得到m[i][c]之前，我们必然是比较了m[i-1][j-w[i]]+v[i]与m[i-1][j]的大小，从而决定是否将物品放入背包。所以我们可以利用回溯的方法，若m[i][j]=m[i-1][j]，那么物品没有放入背包；否则物品一定被放入背包。因此我们可以从最后一件物品开始，一步一步回退到第一件物品，直到找到所有的物品放入背包的情况。本题中物品的装入情况如表中红色和蓝色部分所示，其中红色表示当前物品被装入背包，蓝色表示没有装入背包。</p><h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><pre><code>w=[2,2,6,5,4]  #物品重量v=[6,3,5,4,6]  #物品价值c=10           #背包容量n=len(w)m=[[-1 for j in range(c+1)] for i in range(5+1)]for j in range(c+1):    if j&gt;=w[0]:        m[0][j]=v[0]for i in range(1,n):    for j in range(1,c+1):        if j&lt;w[i]:            m[i][j]=m[i-1][j]#不装入背包        else:            if (m[i-1][j-w[i]]+v[i]&gt;m[i-1][j]):                m[i][j]=m[i-1][j-w[i]]+v[i]            else:                m[i][j]=m[i-1][j]print(m[n-1][c])</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 0-1bag </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>pychekio上的练习之home</title>
+      <link href="/python/pychekio%E4%B9%8Bhome.html"/>
+      <url>/python/pychekio%E4%B9%8Bhome.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://checkio.org/" target="_blank" rel="noopener">https://checkio.org/</a><a id="more"></a></p><pre><code>1.House  PasswordInput: A password as a string.Output: Is the password safe or not as a boolean or any data type that can be converted and processed as a boolean. In the results you will see the converted results.Example:checkio(&#39;A1213pokl&#39;) == Falsecheckio(&#39;bAse730onE&#39;) == Truecheckio(&#39;asasasasasasasaas&#39;) == Falsecheckio(&#39;QWERTYqwerty&#39;) == Falsecheckio(&#39;123456123456&#39;) == Falsecheckio(&#39;QwErTy911poqqqq&#39;) == True解：def checkio(data):    if len(data)&gt;=10:        if not(data.isdigit() or data.isalpha() or data.islower() or data.isupper()):            return True    return False</code></pre><pre><code>2.The Most Wanted LetterIf you have two or more letters with the same frequency, then return the letter which comes first in the latin alphabet. For example -- &quot;one&quot; contains &quot;o&quot;, &quot;n&quot;, &quot;e&quot; only once for each, thus we choose &quot;e&quot;.Input: A text for analysis as a string.Output: The most frequent letter in lower case as a string.Example:checkio(&quot;Hello World!&quot;) == &quot;l&quot;checkio(&quot;How do you do?&quot;) == &quot;o&quot;checkio(&quot;One&quot;) == &quot;e&quot;checkio(&quot;Oops!&quot;) == &quot;o&quot;checkio(&quot;AAaooo!!!!&quot;) == &quot;a&quot;checkio(&quot;abe&quot;) == &quot;a&quot;解：def checkio(text):    lower_text = text.lower()    appear_time = {}    for each in lower_text:        if each.islower():            if each not in appear_time:                appear_time[each] = 0            else:                appear_time[each] += 1    array = list(appear_time.items())     array.sort(key=lambda x:x[0])    array.sort(key=lambda x:x[1], reverse=True)    return array[0][0]</code></pre><pre><code>3.Non-unique ElementsYou are given a non-empty list of integers (X). For this task, you should return a list consisting of only the non-unique elements in this list. To do so you will need to remove all unique elements (elements which are contained in a given list only once). When solving this task, do not change the order of the list. Example: [1, 2, 3, 1, 3] 1 and 3 non-unique elements and result will be [1, 3, 1, 3].non-unique-elementsInput: A list of integers.Output: The list of integers.Example:解：checkio([1, 2, 3, 1, 3]) == [1, 3, 1, 3]checkio([1, 2, 3, 4, 5]) == []checkio([5, 5, 5, 5, 5]) == [5, 5, 5, 5, 5]checkio([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]def checkio(data):    #Your code here    #It&#39;s main function. Don&#39;t remove this function    #It&#39;s used for auto-testing and must return a result for check.      #replace this for solution    list2=[]    for num in data:        count=data.count(num)        if count&gt;=2:                    list2.append(num)        else:pass    return list2</code></pre><pre><code>4.Mokey TypingYou are given some text potentially including sensible words. You should count how many words are included in the given text. A word should be whole and may be a part of other word. Text letter case does not matter. Words are given in lowercase and don&#39;t repeat. If a word appears several times in the text, it should be counted only once.For example, text - &quot;How aresjfhdskfhskd you?&quot;, words - (&quot;how&quot;, &quot;are&quot;, &quot;you&quot;, &quot;hello&quot;). The result will be 3.Input: Two arguments. A text as a string (unicode for py2) and words as a set of strings (unicode for py2).Output: The number of words in the text as an integer.Example:count_words(&quot;How aresjfhdskfhskd you?&quot;, {&quot;how&quot;, &quot;are&quot;, &quot;you&quot;, &quot;hello&quot;}) == 3count_words(&quot;Bananas, give me bananas!!!&quot;, {&quot;banana&quot;, &quot;bananas&quot;}) == 2count_words(&quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&quot;,            {&quot;sum&quot;, &quot;hamlet&quot;, &quot;infinity&quot;, &quot;anything&quot;}) == 1解：def count_words(text, words):    text=text.lower()    count=0    for word in words:        if word in text:            count+=1    return count</code></pre><pre><code>5.Xs and Os refereecheckio([    &quot;X.O&quot;,    &quot;XX.&quot;,    &quot;XOO&quot;]) == &quot;X&quot;checkio([    &quot;OO.&quot;,    &quot;XOX&quot;,    &quot;XOX&quot;]) == &quot;O&quot;checkio([    &quot;OOX&quot;,    &quot;XXO&quot;,    &quot;OXX&quot;]) == &quot;D&quot;解：def checkio(a):    x=&#39;&#39;.join(a)    m=[&#39;012&#39;,&#39;345&#39;,&#39;678&#39;,&#39;036&#39;,&#39;147&#39;,&#39;258&#39;,&#39;048&#39;,&#39;246&#39;]    for i in m:        if x[int(i[0])]==x[int(i[1])]==x[int(i[2])]in&#39;XO&#39;:             return x[int(i[0])]    return &#39;D&#39;   </code></pre><pre><code>6.Pawn BrotherhoodInput: Placed pawns coordinates as a set of strings.Output: The number of safe pawns as a integer.Example:safe_pawns({&quot;b4&quot;, &quot;d4&quot;, &quot;f4&quot;, &quot;c3&quot;, &quot;e3&quot;, &quot;g5&quot;, &quot;d2&quot;}) == 6safe_pawns({&quot;b4&quot;, &quot;c4&quot;, &quot;d4&quot;, &quot;e4&quot;, &quot;f4&quot;, &quot;g4&quot;, &quot;e5&quot;}) == 1解：def safe_pawns(pawns):    data=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;,&#39;g&#39;,&#39;h&#39;]    result=&#39;&#39;    count=0    result_c=&#39;&#39;    result_b=&#39;&#39;    for x in range(1,9):        result=data[0]+str(x)        if result in pawns:            if (data[1]+str(x-1))in pawns:                count+=1    for y in range(1,9):        result=data[7]+str(y)        if result in pawns:            if (data[6]+str(y-1)) in pawns:                count+=1                for i in range(1,7):        for j in range(1,9):            result=data[i]+str(j)            if result in pawns:                                 result_c=data[i-1]+str(j-1)                result_b=data[i+1]+str(j-1)                if ((result_c in pawns) or (result_b in pawns)):                    count+=1    return count </code></pre><pre><code>7.Min and Max Input: One positional argument as an iterable or two or more positional arguments. Optional keyword argument as a function.Output: The largest item for the &quot;max&quot; function and the smallest for the &quot;min&quot; function.Example:max(3, 2) == 3min(3, 2) == 2max([1, 2, 0, 3, 4]) == 4min(&quot;hello&quot;) == &quot;e&quot;max(2.2, 5.6, 5.9, key=int) == 5.6min([[1,2], [3, 4], [9, 0]], key=lambda x: x[1]) == [9, 0]解：def minSimple(arg1, arg2, key):    if key!=None and key(arg1)&lt;key(arg2) or key==None and arg1&lt;arg2: return arg1    return arg2def min(*args, **kwargs):    key=kwargs.get(&quot;key&quot;, None)         # Extracting key    if len(args)==1: args=list(args[0]) # Adapting arguments    # Comparing arguments, one by one    result=args[0]    for x in range(1,len(args)):        result=minSimple(result,args[x],key)    return resultdef maxSimple(arg1, arg2, key):    if key!=None and key(arg2)&gt;key(arg1) or key==None and arg2&gt;arg1: return arg2    return arg1def max(*args, **kwargs):    key=kwargs.get(&quot;key&quot;, None)         # Extracting key    if len(args)==1: args=list(args[0]) # Adapting arguments    # Comparing arguments, one by one    result=args[0]    for x in range(1,len(args)):        result=maxSimple(result,args[x],key)    return result</code></pre><pre><code>8.Long RepeatInput: String.Output: Int.Example:long_repeat(&#39;sdsffffse&#39;) == 4long_repeat(&#39;ddvvrwwwrggg&#39;) == 3解：def long_repeat(line):    &quot;&quot;&quot;        length the longest substring that consists of the same char    &quot;&quot;&quot;    # your code here    if len(line)==0:return 0    linel=line.lower()    count=0    max_count=0    for i in range(len(line)-1):        if linel[i]==linel[i+1]:            count+=1        else:            max_count=max(max_count,count+1)            count=0    return max(max_count, count+1)</code></pre><pre><code>9.All the same Input: List.Output: Bool.Example:all_the_same([1, 1, 1]) == Trueall_the_same([1, 2, 1]) == Falseall_the_same([&#39;a&#39;, &#39;a&#39;, &#39;a&#39;]) == Trueall_the_same([]) == True解：from typing import List, Anydef all_the_same(elements: List[Any]) -&gt; bool:    # your code here    return len(set(elements))&lt;2</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>django创建应用 源码1</title>
+      <link href="/python/django%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E6%BA%90%E7%A0%81--1.html"/>
+      <url>/python/django%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8%E6%BA%90%E7%A0%81--1.html</url>
+      
+        <content type="html"><![CDATA[<p>先看django-admin的具体<a id="more"></a>代码</p><pre><code>#调用management包的init.py文件中的execute_from_command_line函数:from django.core import managementif __name__ == &quot;__main__&quot;:    management.execute_from_command_line()</code></pre><pre><code>#在实例化对象后调用了utility.execute()方法def execute_from_command_line(argv=None):    &quot;&quot;&quot;    A simple method that runs a ManagementUtility.    &quot;&quot;&quot;    utility = ManagementUtility(argv)    utility.execute()</code></pre><pre><code>#先用命令行工具创建django项目和应用，这里的的命令为startproject,startapp,两个命令差不多，#将django/conf目录下的project_template和app_template两个模板进行一定数据的渲染后生成一个完整的项目到我们的目录下#假如当前执行的参数为django-admin startapp testapp，此时就会执行到上述代码的最后一步self.fetch_command(subcommand).run_from_argv，#来看看fetch_command代码    def execute(self):        &quot;&quot;&quot;        Given the command-line arguments, this figures out which subcommand is        being run, creates a parser appropriate to that command, and runs it.        &quot;&quot;&quot;        try:            subcommand = self.argv[1]                             # 获取命令行输入第一个参数,如果没有则为help        except IndexError:            subcommand = &#39;help&#39;  # Display help if no arguments were given.        # Preprocess options to extract --settings and --pythonpath.        # These options could affect the commands that are available, so they        # must be processed early.        parser = CommandParser(None, usage=&quot;%(prog)s subcommand [options] [args]&quot;, add_help=False)   # 添加命令说明        parser.add_argument(&#39;--settings&#39;)        parser.add_argument(&#39;--pythonpath&#39;)        parser.add_argument(&#39;args&#39;, nargs=&#39;*&#39;)  # catch-all        try:            options, args = parser.parse_known_args(self.argv[2:])      # 解析后面的参数，options:Namespace(args=[],pythonpath=None,settings=None)            handle_default_options(options)                             # 如果options中的pythonpath或者settings有，则使用传入的路径与文件        except CommandError:            pass  # Ignore any option errors at this point.        no_settings_commands = [            &#39;help&#39;, &#39;version&#39;, &#39;--help&#39;, &#39;--version&#39;, &#39;-h&#39;,            &#39;compilemessages&#39;, &#39;makemessages&#39;,            &#39;startapp&#39;, &#39;startproject&#39;,        ]        try:            settings.INSTALLED_APPS                                         # 当是django-admin输入时没有配置文件此时会报错，如果是已经生产的项目则可以导入配置文件中已经配置的应用        except ImproperlyConfigured as exc:            self.settings_exception = exc                # A handful of built-in management commands work without settings.            # Load the default settings -- where INSTALLED_APPS is empty.            if subcommand in no_settings_commands:                settings.configure()                                        # 使用django默认提供的全局默认的配置文件        if settings.configured:            # Start the auto-reloading dev server even if the code is broken.            # The hardcoded condition is a code smell but we can&#39;t rely on a            # flag on the command class because we haven&#39;t located it yet.            if subcommand == &#39;runserver&#39; and &#39;--noreload&#39; not in self.argv:    # 如果不是runserver并且没有关闭自动重载功能，则执行以下函数                try:                    autoreload.check_errors(django.setup)()                    # 调用自动检测文件是否修改如果修改则自动重新启动Django服务                except Exception:                    # The exception will be raised later in the child process                    # started by the autoreloader. Pretend it didn&#39;t happen by                    # loading an empty list of applications.                    apps.all_models = defaultdict(OrderedDict)                    apps.app_configs = OrderedDict()                    apps.apps_ready = apps.models_ready = apps.ready = True            # In all other cases, django.setup() is required to succeed.            else:                django.setup()                                                  # 初始化django环境        self.autocomplete()                                                     # 检测是否是自动完成        if subcommand == &#39;help&#39;:                                                # 如果解析命令为help            if &#39;--commands&#39; in args:                sys.stdout.write(self.main_help_text(commands_only=True) + &#39;\n&#39;) # 打印出help命令            elif len(options.args) &lt; 1:                                         # 如果输入参数为空                sys.stdout.write(self.main_help_text() + &#39;\n&#39;)            else:                self.fetch_command(options.args[0]).print_help(self.prog_name, options.args[0])  # 针对某个命令打印相应命令的帮助信息        # Special-cases: We want &#39;django-admin --version&#39; and        # &#39;django-admin --help&#39; to work, for backwards compatibility.        elif subcommand == &#39;version&#39; or self.argv[1:] == [&#39;--version&#39;]:         # 如果输入的命令是打印版本信息            sys.stdout.write(django.get_version() + &#39;\n&#39;)                       # 则输出当前Django的版本        elif self.argv[1:] in ([&#39;--help&#39;], [&#39;-h&#39;]):                             # 如果输入参数中包括了--help -h 则打印帮助信息            sys.stdout.write(self.main_help_text() + &#39;\n&#39;)        else:            self.fetch_command(subcommand).run_from_argv(self.argv)             # 如果命令行输入单个命令，则寻找该命令，然后执行输入的参数</code></pre><pre><code>#这里最先执行了get_commands()寻找可执行的命令，看下面的getcommandsdef fetch_command(self, subcommand):                                            # 执行命令行输入的具体命令    &quot;&quot;&quot;    Tries to fetch the given subcommand, printing a message with the    appropriate command called from the command line (usually    &quot;django-admin&quot; or &quot;manage.py&quot;) if it can&#39;t be found.    &quot;&quot;&quot;    # Get commands outside of try block to prevent swallowing exceptions    commands = get_commands()                                                   # 获取所有支持的命令    try:        app_name = commands[subcommand]                                         # 获取命令名称所在路径    except KeyError:        if os.environ.get(&#39;DJANGO_SETTINGS_MODULE&#39;):            # If `subcommand` is missing due to misconfigured settings, the            # following line will retrigger an ImproperlyConfigured exception            # (get_commands() swallows the original one) so the user is            # informed about it.            settings.INSTALLED_APPS        else:            sys.stderr.write(&quot;No Django settings specified.\n&quot;)        sys.stderr.write(            &quot;Unknown command: %r\nType &#39;%s help&#39; for usage.\n&quot;            % (subcommand, self.prog_name)        )        sys.exit(1)    if isinstance(app_name, BaseCommand):                              # 判断app_name是基本命令的实例，命令的路径        # If the command is already loaded, use it directly.        klass = app_name    else:        klass = load_command_class(app_name, subcommand)                        # 如果是路径则导入该命令    return klass                                                                # 将命令的实例化对象返回</code></pre><pre><code>#寻找完成以后，会klass = load_command_class(app_name, subcommand)  ，看下面的@lru_cache.lru_cache(maxsize=None)def get_commands():    &quot;&quot;&quot;    Returns a dictionary mapping command names to their callback applications.    This works by looking for a management.commands package in django.core, and    in each installed application -- if a commands package exists, all commands    in that package are registered.    Core commands are always included. If a settings module has been    specified, user-defined commands will also be included.    The dictionary is in the format {command_name: app_name}. Key-value    pairs from this dictionary can then be used in calls to    load_command_class(app_name, command_name)    If a specific version of a command must be loaded (e.g., with the    startapp command), the instantiated module can be placed in the    dictionary in place of the application name.    The dictionary is cached on the first call and reused on subsequent    calls.    &quot;&quot;&quot;    commands = {name: &#39;django.core&#39; for name in find_commands(upath(__path__[0]))}      # 获取当前核心目录下的默认命令    if not settings.configured:        return commands    for app_config in reversed(list(apps.get_app_configs())):                           # 获取生成项目中的命令        path = os.path.join(app_config.path, &#39;management&#39;)        commands.update({name: app_config.name for name in find_commands(path)})        # 如果项目中配置的命令与核心中的命令重复则替换为项目中的命令    return commands</code></pre><pre><code>#这里会导入APP-name所在的包def load_command_class(app_name, name):    &quot;&quot;&quot;    Given a command name and an application name, returns the Command    class instance. All errors raised by the import process    (ImportError, AttributeError) are allowed to propagate.    &quot;&quot;&quot;    module = import_module(&#39;%s.management.commands.%s&#39; % (app_name, name))             # 导入命令所在的包    return module.Command()   </code></pre><pre><code>#而startapp的command类可以看到TemplateCommand是所有模板的父类,而template上面还有basecommand类class Command(TemplateCommand):    help = (        &quot;Creates a Django app directory structure for the given app name in &quot;        &quot;the current directory or optionally in the given directory.&quot;    )    missing_args_message = &quot;You must provide an application name.&quot;    def handle(self, **options):        app_name, target = options.pop(&#39;name&#39;), options.pop(&#39;directory&#39;)                    # 获取创建app的名称，和创建app的文件夹        self.validate_name(app_name, &quot;app&quot;)                                                 # 检查该app名称是否合法        # Check that the app_name cannot be imported.        try:            import_module(app_name)                                                         # 检查该名称不能与已经存在的模块冲突        except ImportError:            pass        else:            raise CommandError(                &quot;%r conflicts with the name of an existing Python module and &quot;                &quot;cannot be used as an app name. Please try another name.&quot; % app_name            )        super(Command, self).handle(&#39;app&#39;, app_name, target, **options)                     # 调用TemplateCommand的handle方法</code></pre><pre><code>#run_from_argv调用execute方法，调用handler方法，这里完成了应用创建class BaseCommand(object):    # Configuration shortcuts that alter various logic.    _called_from_command_line = False    can_import_settings = True    output_transaction = False  # Whether to wrap the output in a &quot;BEGIN; COMMIT;&quot;    leave_locale_alone = False    requires_migrations_checks = False    requires_system_checks = True    def __init__(self, stdout=None, stderr=None, no_color=False):        self.stdout = OutputWrapper(stdout or sys.stdout)        self.stderr = OutputWrapper(stderr or sys.stderr)        if no_color:            self.style = no_style()        else:            self.style = color_style()            self.stderr.style_func = self.style.ERROR    def get_version(self):        &quot;&quot;&quot;        Return the Django version, which should be correct for all built-in        Django commands. User-supplied commands can override this method to        return their own version.        &quot;&quot;&quot;        return django.get_version()    def create_parser(self, prog_name, subcommand):        &quot;&quot;&quot;        Create and return the ``ArgumentParser`` which will be used to        parse the arguments to this command.        &quot;&quot;&quot;        parser = CommandParser(            self, prog=&quot;%s %s&quot; % (os.path.basename(prog_name), subcommand),            description=self.help or None,        )        parser.add_argument(&#39;--version&#39;, action=&#39;version&#39;, version=self.get_version())        parser.add_argument(            &#39;-v&#39;, &#39;--verbosity&#39;, action=&#39;store&#39;, dest=&#39;verbosity&#39;, default=1,            type=int, choices=[0, 1, 2, 3],            help=&#39;Verbosity level; 0=minimal output, 1=normal output, 2=verbose output, 3=very verbose output&#39;,        )        parser.add_argument(            &#39;--settings&#39;,            help=(                &#39;The Python path to a settings module, e.g. &#39;                &#39;&quot;myproject.settings.main&quot;. If this isn\&#39;t provided, the &#39;                &#39;DJANGO_SETTINGS_MODULE environment variable will be used.&#39;            ),        )        parser.add_argument(            &#39;--pythonpath&#39;,            help=&#39;A directory to add to the Python path, e.g. &quot;/home/djangoprojects/myproject&quot;.&#39;,        )        parser.add_argument(&#39;--traceback&#39;, action=&#39;store_true&#39;, help=&#39;Raise on CommandError exceptions&#39;)        parser.add_argument(            &#39;--no-color&#39;, action=&#39;store_true&#39;, dest=&#39;no_color&#39;, default=False,            help=&quot;Don&#39;t colorize the command output.&quot;,        )        self.add_arguments(parser)        return parser    def add_arguments(self, parser):        &quot;&quot;&quot;        Entry point for subclassed commands to add custom arguments.        &quot;&quot;&quot;        pass    def print_help(self, prog_name, subcommand):        &quot;&quot;&quot;        Print the help message for this command, derived from        ``self.usage()``.        &quot;&quot;&quot;        parser = self.create_parser(prog_name, subcommand)        parser.print_help()    def run_from_argv(self, argv):        &quot;&quot;&quot;        Set up any environment changes requested (e.g., Python path        and Django settings), then run this command. If the        command raises a ``CommandError``, intercept it and print it sensibly        to stderr. If the ``--traceback`` option is present or the raised        ``Exception`` is not ``CommandError``, raise it.        &quot;&quot;&quot;        self._called_from_command_line = True                                       # 从命令行调入标识        parser = self.create_parser(argv[0], argv[1])                               # 创建帮助的说明        options = parser.parse_args(argv[2:])                                       # 解析输入的参数        cmd_options = vars(options)        # Move positional args out of options to mimic legacy optparse        args = cmd_options.pop(&#39;args&#39;, ())        handle_default_options(options)                                             # 调用命令行输入的配置文件        try:            self.execute(*args, **cmd_options)                                      # 调用execute方法        except Exception as e:            if options.traceback or not isinstance(e, CommandError):                raise            # SystemCheckError takes care of its own formatting.            if isinstance(e, SystemCheckError):                self.stderr.write(str(e), lambda x: x)            else:                self.stderr.write(&#39;%s: %s&#39; % (e.__class__.__name__, e))            sys.exit(1)        finally:            connections.close_all()                                                 # 关闭所有的数据库连接    def execute(self, *args, **options):                                            # 执行该命令的调用方法        &quot;&quot;&quot;        Try to execute this command, performing system checks if needed (as        controlled by the ``requires_system_checks`` attribute, except if        force-skipped).        &quot;&quot;&quot;        if options[&#39;no_color&#39;]:                                                     # 检查是否需要更改文字颜色            self.style = no_style()            self.stderr.style_func = None        if options.get(&#39;stdout&#39;):                                                   # 获取输出，包装一下输出            self.stdout = OutputWrapper(options[&#39;stdout&#39;])        if options.get(&#39;stderr&#39;):            self.stderr = OutputWrapper(options[&#39;stderr&#39;], self.stderr.style_func)  # 包装错误输出        saved_locale = None        if not self.leave_locale_alone:            # Only mess with locales if we can assume we have a working            # settings file, because django.utils.translation requires settings            # (The final saying about whether the i18n machinery is active will be            # found in the value of the USE_I18N setting)            if not self.can_import_settings:                raise CommandError(&quot;Incompatible values of &#39;leave_locale_alone&#39; &quot;                                   &quot;(%s) and &#39;can_import_settings&#39; (%s) command &quot;                                   &quot;options.&quot; % (self.leave_locale_alone,                                                 self.can_import_settings))            # Deactivate translations, because django-admin creates database            # content like permissions, and those shouldn&#39;t contain any            # translations.            from django.utils import translation            saved_locale = translation.get_language()            translation.deactivate_all()        try:            if self.requires_system_checks and not options.get(&#39;skip_checks&#39;):              # 检查输入是否跳过检查，是否执行检查                self.check()            if self.requires_migrations_checks:                                             # 是否进行数据库检查                self.check_migrations()            output = self.handle(*args, **options)                                          # 调用子类实现的处理方法，该类必须子类实现            if output:                                                                      # 根据返回数据进行处理                if self.output_transaction:                    connection = connections[options.get(&#39;database&#39;, DEFAULT_DB_ALIAS)]                    output = &#39;%s\n%s\n%s&#39; % (                        self.style.SQL_KEYWORD(connection.ops.start_transaction_sql()),                        output,                        self.style.SQL_KEYWORD(connection.ops.end_transaction_sql()),                    )                self.stdout.write(output)        finally:            if saved_locale is not None:                translation.activate(saved_locale)        return output    def _run_checks(self, **kwargs):        return checks.run_checks(**kwargs)    def check(self, app_configs=None, tags=None, display_num_errors=False,              include_deployment_checks=False, fail_level=checks.ERROR):                    # 检查信息是否正确        &quot;&quot;&quot;        Uses the system check framework to validate entire Django project.        Raises CommandError for any serious message (error or critical errors).        If there are only light messages (like warnings), they are printed to        stderr and no exception is raised.        &quot;&quot;&quot;        all_issues = self._run_checks(            app_configs=app_configs,            tags=tags,            include_deployment_checks=include_deployment_checks,        )        header, body, footer = &quot;&quot;, &quot;&quot;, &quot;&quot;        visible_issue_count = 0  # excludes silenced warnings        if all_issues:            debugs = [e for e in all_issues if e.level &lt; checks.INFO and not e.is_silenced()]            infos = [e for e in all_issues if checks.INFO &lt;= e.level &lt; checks.WARNING and not e.is_silenced()]            warnings = [e for e in all_issues if checks.WARNING &lt;= e.level &lt; checks.ERROR and not e.is_silenced()]            errors = [e for e in all_issues if checks.ERROR &lt;= e.level &lt; checks.CRITICAL and not e.is_silenced()]            criticals = [e for e in all_issues if checks.CRITICAL &lt;= e.level and not e.is_silenced()]            sorted_issues = [                (criticals, &#39;CRITICALS&#39;),                (errors, &#39;ERRORS&#39;),                (warnings, &#39;WARNINGS&#39;),                (infos, &#39;INFOS&#39;),                (debugs, &#39;DEBUGS&#39;),            ]            for issues, group_name in sorted_issues:                if issues:                    visible_issue_count += len(issues)                    formatted = (                        self.style.ERROR(force_str(e))                        if e.is_serious()                        else self.style.WARNING(force_str(e))                        for e in issues)                    formatted = &quot;\n&quot;.join(sorted(formatted))                    body += &#39;\n%s:\n%s\n&#39; % (group_name, formatted)        if visible_issue_count:            header = &quot;System check identified some issues:\n&quot;        if display_num_errors:            if visible_issue_count:                footer += &#39;\n&#39;            footer += &quot;System check identified %s (%s silenced).&quot; % (                &quot;no issues&quot; if visible_issue_count == 0 else                &quot;1 issue&quot; if visible_issue_count == 1 else                &quot;%s issues&quot; % visible_issue_count,                len(all_issues) - visible_issue_count,            )        if any(e.is_serious(fail_level) and not e.is_silenced() for e in all_issues):            msg = self.style.ERROR(&quot;SystemCheckError: %s&quot; % header) + body + footer            raise SystemCheckError(msg)        else:            msg = header + body + footer        if msg:            if visible_issue_count:                self.stderr.write(msg, lambda x: x)            else:                self.stdout.write(msg)    def check_migrations(self):                                                            # 检查是否migrations是否已经执行        &quot;&quot;&quot;        Print a warning if the set of migrations on disk don&#39;t match the        migrations in the database.        &quot;&quot;&quot;        from django.db.migrations.executor import MigrationExecutor        try:            executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])        except ImproperlyConfigured:            # No databases are configured (or the dummy one)            return        except MigrationSchemaMissing:            self.stdout.write(self.style.NOTICE(                &quot;\nNot checking migrations as it is not possible to access/create the django_migrations table.&quot;            ))            return        plan = executor.migration_plan(executor.loader.graph.leaf_nodes())        if plan:            apps_waiting_migration = sorted(set(migration.app_label for migration, backwards in plan))            self.stdout.write(                self.style.NOTICE(                    &quot;\nYou have %(unpplied_migration_count)s unapplied migration(s). &quot;                    &quot;Your project may not work properly until you apply the &quot;                    &quot;migrations for app(s): %(apps_waiting_migration)s.&quot; % {                        &quot;unpplied_migration_count&quot;: len(plan),                        &quot;apps_waiting_migration&quot;: &quot;, &quot;.join(apps_waiting_migration),                    }                )            )            self.stdout.write(self.style.NOTICE(&quot;Run &#39;python manage.py migrate&#39; to apply them.\n&quot;))    def handle(self, *args, **options):                                                     # 子类必须实现该方法        &quot;&quot;&quot;        The actual logic of the command. Subclasses must implement        this method.        &quot;&quot;&quot;        raise NotImplementedError(&#39;subclasses of BaseCommand must provide a handle() method&#39;)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>面试题6 重建二叉树</title>
+      <link href="/python/%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
+      <url>/python/%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91.html</url>
+      
+        <content type="html"><![CDATA[<p>前序和中序重建<br>同样的思路又加了个中序和后序重建<a id="more"></a></p><pre><code>    # 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。    # 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。    class Node:        def __init__(self, data, left, right):            self.data = data            self.lchild = left            self.rchild = right    def construct_tree(pre_order, mid_order): # 根据前序 中序 重构二叉树        # 参数合法性判断        if len(pre_order) != len(mid_order):            return False        if len(pre_order) == 0:            return None        if len(pre_order) == 1:            return pre_order        # 前序遍历第一个节点为根节点        root_data = pre_order[0]        for i in range(0, len(mid_order)):  # 在中序中找到根节点的index = i            if root_data == mid_order[i]:                break        # 递归构造左右子树        lTree = construct_tree(pre_order[1:i+1], mid_order[:i]) # 在 中序 中以 i 进行左右分割        rTree = construct_tree(pre_order[i+1:], mid_order[i+1:]) #  前序 分割保证和中序取同样长度 且前序除去上次得到的根节点 即前序的第一个元素        return Node(root_data, lTree, rTree)    def  mid_post_construct_tree(mid_order, post_order):  # 根据 中序 和 后序 重构二叉树        if len(mid_order) != len(post_order):            return False        if len(mid_order) == 0:            return None        if len(mid_order) == 1:            return mid_order        # 后序遍历最后一个节点为根节点        root_data = post_order[-1]   # 思路为 找出根节点，        for i in range(0, len(mid_order)):  # 在 中序 中根节点index = i            if root_data == mid_order[i]:   # 后序 中最后一个元素为根节点                break        lTree = mid_post_construct_tree(mid_order[:i], post_order[:i])  # 中序 中以根节点即 i 为分割        rTree = mid_post_construct_tree(mid_order[i+1:], post_order[i:len(post_order)-1])  # 后序保证和中序分割同样长度 并且去掉前一次取的根节点即后序的最后一个元素        return Node(root_data, lTree, rTree)    if __name__ == &#39;__main__&#39;: # 做个验证        pre_order = [1, 2, 4, 7, 3, 5, 6, 8]        mid_order = [4, 7, 2, 1, 5, 3, 8, 6]        tree = construct_tree(pre_order, mid_order)        print(tree.data)  # 期望为 12345678        print(tree.lchild.data)        print(tree.rchild.data)        print() # 换行        mid = [7, 3, 8, 1, 9, 4, 0, 5, 2, 6]        post = [7, 8, 3, 9, 4, 1, 5, 6, 2, 0]        tree2 = mid_post_construct_tree(mid, post)        print(tree2.data)  # 期望为 0123456789        print(tree2.lchild.data)        print(tree2.rchild.data)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>七大经典排序算法python</title>
+      <link href="/python/%E4%B8%83%E5%A4%A7%E6%8E%92%E5%BA%8F.html"/>
+      <url>/python/%E4%B8%83%E5%A4%A7%E6%8E%92%E5%BA%8F.html</url>
+      
+        <content type="html"><![CDATA[<p>好好理解了一下，并敲了一遍代码，好好牢记不能忘了<a id="more"></a><br><br>排序方法——-平均情况——最好情况—-最坏情况—辅助空间—-稳定性<br>冒泡排序——–O(n^2)———O(n)——-O(n^2)—–O(1)——–稳定<br>简单选择排序—-O(n^2)——–O(n^2)——O(n^2)—–O(1)——–稳定<br>直接插入排序—-O(n^2)———O(n)——-O(n^2)—–O(1)——–稳定<br>希尔排序—–O(nlogn)~O(n^2)–O(n^1.3)—-O(n^2)—–O(1)——–不稳定<br>堆排序———O(nlogn)——-O(nlogn)—-O(nlogn)—O(1)——–不稳定<br>归并排序——-O(nlogn)——-O(nlogn)—-O(nlogn)—O(n)——–稳定<br>快速排序——-O(nlogn)——-O(nlogn)—-O(n^2)—-O(logn)~O(n)-不稳定</p><pre><code>#!user/bin/env python3# -*- coding: gbk -*-import random&quot;&quot;&quot;一：冒泡排序 BubbleSort步骤：比较相邻的元素。如果第一个比第二个大，就交换他们两个。对第0个到第n-1个数据做同样的工作。这时，最大的数就“浮”到了数组最后的位置上。针对所有的元素重复以上的步骤，除了最后一个。持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。&quot;&quot;&quot;def bubble_sort(array):    length = len(array)    for i in range(length):        for j in range(1, length - i):            if array[j - 1] &gt; array[j]:                array[j - 1], array[j] = array[j], array[j - 1]    return array&quot;&quot;&quot;list = input().split() # 输入的为字符串list = [int(x) for x in list] # 将list中全部元素转为 intprint(bubble_sort(list))&quot;&quot;&quot;&quot;&quot;&quot;二：选择排序 SelectionSort步骤：在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。&quot;&quot;&quot;def select_sort(list):    for i in range(len(list)):        min = i        for j in range(i + 1, len(list)):            if list[j] &lt; list[min]:                list[j], list[min] = list[min], list[j]    return listlist = [random.randint(0, 99) for _ in range(10)]print(&#39;select_sort原始数组&#39;)print(list)print(&#39;select_sort后&#39;)print(select_sort(list))&quot;&quot;&quot;三：插入排序 InsertionSort步骤：从第一个元素开始，该元素可以认为已经被排序取出下一个元素，在已经排序的元素序列中从后向前扫描如果被扫描的元素（已排序）大于新元素，将该元素后移一位重复步骤3，直到找到已排序的元素小于或者等于新元素的位置将新元素插入到该位置后重复步骤&quot;&quot;&quot;def insert_sort(list):    for i in range(len(list)):        if list[i] &lt; list[i - 1]:            tmp = list[i] # 取出待插入元素            index = i  #  取出待插入下标            for j in range(i - 1, -1, -1): #从 i-1 遍历到 0 包括0                if list[j] &gt; tmp:                    list[j + 1] = list[j]                    index = j                else:                    break            list[index] = tmp    return listlist = [random.randint(0, 99) for _ in range(10)]print(&#39;insert_sort原始数组&#39;)print(list)print(&#39;insert_sort后&#39;)print(insert_sort(list))&quot;&quot;&quot;四：希尔排序 ShellSort希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序听说gap = gap/3 + 1更优&quot;&quot;&quot;def shell_sort(list):    length = len(list)    gap = round(length / 2)    while gap &gt; 0:        for i in range(gap, length):            j = i            while (j &gt;= gap and list[j - gap] &gt; list[j]):                list[j], list[j - gap] = list[j - gap], list[j]                j = j - gap        gap = round(gap / 2)    return listlist = [random.randint(0, 99) for _ in range(10)]print(&#39;shell_sort原始数组&#39;)print(list)print(&#39;shell_sort后&#39;)print(shell_sort(list))&quot;&quot;&quot;五：归并排序 MergeSort归并排序是采用分治法的一个非常典型的应用。归并排序的思想就是先递归分解数组，再合并数组。先考虑合并两个有序数组，基本思路是比较两个数组的最前面的数，谁小就先取谁，取了后相应的指针就往后移一位。然后再比较，直至一个数组为空，最后把另一个数组的剩余部分复制过来即可。再考虑递归分解，基本思路是将数组分解成left和right，如果这两个数组内部数据是有序的，那么就可以用上面合并数组的方法将这两个数组合并排序。如何让这两个数组内部是有序的？可以再二分，直至分解出的小组只含有一个元素时为止，此时认为该小组内部已有序。然后合并排序相邻二个小组即可。&quot;&quot;&quot;def merge_sort(list):    if len(list) &lt;= 1:        return list    num = int(len(list) / 2)    left = merge_sort(list[:num])    right = merge_sort(list[num:])    return merge(left, right)def merge(left, right):    # 合并操作    l, r = 0, 0    result = []    while l &lt; len(left) and r &lt; len(right):        if left[l] &lt; right[r]:            result.append(left[l])            l += 1        else:            result.append(right[r])            r += 1    result += left[l:]    result += right[r:]    return resultlist = [random.randint(0, 99) for _ in range(10)]print(&#39;merge_sort原始数组&#39;)print(list)print(&#39;merge_sort后&#39;)print(merge_sort(list))&quot;&quot;&quot;六：快速排序 QuickSort快速排序通常明显比同为Ο(n log n)的其他算法更快，因此常被采用，而且快排采用了分治法的思想，所以在很多笔试面试中能经常看到快排的影子。可见掌握快排的重要性。从数列中挑出一个元素作为基准数。分区过程，将比基准数大的放到右边，小于或等于它的数都放到左边。再对左右区间递归执行第二步，直至各区间只有一个数。&quot;&quot;&quot;def quick_sort(list, star, end):    if star &lt; end:        i, j = star, end        hh = list[i]        while i &lt; j:            while (i &lt; j) and (list[j] &gt;= hh):                j -= 1            list[i] = list[j]            while (i &lt; j) and (list[i] &lt;= hh):                i += 1            list[j] = list[i]        list[i] = hh # 放基准数 到i = j 的位置        quick_sort(list, star, i-1)        quick_sort(list, i+1, end)    return listlist = [random.randint(0, 99) for _ in range(10)]print(&#39;quick_sort原始数组&#39;)print(list)print(&#39;quick_sort后&#39;)print(quick_sort(list, 0, len(list)-1))&quot;&quot;&quot;七：堆排序，HeapSort堆的特点就是FIFO(first in first out)先进先出,分大根堆，小根堆大根堆的要求是每个节点的值都不大于其父节点的值(1)最大堆调整(MAX_Heapify):将堆的末端子节点作调整，使得子节点永远小于父节点。这是核心步骤，在建堆和堆排序都会用到。比较i的根节点和与其所对应i的孩子节点的值。当i根节点的值比左孩子节点的值要小的时候，就把i根节点和左孩子节点所对应的值交换，当i根节点的值比右孩子的节点所对应的值要小的时候，就把i根节点和右孩子节点所对应的值交换。然后再调用堆调整这个过程，可见这是一个递归的过程。 (2)建立最大堆(Build_Max_Heap):将堆所有数据重新排序。建堆的过程其实就是不断做最大堆调整的过程，从len/2出开始调整，一直比到第一个节点。 (3)堆排序(HeapSort):移除位在第一个数据的根节点，并做最大堆调整的递归运算。堆排序是利用建堆和堆调整来进行的。首先先建堆，然后将堆的根节点选出与最后一个节点进行交换，然后将前面len-1个节点继续做堆调整的过程。直到将所有的节点取出，对于n个数我们只需要做n-1次操作&quot;&quot;&quot;def adjust_heap(heap, i, size):    lchild = i * 2 + 1    rchild = 2 * i + 2    max = i    if i &lt; size / 2:        if lchild &lt; size and heap[lchild] &gt; heap[max]:            max = lchild        if rchild &lt; size and heap[rchild] &gt; heap[max]:            max = rchild        if max != i:            heap[max], heap[i] = heap[i], heap[max]            adjust_heap(heap, max, size)def build_heap(heap, size):    for i in range(0, (size//2))[::-1]:        adjust_heap(heap, i, size)def heap_sort(heap):    size = len(heap)    build_heap(heap, size)    for i in range(0, size)[::-1]:        heap[0], heap[i] = heap[i], heap[0]        adjust_heap(heap, 0, i)a = [30,50,57,77,62,78,94,80,84]print(&#39;堆排序&#39;)print(a)heap_sort(a)print(a)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>月底小目标</title>
+      <link href="/all/%E8%BF%91%E6%9C%9F%E7%9A%84%E7%9B%AE%E6%A0%87.html"/>
+      <url>/all/%E8%BF%91%E6%9C%9F%E7%9A%84%E7%9B%AE%E6%A0%87.html</url>
+      
+        <content type="html"><![CDATA[<p>其实当初自己这个博客的目的，就是为了记录自己的成长，激励自己不要停止学习，<a id="more"></a>可以对自己学过什么有一个交代，<br>从来没想过博客要给谁看，要做到什么样，这就是自己一个成长的地方</p><p>周五正式离职了，因为自己觉得实习方向和自己期望有点差距，开发上，代码上的能力没有运用，所以希望有更多时间投入到学习，<br>每天上班，回来看视频，看书到两三点，第二天状态也非常不好，</p><p>最近一个星期每天熬夜。。有点虚脱，已达成<br>1）数据库知识，包括主从同步，隔离，优化，mysel必知必会，深入浅出mysql<br>2）数据结构及算法回顾，DP，递归，红黑树。。</p><p>现在有一个目标是在9月初完成一个<br>自己设计数据库表的，利用python-Django，加上后台管理系统，具体可以是一个交易网站，也可以是社交网站，<br>主要困难可能是在数据库表上的设计吧，实现留言板评论，账号登录注册，个人中心，全局搜索，针对常见web攻击进行代码层面防范，最后把项目部署上线<br>时间也比较紧，<br>加油吧</p><hr><p>项目已完成并可上线。。<br>最开始是djang的文档基础学习，基本的setting全局设置，urls接受url请求设置，models映射了数据表，views视图类，，templates存放html，django会自动到这里找</p><p>然后是根据设计，决定是一个校内资源分享网，包括个人中心，所在组织（学院，学校），资源，登录注册找回密码，全局搜索，评论的设计<br>根据各个app设计相应数据表，并逐个实现。会根据每个地方的难点做一些记录，<br>继续加油</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 瞎想 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>调度算法</title>
+      <link href="/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.html"/>
+      <url>/interview/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.html</url>
+      
+        <content type="html"><![CDATA[<p><strong>按照课本的顺序</strong><br>转发自<a href="http://blog.chinaunix.net/uid-25132162-id-361291.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-25132162-id-361291.html</a></p><h5 id="一、作业管理-常见的批处理作业调度算法"><a href="#一、作业管理-常见的批处理作业调度算法" class="headerlink" title="一、作业管理 常见的批处理作业调度算法"></a>一、作业管理 常见的批处理作业调度算法</h5><ol><li><p>先来先服务调度算法（FCFS）:就是按照各个作业进入系统的自然次序来调度作业。<a id="more"></a>这种调度算法的优点是实现简单，公平。其缺点是没有考虑到系统中各种资源的综合使用情况，往往使短作业的用户不满意，因为短作业等待处理的时间可能比实际运行时间长得多。</p></li><li><p>短作业优先调度算法(SPF):就是优先调度并处理短作业，所谓短是指作业的运行时间短。而在作业未投入运行时，并不能知道它实际的运行时间的长短，因此需要用户在提交作业时同时提交作业运行时间的估计值。</p></li><li><p>最高响应比优先算法(HRN)：FCFS可能造成短作业用户不满，SPF可能使得长作业用户不满，于是提出HRN，选择响应比最高的作业运行。响应比=1+作业等待时间/作业处理时间。</p></li><li><p>基于优先数调度算法(HPF)：每一个作业规定一个表示该作业优先级别的整数，当需要将新的作业由输入井调入内存处理时，优先选择优先数最高的作业。</p></li><li><p>均衡调度算法，即多级队列调度算法</p></li></ol><p>基本概念：</p><p>   作业周转时间（Ti）＝完成时间(Tei)－提交时间(Tsi)</p><p>   作业平均周转时间(T)＝周转时间/作业个数</p><p>   作业带权周转时间（Wi）＝周转时间/运行时间</p><p>   响应比＝（等待时间＋运行时间）/运行时间</p><h5 id="二、进程管理-进程调度算法"><a href="#二、进程管理-进程调度算法" class="headerlink" title="二、进程管理 进程调度算法"></a>二、进程管理 进程调度算法</h5><ol><li><p>1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。</p></li><li><p>时间片轮转算法(RR)：分时系统的一种调度算法。轮转的基本思想是，将CPU的处理时间划分成一个个的时间片，就绪队列中的进程轮流运行一个时间片。当时间片结束时，就强迫进程让出CPU，该进程进入就绪队列，等待下一次调度，同时，进程调度又去选择就绪队列中的一个进程，分配给它一个时间片，以投入运行。</p></li><li><p>最高优先级算法(HPF)：进程调度每次将处理机分配给具有最高优先级的就绪进程。最高优先级算法可与不同的CPU方式结合形成可抢占式最高优先级算法和不可抢占式最高优先级算法。</p></li><li><p>多级队列反馈法：几种调度算法的结合形式多级队列方式。</p></li></ol><h5 id="三、空闲分区分配算法"><a href="#三、空闲分区分配算法" class="headerlink" title="三、空闲分区分配算法"></a>三、空闲分区分配算法</h5><ol><li><p>首先适应算法：当接到内存申请时，查找分区说明表，找到第一个满足申请长度的空闲区，将其分割并分配。此算法简单，可以快速做出分配决定。</p></li><li><p>最佳适应算法：当接到内存申请时，查找分区说明表，找到第一个能满足申请长度的最小空闲区，将其进行分割并分配。此算法最节约空间，因为它尽量不分割到大的空闲区，其缺点是可能会形成很多很小的空闲分区，称为“碎片”。</p></li><li><p>最坏适应算法：当接到内存申请时，查找分区说明表，找到能满足申请要求的最大的空闲区。该算法的优点是避免形成碎片，而缺点是分割了大的空闲区后，在遇到较大的程序申请内存时，无法满足的可能性较大。</p></li></ol><h5 id="四、虚拟页式存储管理中的页面置换算法"><a href="#四、虚拟页式存储管理中的页面置换算法" class="headerlink" title="四、虚拟页式存储管理中的页面置换算法"></a>四、虚拟页式存储管理中的页面置换算法</h5><ol><li><p>最佳算法（OPT)：这是一种理想的算法，在实际中不可能实现。该算法的思想是：发生缺页时，选择以后永不使用或在最长时间内不再被访问的内存页面予以淘汰。</p></li><li><p>先进先出页面淘汰算法(FIFO)：选择最先进入内存的页面予以淘汰。</p></li><li><p>最近最久未使用算法（LRU）：选择在最近一段时间内最久没有使用过的页，把它淘汰。</p></li><li><p>最少使用算法（LFU）：选择到当前时间为止被访问次数最少的页转换。</p></li></ol><h5 id="五、磁盘调度"><a href="#五、磁盘调度" class="headerlink" title="五、磁盘调度"></a>五、磁盘调度</h5><ol><li><p>先来先服务（FCFS）：是按请求访问者的先后次序启动磁盘驱动器，而不考虑它们要访问的物理位置</p></li><li><p>最短寻道时间优先（SSTF）：让离当前磁道最近的请求访问者启动磁盘驱动器，即是让查找时间最短的那个作业先执行，而不考虑请求访问者到来的先后次序，这样就克服了先来先服务调度算法中磁臂移动过大的问题</p></li><li><p>扫描算法（SCAN）或电梯调度算法：总是从磁臂当前位置开始，沿磁臂的移动方向去选择离当前磁臂最近的那个柱面的访问者。如果沿磁臂的方向无请求访问时，就改变磁臂的移动方向。在这种调度方法下磁臂的移动类似于电梯的调度，所以它也称为电梯调度算法。</p></li><li><p>循环扫描算法（CSCAN）：循环扫描调度算法是在扫描算法的基础上改进的。磁臂改为单项移动，由外向里。当前位置开始沿磁臂的移动方向去选择离当前磁臂最近的哪个柱面的访问者。如果沿磁臂的方向无请求访问时，再回到最外，访问柱面号最小的作业请求。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习总结 </tag>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+  
+  
+</search>
