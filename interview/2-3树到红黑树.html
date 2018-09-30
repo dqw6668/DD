@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2-3树到红黑树 | DD</title>
+  <meta name="keywords" content=" 红黑树 ">
+  <meta name="description" content="2-3树到红黑树 | DD">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="权当年轻留个纪念">
+<meta property="og:type" content="website">
+<meta property="og:title" content="分类">
+<meta property="og:url" content="http://dqw6668.github.io/categories/index.html">
+<meta property="og:site_name" content="DD">
+<meta property="og:description" content="权当年轻留个纪念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T09:17:37.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分类">
+<meta name="twitter:description" content="权当年轻留个纪念">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/photoswipe/4.1.2/default-skin/default-skin.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>dqw6668</span>
+</div>
+
+<div class="icon">
+    
+    
+    <a class="github" title="github" href="https://github.com/dqw6668" target="_blank"></a>
+    
+    
+    
+    
+    
+    
+    
+    
+    <a class="email" title="email" href="mailto:xss_me@qq.com"></a>
+    
+</div>
+
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="leetcode"> leetcode </li>
+    
+    <li data-rel="杂"> 杂 </li>
+    
+    <li data-rel="安全"> 安全 </li>
+    
+    <li data-rel="基础"> 基础 </li>
+    
+    <li data-rel="java"> java </li>
+    
+    <li data-rel="python"> python </li>
+    
+    <li data-rel="设计模式"> 设计模式 </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="28">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友链
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">0-1bag</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">学习总结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">DDOS</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">安全</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">LDAP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">认证</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">TCP三次握手</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">java</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">SQL注入</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">shell</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">操作系统</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">瞎想</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">设计模式</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">安全扫描工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">django</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">红黑树</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a id="top" class="leetcode "
+           href="/code/LeetCode题解.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode (Java)【目录】">LeetCode (Java)【目录】</span>
+            <span class="post-date" title="2018-09-27 00:00:00">2018/09/27</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/2-3树到红黑树.html"
+           data-tag="红黑树"
+           data-author="" >
+            <span class="post-title" title="2-3树到红黑树">2-3树到红黑树</span>
+            <span class="post-date" title="2018-09-30 13:35:11">2018/09/30</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.4. 两个排序数组的中位数.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.4. 两个排序数组的中位数">LeetCode.4. 两个排序数组的中位数</span>
+            <span class="post-date" title="2018-09-30 13:31:25">2018/09/30</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.3. 无重复字符的最长子串.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.3. 无重复字符的最长子串">LeetCode.3. 无重复字符的最长子串</span>
+            <span class="post-date" title="2018-09-28 01:42:10">2018/09/28</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.2. 两数相加.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.2. 两数相加">LeetCode.2. 两数相加</span>
+            <span class="post-date" title="2018-09-27 15:20:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之策略模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-策略模式">JAVA与模式-策略模式</span>
+            <span class="post-date" title="2018-09-27 14:44:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.1. 两数之和.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.1. 两数之和">LeetCode.1. 两数之和</span>
+            <span class="post-date" title="2018-09-27 14:35:10">2018/09/27</span>
+        </a>
+        
+        <a  class="java 设计模式 "
+           href="/java/设计模式/设计模式之单例模式.html"
+           data-tag="java,设计模式"
+           data-author="" >
+            <span class="post-title" title="JAVA与模式-单例模式">JAVA与模式-单例模式</span>
+            <span class="post-date" title="2018-09-25 00:00:00">2018/09/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/shell脚本复习.html"
+           data-tag="shell"
+           data-author="" >
+            <span class="post-title" title="shell命令复习">shell命令复习</span>
+            <span class="post-date" title="2018-08-06 00:00:00">2018/08/06</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/redis.html"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="认识redis">认识redis</span>
+            <span class="post-date" title="2018-08-04 00:00:00">2018/08/04</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/LDAP.html"
+           data-tag="LDAP,认证"
+           data-author="" >
+            <span class="post-title" title="openLDAP搭建认证与目录系统">openLDAP搭建认证与目录系统</span>
+            <span class="post-date" title="2018-07-15 00:00:00">2018/07/15</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/SQLI.html"
+           data-tag="SQL注入"
+           data-author="" >
+            <span class="post-title" title="自建环境玩耍SQLI">自建环境玩耍SQLI</span>
+            <span class="post-date" title="2018-07-13 00:00:00">2018/07/13</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/python3催钱.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="py微信定时消息之 欠债还钱">py微信定时消息之 欠债还钱</span>
+            <span class="post-date" title="2018-06-21 00:00:00">2018/06/21</span>
+        </a>
+        
+        <a  class="安全 "
+           href="/safe/DDOS.html"
+           data-tag="DDOS,安全"
+           data-author="" >
+            <span class="post-title" title="反射型DDoS放大攻击的原理分析和防范措施">反射型DDoS放大攻击的原理分析和防范措施</span>
+            <span class="post-date" title="2018-06-19 00:00:00">2018/06/19</span>
+        </a>
+        
+        <a  class="java "
+           href="/java/maven.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="初识maven">初识maven</span>
+            <span class="post-date" title="2018-06-04 00:00:00">2018/06/04</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Junit.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="JUnit使用">JUnit使用</span>
+            <span class="post-date" title="2018-06-01 00:00:00">2018/06/01</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/Git-bash.html"
+           data-tag="学习总结"
+           data-author="" >
+            <span class="post-title" title="Git使用">Git使用</span>
+            <span class="post-date" title="2018-05-25 00:00:00">2018/05/25</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/AppScan.html"
+           data-tag="学习总结,安全扫描工具"
+           data-author="" >
+            <span class="post-title" title="AppScan使用">AppScan使用</span>
+            <span class="post-date" title="2018-05-19 00:00:00">2018/05/19</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/py实现基本数据结构.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="数据结构基础 python实现">数据结构基础 python实现</span>
+            <span class="post-date" title="2018-05-03 00:00:00">2018/05/03</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/QA.html"
+           data-tag="测试,学习总结"
+           data-author="" >
+            <span class="post-title" title="QA职责流程">QA职责流程</span>
+            <span class="post-date" title="2018-05-02 00:00:00">2018/05/02</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/TCP.html"
+           data-tag="TCP三次握手"
+           data-author="" >
+            <span class="post-title" title="TCP三次和四次">TCP三次和四次</span>
+            <span class="post-date" title="2018-04-29 00:00:00">2018/04/29</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/0-1bag.html"
+           data-tag="0-1bag"
+           data-author="" >
+            <span class="post-title" title="0-1背包问题">0-1背包问题</span>
+            <span class="post-date" title="2018-04-23 00:00:00">2018/04/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/pychekio之home.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="pychekio上的练习之home">pychekio上的练习之home</span>
+            <span class="post-date" title="2018-04-03 00:00:00">2018/04/03</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/django创建应用源码--1.html"
+           data-tag="django"
+           data-author="" >
+            <span class="post-title" title="django创建应用 源码1">django创建应用 源码1</span>
+            <span class="post-date" title="2018-03-27 00:00:00">2018/03/27</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/重建二叉树.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="面试题6 重建二叉树">面试题6 重建二叉树</span>
+            <span class="post-date" title="2018-03-23 00:00:00">2018/03/23</span>
+        </a>
+        
+        <a  class="python "
+           href="/python/七大排序.html"
+           data-tag="python"
+           data-author="" >
+            <span class="post-title" title="七大经典排序算法python">七大经典排序算法python</span>
+            <span class="post-date" title="2018-03-20 00:00:00">2018/03/20</span>
+        </a>
+        
+        <a  class="杂 "
+           href="/all/近期的目标.html"
+           data-tag="瞎想"
+           data-author="" >
+            <span class="post-title" title="月底小目标">月底小目标</span>
+            <span class="post-date" title="2018-03-19 00:00:00">2018/03/19</span>
+        </a>
+        
+        <a  class="基础 "
+           href="/interview/操作系统调度算法.html"
+           data-tag="学习总结,操作系统"
+           data-author="" >
+            <span class="post-title" title="调度算法">调度算法</span>
+            <span class="post-date" title="2018-01-13 00:00:00">2018/01/13</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-2-3树到红黑树" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">2-3树到红黑树</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+            <a href="javascript:" data-rel="基础">基础</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">红黑树</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-09-30 14:10:05'>2018-09-30 13:35</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树原型"><span class="toc-text">红黑树原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-3查找树"><span class="toc-text">2-3查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查找"><span class="toc-text">查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-text">插入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只有一个3-结点的树，向其插入一个新键。"><span class="toc-text">只有一个3-结点的树，向其插入一个新键。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向一个父结点为2-结点的3-结点中插入新键"><span class="toc-text">向一个父结点为2-结点的3-结点中插入新键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向一个父结点为3-结点的3-结点中插入新键"><span class="toc-text">向一个父结点为3-结点的3-结点中插入新键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入总结："><span class="toc-text">插入总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造"><span class="toc-text">构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑二叉查找树"><span class="toc-text">红黑二叉查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#红黑树的本质："><span class="toc-text">红黑树的本质：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#红黑树的构造"><span class="toc-text">红黑树的构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#替换3-结点"><span class="toc-text">替换3-结点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#红黑树的另一种定义是满足下列条件的二叉查找树："><span class="toc-text">红黑树的另一种定义是满足下列条件的二叉查找树：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜色表示："><span class="toc-text">颜色表示：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入-1"><span class="toc-text">插入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#向一个3-结点）中插入新键"><span class="toc-text">向一个3-结点）中插入新键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#★一颗红黑树的构造全过程"><span class="toc-text">★一颗红黑树的构造全过程</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="红黑树原型"><a href="#红黑树原型" class="headerlink" title="红黑树原型"></a>红黑树原型</h1><p>红黑树难，是数据结构中的难点，那是因为我看到的所有讲解上来就是给你5条定义（包括《算法导论》），告诉我们红黑树这个性质那个性质，但是基本没有讲为什么这样定义红色和黑色，让人理解起来十分费力。今天来看看红黑树的发明者是怎么定义红黑树的。</p>
+ <a id="more"></a>
+<p>红黑树的根本模型：<strong>以二叉树的形式实现2-3树</strong>，通过红黑树与2-3树之间的一一对应。</p>
+<p>红黑树的基本思想是用标准的二叉查找树（完全由2-结点构成）和一些额外的信息（替换3-结点）来表示2-3树。</p>
+<h1 id="2-3查找树"><a href="#2-3查找树" class="headerlink" title="2-3查找树"></a>2-3查找树</h1><p>为了保证查找树的平衡性，我们需要一些灵活性，因此在这里我们允许树中的一个结点保存多个键。</p>
+<p><strong>2-结点</strong>：含有一个键(及值)和两条链接，左链接指向的2-3树中的键都小于该结点，右链接指向的2-3树中的键都大于该结点。</p>
+<p><strong>3-结点</strong>：含有两个键(及值)和三条链接，左链接指向的2-3树中的键都小于该结点，中链接指向的2-3树中的键都位于该结点的两个键之间，右链接指向的2-3树中的键都大于该结点。</p>
+<p>（2-3指的是2叉-3叉的意思）</p>
+<p><img src="/images/红黑树/1.jpg" alt="2-3节点"></p>
+<p>一颗完美平衡的2-3查找树中的所有空链接到根结点的距离都是相同的。</p>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a><strong>查找</strong></h2><p>要判断一个键是否在树中，我们先将它和根结点中的键比较。如果它和其中的任何一个相等，查找命中。否则我们就根据比较的结果找到指向相应区间的链接，并在其指向的子树中递归地继续查找。如果这是个空链接，查找未命中。</p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a><strong>插入</strong></h2><p>要在2-3树中插入一个新结点，我们可以和二叉查找树一样先进行一次未命中的查找，然后把新结点挂在树的底部。但这样的话树无法保持完美平衡性。我们使用2-3树的主要原因就在于它能够在插入之后继续保持平衡。</p>
+<p>如果未命中的查找结束于一个2-结点，我们只要把这个2-结点替换为一个3-结点，将要插入的键保存在其中即可。如果未命中的查找结束于一个3-结点，事情就要麻烦一些。</p>
+<p>先考虑最简单的例子：</p>
+<h3 id="只有一个3-结点的树，向其插入一个新键。"><a href="#只有一个3-结点的树，向其插入一个新键。" class="headerlink" title="只有一个3-结点的树，向其插入一个新键。"></a>只有一个3-结点的树，向其插入一个新键。</h3><p>这棵树唯一的结点中已经没有可插入的空间了。我们又不能把新键插在其空结点上（破坏了完美平衡）。为了将新键插入，我们先临时将新键存入该结点中，使之成为一个4-结点。创建一个4-结点很方便，因为很容易将它转换为一颗由3个2-结点组成的2-3树（如图所示），这棵树既是一颗含有3个结点的二叉查找树，同时也是一颗完美平衡的2-3树，其中所有空链接到根结点的距离都相等。</p>
+<p><img src="/images/红黑树/2.jpg" alt="插入到3节点"></p>
+<h3 id="向一个父结点为2-结点的3-结点中插入新键"><a href="#向一个父结点为2-结点的3-结点中插入新键" class="headerlink" title="向一个父结点为2-结点的3-结点中插入新键"></a><strong>向一个父结点为2-结点的3-结点中插入新键</strong></h3><p>假设未命中的查找结束于一个3-结点，而它的父结点是一个2-结点。在这种情况下我们需要在维持树的完美平衡的前提下为新键腾出空间。</p>
+<p>我们先像刚才一样构造一个临时的4-结点并将其分解，但此时我们不会为中键创建一个新结点，而是将其移动至原来的父结点中。（如图所示）</p>
+<p><img src="/images/红黑树/3.jpg" alt="插入到2节点下的3节点"></p>
+<p>这次转换也并不影响（完美平衡的）2-3树的主要性质。树仍然是有序的，因为中键被移动到父结点中去了，树仍然是完美平衡的，插入后所有的空链接到根结点的距离仍然相同。</p>
+<h3 id="向一个父结点为3-结点的3-结点中插入新键"><a href="#向一个父结点为3-结点的3-结点中插入新键" class="headerlink" title="向一个父结点为3-结点的3-结点中插入新键"></a><strong>向一个父结点为3-结点的3-结点中插入新键</strong></h3><p>假设未命中的查找结束于一个3-结点，而它的父结点是一个3-结点。</p>
+<p>我们再次和刚才一样构造一个临时的4-结点并分解它，然后将它的中键插入它的父结点中。但父结点也是一个3-结点，因此我们再用这个中键构造一个新的临时4-结点，然后在这个结点上进行相同的变换，即分解这个父结点并将它的中键插入到它的父结点中去。</p>
+<p>我们就这样一直向上不断分解临时的4-结点并将中键插入更高的父结点，直至遇到一个2-结点并将它替换为一个不需要继续分解的3-结点，或者是到达3-结点的根。</p>
+<p><img src="/images/红黑树/4.jpg" alt="插入到3节点下的3节点"></p>
+<h3 id="插入总结："><a href="#插入总结：" class="headerlink" title="插入总结："></a><strong>插入总结</strong>：</h3><p><strong>先找插入结点，若结点有空(即2-结点)，则直接插入。如结点没空(即3-结点)，则插入使其临时容纳这个元素，然后分裂此结点，把中间元素移到其父结点中。对父结点亦如此处理。</strong></p>
+<p>★2-3树插入算法的根本在于这些变换都是局部的：除了相关的结点和链接之外不必修改或者检查树的其他部分。每次变换中，变更的链接数量不会超过一个很小的常数。所有局部变换都不会影响整棵树的有序性和平衡性。</p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a><strong>构造</strong></h2><p>和标准的二叉查找树由上向下生长不同，2-3树的生长是由下向上的。<img src="/images/红黑树/5.jpg" alt="2-3树的构造"></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h3><p>2-3树在最坏情况下仍有较好的性能。每个操作中处理每个结点的时间都不会超过一个很小的常数，且这两个操作都只会访问一条路径上的结点，所以任何查找或者插入的成本都肯定不会超过对数级别。</p>
+<p>完美平衡的2-3树要平展的多。例如，含有10亿个结点的一颗2-3树的高度仅在19到30之间。我们最多只需要访问30个结点就能在10亿个键中进行任意查找和插入操作。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a><strong>缺点</strong></h3><p>我们需要维护两种不同类型的结点，查找和插入操作的实现需要大量的代码，而且它们所产生的额外开销可能会使算法比标准的二叉查找树更慢。</p>
+<p>平衡一棵树的初衷是为了消除最坏情况，但我们希望这种保障所需的代码能够越少越好。</p>
+<h1 id="红黑二叉查找树"><a href="#红黑二叉查找树" class="headerlink" title="红黑二叉查找树"></a>红黑二叉查找树</h1><p><strong>理解红黑树一句话就够了</strong>：红黑树就是用红链接表示3结点的2-3树。那么红黑树的插入、构造就可转化为2-3树的问题，</p>
+<h2 id="红黑树的本质："><a href="#红黑树的本质：" class="headerlink" title="红黑树的本质："></a><strong>红黑树的本质</strong>：</h2><p>2-3查找树</p>
+<h2 id="红黑树的构造"><a href="#红黑树的构造" class="headerlink" title="红黑树的构造"></a>红黑树的构造</h2><h3 id="替换3-结点"><a href="#替换3-结点" class="headerlink" title="替换3-结点"></a>替换3-结点</h3><p>★红黑树背后的思想是用标准的二叉查找树（完全由2-结点构成）和一些额外的信息（替换3-结点）来表示2-3树。</p>
+<p>我们将树中的链接分为两种类型：红链接将两个2-结点连接起来构成一个3-结点，黑链接则是2-3树中的普通链接。确切地说，我们将3-结点表示为由一条<strong>左斜</strong>的红色链接相连的两个2-结点。</p>
+<p>这种表示法的一个优点是，我们无需修改就可以直接使用标准二叉查找树的get()方法。对于任意的2-3树，只要对结点进行转换，我们都可以立即派生出一颗对应的二叉查找树。我们将用这种方式表示2-3树的二叉查找树称为红黑树。<img src="/images/红黑树/6.jpg" alt="红黑树表示23树"></p>
+<h3 id="红黑树的另一种定义是满足下列条件的二叉查找树："><a href="#红黑树的另一种定义是满足下列条件的二叉查找树：" class="headerlink" title="红黑树的另一种定义是满足下列条件的二叉查找树："></a><strong>红黑树的另一种定义</strong>是满足下列条件的二叉查找树：</h3><p>⑴红链接均为左链接。</p>
+<p>⑵没有任何一个结点同时和两条红链接相连。</p>
+<p>⑶该树是完美黑色平衡的，即任意空链接到根结点的路径上的黑链接数量相同。</p>
+<p>如果我们将一颗红黑树中的红链接画平，那么所有的空链接到根结点的距离都将是相同的。如果我们将由红链接相连的结点合并，得到的就是一颗2-3树。</p>
+<p>相反，如果将一颗2-3树中的3-结点画作由红色左链接相连的两个2-结点，那么不会存在能够和两条红链接相连的结点，且树必然是完美平衡的。<img src="/images/红黑树/7.jpg" alt="红黑树表示23树"></p>
+<p>红黑树都既是二叉查找树，也是2-3树。</p>
+<p>（2-3树的深度很小，平衡性好，效率高，但是其有两种不同的结点，实际代码实现比较复杂。而红黑树用红链接表示2-3树中另类的3-结点，统一了树中的结点类型，使代码实现简单化，又不破坏其高效性。）</p>
+<h3 id="颜色表示："><a href="#颜色表示：" class="headerlink" title="颜色表示："></a><strong>颜色表示</strong>：</h3><p>因为每个结点都只会有一条指向自己的链接（从它的父结点指向它），我们将链接的颜色保存在表示结点的Node数据类型的布尔变量color中（若指向它的链接是红色的，那么该变量为true，黑色则为false）。</p>
+<p>当我们提到一个结点颜色时，我们指的是指向该结点的链接的颜色。</p>
+<h2 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a><strong>插入</strong></h2><p>在插入时我们可以使用旋转操作帮助我们保证2-3树和红黑树之间的一一对应关系，因为旋转操作可以保持红黑树的两个重要性质：有序性和完美平衡性。</p>
+<p><strong>向2-结点中插入新键</strong></p>
+<p>（向红黑树中插入操作时，想想2-3树的插入操作。红黑树与2-3树在本质上是相同的，只是它们对3结点的表示不同。</p>
+<p>向一个只含有一个2-结点的2-3树中插入新键后，2-结点变为3-结点。我们再把这个3-结点转化为红结点即可）<img src="/images/红黑树/8.jpg" alt="插入"></p>
+<h3 id="向一个3-结点）中插入新键"><a href="#向一个3-结点）中插入新键" class="headerlink" title="向一个3-结点）中插入新键"></a><strong>向一个3-结点）中插入新键</strong></h3><p>（向红黑树中插入操作时，想想2-3树的插入操作。你把红黑树当做2-3树来处理插入，一切都变得简单了）</p>
+<p>（向2-3树中的一个3-结点插入新键，这个3结点临时成为4-结点，然后分裂成3个2结点）<img src="/images/红黑树/9.jpg" alt="插入"></p>
+<h3 id="★一颗红黑树的构造全过程"><a href="#★一颗红黑树的构造全过程" class="headerlink" title="★一颗红黑树的构造全过程"></a><strong>★一颗红黑树的构造全过程</strong></h3><p><img src="/images/红黑树/10.jpg" alt="构造红黑树"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> PHP是世界上最好的语言 </span>
+    </div>
+</article>
+
+
+
+
+
+
+    
+
+    </div>
+
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'photoSwipe';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#0-1bag','#测试','#学习总结','#DDOS','#安全','#leetcode','#LDAP','#认证','#TCP三次握手','#java','#SQL注入','#python','#shell','#redis','#操作系统','#瞎想','#设计模式','#安全扫描工具','#django','#红黑树',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+
+        // PhotoSwipe
+        $('article').each(function(i){
+            $(this).find('img').each(function(){
+                if ($(this).closest('figure').hasClass('article-gallery-img')) {
+                    return;
+                }
+                var alt = this.alt;
+                $(this)
+                    .wrap('<figure class="article-gallery-img" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"></figure>')
+                    .wrap('<a href="' + this.src + '" title="' + alt + '"></a>');
+                $(this).after('<div class="img_alt"><span>' + (alt || '') + '</span></div>');
+            });
+        });
+
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        if (pswpElement) {
+            var gallerySelector = '.article-gallery, article';
+
+            var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+                // parse slide data (url, title, size ...) from DOM elements
+                // (children of gallerySelector)
+                var parseThumbnailElements = function(el) {
+                    var thumbElements = $(el).find('figure.article-gallery-img').toArray(),
+                        numNodes = thumbElements.length,
+                        items = [],
+                        figureEl,
+                        linkEl,
+                        size,
+                        imgEl,
+                        item;
+
+                    for (var i = 0; i < numNodes; i++) {
+
+                        figureEl = thumbElements[i]; // <figure> element
+
+                        // include only element nodes
+                        if (figureEl.nodeType !== 1) {
+                            continue;
+                        }
+
+                        linkEl = figureEl.children[0]; // <a> element
+                        imgEl = linkEl.children[0]; // <img>
+
+                        size = linkEl.getAttribute('data-size');
+                        size = size && size.split('x');
+
+                        // create slide object
+                        item = {
+                            src: linkEl.getAttribute('href'),
+                            w: size && parseInt(size[0], 10) || imgEl.width,
+                            h: size && parseInt(size[1], 10) || imgEl.height
+                        };
+
+                        if (figureEl.children.length > 1) {
+                            // <figcaption> content
+                            item.title = figureEl.children[1].innerHTML;
+                        }
+
+                        if (linkEl.children.length > 0) {
+                            // <img> thumbnail element, retrieving thumbnail url
+                            item.msrc = linkEl.children[0].getAttribute('src');
+                        }
+
+                        item.el = figureEl; // save link to element for getThumbBoundsFn
+                        items.push(item);
+                    }
+
+                    return items;
+                };
+
+                // find nearest parent element
+                var closest = function closest(el, fn) {
+                    return el && (fn(el) ? el : closest(el.parentNode, fn));
+                };
+
+                // triggers when user clicks on thumbnail
+                var onThumbnailsClick = function(e) {
+                    e = e || window.event;
+
+                    var eTarget = e.target || e.srcElement;
+
+                    // find root element of slide
+                    var clickedListItem = closest(eTarget, function(el) {
+                        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+                    });
+
+                    if (!clickedListItem) {
+                        return;
+                    }
+
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+
+                    // find index of clicked item by looping through all child nodes
+                    // alternatively, you may define index via data- attribute
+                    var clickedGallery = $(clickedListItem).closest(gallerySelector)[0],
+                        childNodes = $(clickedGallery).find('figure.article-gallery-img').toArray(),
+                        numChildNodes = childNodes.length,
+                        nodeIndex = 0,
+                        index;
+
+                    for (var i = 0; i < numChildNodes; i++) {
+                        if (childNodes[i].nodeType !== 1) {
+                            continue;
+                        }
+
+                        if (childNodes[i] === clickedListItem) {
+                            index = nodeIndex;
+                            break;
+                        }
+                        nodeIndex++;
+                    }
+
+
+
+                    if (index >= 0) {
+                        // open PhotoSwipe if valid index found
+                        openPhotoSwipe(index, clickedGallery);
+                    }
+                    return false;
+                };
+
+                // parse picture index and gallery index from URL (#&pid=1&gid=2)
+                var photoswipeParseHash = function() {
+                    var hash = window.location.hash.substring(1),
+                        params = {};
+
+                    if (hash.length < 5) {
+                        return params;
+                    }
+
+                    var vars = hash.split('&');
+                    for (var i = 0; i < vars.length; i++) {
+                        if (!vars[i]) {
+                            continue;
+                        }
+                        var pair = vars[i].split('=');
+                        if (pair.length < 2) {
+                            continue;
+                        }
+                        params[pair[0]] = pair[1];
+                    }
+
+                    if (params.gid) {
+                        params.gid = parseInt(params.gid, 10);
+                    }
+
+                    return params;
+                };
+
+                var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                    var pswpElement = document.querySelectorAll('.pswp')[0],
+                        gallery,
+                        options,
+                        items;
+
+                    items = parseThumbnailElements(galleryElement);
+
+                    // define options (if needed)
+                    options = {
+
+                        // define gallery index (for URL)
+                        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                        getThumbBoundsFn: function(index) {
+                            // See Options -> getThumbBoundsFn section of documentation for more info
+                            var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+
+                    // PhotoSwipe opened from URL
+                    if (fromURL) {
+                        if (options.galleryPIDs) {
+                            // parse real index when custom PIDs are used
+                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                            for (var j = 0; j < items.length; j++) {
+                                if (items[j].pid == index) {
+                                    options.index = j;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // in URL indexes start from 1
+                            options.index = parseInt(index, 10) - 1;
+                        }
+                    } else {
+                        options.index = parseInt(index, 10);
+                    }
+
+                    // exit if index not found
+                    if (isNaN(options.index)) {
+                        return;
+                    }
+
+                    if (disableAnimation) {
+                        options.showAnimationDuration = 0;
+                    }
+
+                    // Pass data to PhotoSwipe and initialize it
+                    gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+                    gallery.listen('imageLoadComplete', function(index, item) {
+                        var linkEl = item.el.children[0];
+                        var img = item.container.children[0];
+                        if (!linkEl.getAttribute('data-size')) {
+                            linkEl.setAttribute('data-size', img.naturalWidth + 'x' + img.naturalHeight);
+                            item.w = img.naturalWidth;
+                            item.h = img.naturalHeight;
+                            gallery.invalidateCurrItems();
+                            gallery.updateSize(true);
+                        }
+                    });
+
+                    gallery.init();
+                };
+
+                // loop through all gallery elements and bind events
+                var galleryElements = document.querySelectorAll(gallerySelector);
+
+                for (var i = 0, l = galleryElements.length; i < l; i++) {
+                    galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                    galleryElements[i].onclick = onThumbnailsClick;
+                }
+
+                // Parse URL and open gallery if it contains #&pid=3&gid=1
+                var hashData = photoswipeParseHash();
+                if (hashData.pid && hashData.gid) {
+                    openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+                }
+            };
+
+            // execute above function
+            initPhotoSwipeFromDOM(gallerySelector);
+        }
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("/img/12.webp");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+</style>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+</html>
