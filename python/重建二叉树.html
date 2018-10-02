@@ -82,15 +82,15 @@
     
     <li data-rel="leetcode"> leetcode </li>
     
-    <li data-rel="杂"> 杂 </li>
-    
     <li data-rel="安全"> 安全 </li>
     
-    <li data-rel="java"> java </li>
+    <li data-rel="杂"> 杂 </li>
     
     <li data-rel="基础"> 基础 </li>
     
     <li data-rel="python"> python </li>
+    
+    <li data-rel="java"> java </li>
     
     <li data-rel="设计模式"> 设计模式 </li>
     
@@ -104,7 +104,7 @@
     </div>
     <div><a  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="30">
+<input type="hidden" id="yelog_site_posts_number" value="31">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -141,18 +141,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">测试</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">学习总结</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">leetcode</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">DDOS</a>
     </li>
     
@@ -161,7 +149,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">SQL注入</a>
+        <a href="javascript:" class="color5">学习总结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">测试</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -173,11 +169,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">java</a>
+        <a href="javascript:" class="color3">TCP三次握手</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">TCP三次握手</a>
+        <a href="javascript:" class="color1">SQL注入</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -185,11 +181,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">redis</a>
+        <a href="javascript:" class="color5">java</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">操作系统</a>
+        <a href="javascript:" class="color1">redis</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -197,7 +193,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">设计模式</a>
+        <a href="javascript:" class="color5">操作系统</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -205,11 +201,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">安全扫描工具</a>
+        <a href="javascript:" class="color5">设计模式</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color4">红黑树</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">安全扫描工具</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -232,6 +232,14 @@
            data-author="" >
             <span class="post-title" title="LeetCode (Java)【目录】">LeetCode (Java)【目录】</span>
             <span class="post-date" title="2018-09-27 00:00:00">2018/09/27</span>
+        </a>
+        
+        <a  class="leetcode "
+           href="/code/LeetCode.11. 盛最多水的容器.html"
+           data-tag="leetcode"
+           data-author="" >
+            <span class="post-title" title="LeetCode.11. 盛最多水的容器">LeetCode.11. 盛最多水的容器</span>
+            <span class="post-date" title="2018-10-03 00:31:35">2018/10/03</span>
         </a>
         
         <a  class="java "
@@ -364,7 +372,7 @@
         
         <a  class="杂 "
            href="/all/Junit.html"
-           data-tag="测试,学习总结"
+           data-tag="学习总结,测试"
            data-author="" >
             <span class="post-title" title="JUnit使用">JUnit使用</span>
             <span class="post-date" title="2018-06-01 00:00:00">2018/06/01</span>
@@ -396,7 +404,7 @@
         
         <a  class="杂 "
            href="/all/QA.html"
-           data-tag="测试,学习总结"
+           data-tag="学习总结,测试"
            data-author="" >
             <span class="post-title" title="QA职责流程">QA职责流程</span>
             <span class="post-date" title="2018-05-02 00:00:00">2018/05/02</span>
@@ -635,7 +643,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#0-1bag','#测试','#学习总结','#leetcode','#DDOS','#安全','#SQL注入','#LDAP','#认证','#java','#TCP三次握手','#python','#redis','#操作系统','#shell','#设计模式','#瞎想','#安全扫描工具','#红黑树','#django','#JVM',],
+            'data': ['#0-1bag','#DDOS','#安全','#学习总结','#测试','#leetcode','#LDAP','#认证','#TCP三次握手','#SQL注入','#python','#java','#redis','#shell','#操作系统','#瞎想','#设计模式','#红黑树','#安全扫描工具','#django','#JVM',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

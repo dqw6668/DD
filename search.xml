@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>LeetCode.11. 盛最多水的容器</title>
+      <link href="/code/LeetCode.11.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8.html"/>
+      <url>/code/LeetCode.11.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8.html</url>
+      
+        <content type="html"><![CDATA[<p>给定 <em>n</em> 个非负整数 <em>a</em>1，<em>a</em>2，…，<em>a</em>n，每个数代表坐标中的一个点 (<em>i</em>, <em>ai</em>) 。在坐标内画 <em>n</em> 条垂直线，垂直线 <em>i</em> 的两个端点分别为 (<em>i</em>, <em>ai</em>) 和 (<em>i</em>, 0)。找出其中的两条线，使得它们与 <em>x</em> 轴共同构成的容器可以容纳最多的水。</p><p><strong>说明：</strong>你不能倾斜容器，且 <em>n</em> 的值至少为 2。</p><p><img src="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg" alt="img"></p><p>图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p><p><strong>示例:</strong></p><pre><code>输入: [1,8,6,2,5,4,8,3,7]输出: 49</code></pre><p><strong>分析</strong>： </p><p>我们认为长度越长且高度越大，则面积越大。<br>现在，使用两个指针分别指向首、尾，这时它的宽度是最大的。<br>可能还会出现面积更大的情况，只有当高度变大的时候，所以可以移动两个指针中的较小者，这样可以能会使高度增加以弥补长度变短造成面积减少的损失。 </p><p>一直移动两者中较小者，直到两者相遇，取各种情况的最大值即是最后的结果</p><pre><code>class Solution {    public int maxArea(int[] height) {        int len = height.length;        int i = 0, j = len-1;        int rest = 0;        while(i&lt;j) {            if(height[i] &gt; height[j]) {                rest = Math.max(rest, height[j]*(j-i));                j--;            }else{                rest = Math.max(rest, height[i]*(j-i));                i++;            }        }return rest;    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>JVM-深入理解虚拟机类加载机制</title>
       <link href="/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC7%E7%AB%A0.html"/>
       <url>/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%AC7%E7%AB%A0.html</url>
@@ -195,7 +218,7 @@
       <link href="/code/LeetCode%E9%A2%98%E8%A7%A3.html"/>
       <url>/code/LeetCode%E9%A2%98%E8%A7%A3.html</url>
       
-        <content type="html"><![CDATA[<p>source：<a href="https://leetcode-cn.com/" target="_blank" rel="noopener">LeetCode</a></p><p>由于开通了中国区，就从中国区再刷刷吧，虽然之前刷了一些，不过现在用java再来一遍</p><table><thead><tr><th style="text-align:center">编号</th><th style="text-align:center">题目</th><th style="text-align:center">CODE</th><th>分类</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">两数之和</td><td style="text-align:center"><a href="/code/LeetCode.1.%20两数之和.html">java</a></td><td>数组</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">两数相加</td><td style="text-align:center"><a href="/code/LeetCode.2.%20两数相加.html">java</a></td><td>链表</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">无重复字符的最长子串</td><td style="text-align:center"><a href="/code/LeetCode.3.%20无重复字符的最长子串.html">java</a></td><td>字符串</td></tr><tr><td style="text-align:center">4</td><td style="text-align:center">两个排序数组的中位数</td><td style="text-align:center"><a href="/code/LeetCode.4.%20两个排序数组的中位数.html">java</a></td><td>数组</td></tr><tr><td style="text-align:center">5</td><td style="text-align:center">最长回文子串</td><td style="text-align:center"><a href="/code/LeetCode.5.%20最长回文子串.html">java</a></td><td>字符串</td></tr><tr><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<p>source：<a href="https://leetcode-cn.com/" target="_blank" rel="noopener">LeetCode</a></p><p>由于开通了中国区，就从中国区再刷刷吧，虽然之前刷了一些，不过现在用java再来一遍</p><table><thead><tr><th style="text-align:center">编号</th><th style="text-align:center">题目</th><th style="text-align:center">CODE</th><th>分类</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">两数之和</td><td style="text-align:center"><a href="/code/LeetCode.1.%20两数之和.html">java</a></td><td>数组</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">两数相加</td><td style="text-align:center"><a href="/code/LeetCode.2.%20两数相加.html">java</a></td><td>链表</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">无重复字符的最长子串</td><td style="text-align:center"><a href="/code/LeetCode.3.%20无重复字符的最长子串.html">java</a></td><td>字符串</td></tr><tr><td style="text-align:center">4</td><td style="text-align:center">两个排序数组的中位数</td><td style="text-align:center"><a href="/code/LeetCode.4.%20两个排序数组的中位数.html">java</a></td><td>数组</td></tr><tr><td style="text-align:center">5</td><td style="text-align:center">最长回文子串</td><td style="text-align:center"><a href="/code/LeetCode.5.%20最长回文子串.html">java</a></td><td>字符串</td></tr><tr><td style="text-align:center">11</td><td style="text-align:center">盛最多水的容器</td><td style="text-align:center"><a href="/code/LeetCode.11.%20盛最多水的容器.html">java</a></td><td>数组、双指针</td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -422,9 +445,9 @@
       
         <tags>
             
-            <tag> 测试 </tag>
-            
             <tag> 学习总结 </tag>
+            
+            <tag> 测试 </tag>
             
         </tags>
       
@@ -518,9 +541,9 @@
       
         <tags>
             
-            <tag> 测试 </tag>
-            
             <tag> 学习总结 </tag>
+            
+            <tag> 测试 </tag>
             
         </tags>
       
